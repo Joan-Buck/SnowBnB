@@ -41,7 +41,27 @@ export const retainUserSessionThunk = () => async (dispatch) => {
         dispatch(setSessionUser(data.user))
     }
     return response;
-}
+};
+
+export const signUpUserThunk = (user) => async (dispatch) => {
+    const {username, email, password} = user;
+
+    const response = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            username,
+            email,
+            password
+        })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        // console.log('here', data);
+        dispatch(setSessionUser(data.user || null))
+    }
+    return response
+};
 
 const initialState = { user: null };
 
@@ -49,16 +69,16 @@ const sessionReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_SESSION_USER:
-            newState =Object.assign({}, state);
+            newState = Object.assign({}, state);
             newState.user = action.user;
             return newState
         case REMOVE_SESSION_USER:
-            newState =Object.assign({}, state);
-            delete newState[action.user]
+            newState = Object.assign({}, state);
+            newState.user = null
             return newState;
         default:
             return state;
     }
-}
+};
 
 export default sessionReducer;
