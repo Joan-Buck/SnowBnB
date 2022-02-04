@@ -33,17 +33,27 @@ export const loginUserThunk = (user) => async (dispatch) => {
     return response
 }
 
+export const retainUserSessionThunk = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session');
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(setSessionUser(data.user))
+    }
+    return response;
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_SESSION_USER:
-            newState = { ...state };
+            newState =Object.assign({}, state);
             newState.user = action.user;
             return newState
         case REMOVE_SESSION_USER:
-            newState = { ...state };
+            newState =Object.assign({}, state);
             delete newState[action.user]
             return newState;
         default:
