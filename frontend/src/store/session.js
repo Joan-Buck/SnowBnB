@@ -57,7 +57,6 @@ export const signUpUserThunk = (user) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        // console.log('here', data);
         dispatch(setSessionUser(data.user || null))
     }
     return response
