@@ -80,7 +80,7 @@ const LoginFormPage = () => {
             </form>
             <button
                     type="submit"
-                    className='login-demo-user'
+                    className='login-demo-user-button'
                     onClick={click}>
                     Log In as Demo User
             </button>

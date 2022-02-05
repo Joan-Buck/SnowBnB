@@ -5,25 +5,25 @@ nav {
     border: black solid 1px;
     top: 0;
     position: sticky;
-    
+
 }
 
-/* ul {
-    display: grid;
+ul {
+    display: flex;
     grid-template-columns: auto;
     width: 100%;
     border: black solid 1px;
-} */
+}
 
-div.login-link {
+.login-link {
     color: pink
 }
 
-div.signup-link {
+.signup-link {
     color: pink
 }
 
-div .home-link {
+.home-link {
     color: red
 }
 
