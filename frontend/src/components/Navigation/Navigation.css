@@ -1,4 +1,4 @@
-nav {
+/* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,9 +6,15 @@ nav {
     top: 0;
     position: sticky;
 
+} */
+
+li {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
-ul {
+.nav-bar {
     display: flex;
     grid-template-columns: auto;
     width: 100%;
@@ -16,15 +22,15 @@ ul {
 }
 
 .login-link {
-    color: pink
+    background-color: pink;
 }
 
 .signup-link {
-    color: pink
+    background-color: orange;
 }
 
 .home-link {
-    color: red
+    background-color: yellow;
 }
 
 /* .fas.fa-user-circle {
