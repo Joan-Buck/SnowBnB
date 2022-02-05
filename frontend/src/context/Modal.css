@@ -20,5 +20,47 @@
 
   #modal-content {
     position: absolute;
-    background-color:white;
+    background-color: white;
+    width: 50%;
   }
+
+  * {
+    font-family: Helvetica;
+}
+
+.login-form-div {
+    /* border: 1px black solid; */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+
+}
+
+form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+input {
+    border-radius: 5px;
+    margin: 5px;
+    width: 50%;
+}
+
+.errors-list {
+    color: red
+}
+
+.login-button {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.login-demo-user-button {
+    margin: auto;
+    border-radius: 5px;
+    padding: 5px
+}
