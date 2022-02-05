@@ -66,6 +66,11 @@ const LoginFormPage = () => {
                     className='login-button'>
                     Log In
                 </button>
+                <button
+                    type="submit"
+                    className='login-demo-user'>
+                    Log In as Demo User
+                </button>
             </form>
         </div>
     );

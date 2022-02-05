@@ -16,15 +16,17 @@ function App() {
 
   return isLoaded && (
     <>
-      <Navigation />
-      <Switch >
-        <Route path='/login'>
-          <LoginFormPage />
-        </Route>
-        <Route path='/signup'>
-          <SignUpFormPage />
-        </Route>
-      </Switch>
+      <Navigation isLoaded={isLoaded}/>
+      {isLoaded && (
+        <Switch >
+          <Route path='/login'>
+            <LoginFormPage />
+          </Route>
+          <Route path='/signup'>
+            <SignUpFormPage />
+          </Route>
+        </Switch>
+      )}
     </>
   );
 }

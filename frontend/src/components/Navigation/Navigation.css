@@ -1,0 +1,38 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: black solid 1px;
+    top: 0;
+    position: sticky;
+    
+}
+
+/* ul {
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+    border: black solid 1px;
+} */
+
+div.login-link {
+    color: pink
+}
+
+div.signup-link {
+    color: pink
+}
+
+div .home-link {
+    color: red
+}
+
+/* .fas.fa-user-circle {
+    height: 100%;
+    border: 1px solid red;
+} */
+
+.profile-button {
+    border: 1px solid red;
+    background-color: transparent;
+}
