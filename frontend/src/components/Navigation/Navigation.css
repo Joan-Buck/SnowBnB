@@ -12,7 +12,10 @@ ul.nav-bar {
     top: 0;
     position: sticky;
     display: flex;
-    /* justify-content: space-evenly; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 50px;
     /* border: black solid 1px; */
@@ -20,31 +23,34 @@ ul.nav-bar {
     /* align-items: center; */
 }
 
-li {
+/* REMOVED li element from component */
+/* li {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
+    /* justify-content: space-evenly; */
+    /* height: 100%; */
+    /* width: 100%; */
+    /* top: 0; */
+    /* align-items: center; */
     /* align-self: center; */
-}
+/* }  */
 
 
 .login-link {
-    /* background-color: pink; */
+    background-color: pink;
     padding-left: 10px;
     padding-right: 10px;
-
 }
 
 .signup-link {
-    /* background-color: orange; */
+    background-color: orange;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .home-link {
-    /* background-color: yellow; */
+    background-color: yellow;
     padding-left: 10px;
     padding-right: 10px;
 }

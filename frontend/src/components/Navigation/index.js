@@ -33,12 +33,12 @@ const Navigation = ({isLoaded}) => {
 return (
     <>
         <ul className="nav-bar">
-            <li>
-                {/* <div className="home-link"> */}
+            {/* <li> */}
+                <div className="home-link">
                     <NavLink exact to={'/'}>Home</NavLink>
-                {/* </div> */}
+                </div>
                 {isLoaded && sessionLinks}
-            </li>
+            {/* </li> */}
         </ul>
     </>
 )
