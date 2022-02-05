@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import './Navigation.css';
 
-const Navigation = ({ isLoaded }) => {
+const Navigation = ({isLoaded}) => {
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -30,18 +30,18 @@ const Navigation = ({ isLoaded }) => {
         )
     }
 
-    return (
-        <>
-            <ul className="nav-bar">
-                <li>
-                    {/* <div className="home-link"> */}
+return (
+    <>
+        <ul className="nav-bar">
+            <li>
+                {/* <div className="home-link"> */}
                     <NavLink exact to={'/'}>Home</NavLink>
-                    {/* </div> */}
-                    {isLoaded && sessionLinks}
-                </li>
-            </ul>
-        </>
-    )
+                {/* </div> */}
+                {isLoaded && sessionLinks}
+            </li>
+        </ul>
+    </>
+)
 }
 
 

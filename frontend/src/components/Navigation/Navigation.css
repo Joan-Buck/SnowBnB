@@ -8,29 +8,45 @@
 
 } */
 
+ul.nav-bar {
+    top: 0;
+    position: sticky;
+    display: flex;
+    /* justify-content: space-evenly; */
+    width: 100%;
+    height: 50px;
+    /* border: black solid 1px; */
+    background-color: aliceblue;
+    /* align-items: center; */
+}
+
 li {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    /* align-self: center; */
 }
 
-.nav-bar {
-    display: flex;
-    grid-template-columns: auto;
-    width: 100%;
-    border: black solid 1px;
-}
 
 .login-link {
-    background-color: pink;
+    /* background-color: pink; */
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 .signup-link {
-    background-color: orange;
+    /* background-color: orange; */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .home-link {
-    background-color: yellow;
+    /* background-color: yellow; */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* .fas.fa-user-circle {
@@ -39,6 +55,5 @@ li {
 } */
 
 .profile-button {
-    border: 1px solid red;
     background-color: transparent;
 }
