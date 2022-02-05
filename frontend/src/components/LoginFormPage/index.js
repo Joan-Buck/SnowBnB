@@ -33,6 +33,17 @@ const LoginFormPage = () => {
             });
     }
 
+    const click = (e) => {
+        e.preventDefault();
+
+        const demoUser = {
+            credential: 'Demo-User',
+            password: 'password'
+        }
+
+        return dispatch(sessionActions.loginUserThunk(demoUser))
+    }
+
     return (
         <div className='login-form-div'>
             <form className="login-form"
@@ -66,12 +77,13 @@ const LoginFormPage = () => {
                     className='login-button'>
                     Log In
                 </button>
-                <button
-                    type="submit"
-                    className='login-demo-user'>
-                    Log In as Demo User
-                </button>
             </form>
+            <button
+                    type="submit"
+                    className='login-demo-user'
+                    onClick={click}>
+                    Log In as Demo User
+            </button>
         </div>
     );
 }
