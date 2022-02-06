@@ -1,14 +1,15 @@
-/* nav {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: black solid 1px;
+    background-color: aliceblue;
     top: 0;
     position: sticky;
 
-} */
 
-ul.nav-bar {
+}
+
+ul {
     top: 0;
     position: sticky;
     display: flex;
@@ -18,43 +19,49 @@ ul.nav-bar {
     align-items: center;
     width: 100%;
     height: 50px;
-    /* border: black solid 1px; */
-    background-color: aliceblue;
-    /* align-items: center; */
+
+    padding: 0;
+    margin: 0;
 }
 
-/* REMOVED li element from component */
-/* li {
+li {
+
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    /* justify-content: space-evenly; */
-    /* height: 100%; */
-    /* width: 100%; */
-    /* top: 0; */
-    /* align-items: center; */
-    /* align-self: center; */
-/* }  */
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    align-items: center;
+    align-self: center;
+ }
 
-
-.login-link {
+/* .session-links {
+    padding-right: 0;
     background-color: pink;
-    padding-left: 10px;
-    padding-right: 10px;
+    justify-self: unset;
+} */
+
+.login {
+    background-color: pink;
+    width: fit-content;
 }
 
 .signup-link {
     background-color: orange;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .home-link {
+    text-decoration: none;
     background-color: yellow;
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
 }
 
+.logo {
+    background-color: bisque;
+}
 /* .fas.fa-user-circle {
     height: 100%;
     border: 1px solid red;

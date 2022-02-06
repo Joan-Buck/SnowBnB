@@ -5,7 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-const Navigation = ({isLoaded}) => {
+const Navigation = ({ isLoaded }) => {
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -21,25 +21,36 @@ const Navigation = ({isLoaded}) => {
 
         sessionLinks = (
             <>
-                <LoginFormModal />
-                <NavLink to={'/signup'}>Sign Up</NavLink>
+                <div className='login'>
+                    <LoginFormModal />
+                </div>
+                <div className='signup-link'>
+                    <NavLink to={'/signup'}>Sign Up</NavLink>
+                </div>
 
             </>
         )
     }
 
-return (
-    <>
-        <ul>
-            <li>
-                <div className="home-link">
-                    <NavLink exact to={'/'}>Home</NavLink>
-                </div>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
-    </>
-)
+    return (
+        <>
+            <div className='navbar'>
+                <ul>
+                    <li>
+                        <div className="home-link">
+                            <NavLink exact to={'/'}>Home</NavLink>
+                        </div>
+                        <div className="logo">
+                            LOGO
+                        </div>
+
+                        {isLoaded && sessionLinks}
+              
+                    </li>
+                </ul>
+            </div>
+        </>
+    )
 }
 
 
