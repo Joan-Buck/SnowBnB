@@ -42,12 +42,18 @@
 form {
     margin: 0 auto;
     width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
 }
 
 input {
     border-radius: 5px;
-    margin: 5px;
-    width: 50%;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .errors-list {
@@ -56,11 +62,18 @@ input {
 
 .login-button {
     border-radius: 5px;
-    margin: 5px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .login-demo-user-button {
-    margin: auto;
     border-radius: 5px;
-    padding: 5px
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
