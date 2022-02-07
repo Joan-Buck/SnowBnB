@@ -7,17 +7,17 @@ const SpotCard = () => {
     const dispatch = useDispatch();
 
     const spots = useSelector(state => state.spots.spots);
-    console.log('spots array', spots); // getting stuck on this line
+    // console.log('spots array', spots); 
 
     useEffect(() => {
         dispatch(getSpotsThunk())
     }, [dispatch]);
 
-    // try to get something rendering
+
     return (
         <div>
 
-            {spots.map((spot) => (
+            {spots?.map((spot) => (
                 <li key={spot.id}>{spot.name}</li>
             ))}
 

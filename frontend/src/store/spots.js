@@ -26,8 +26,6 @@ const spotReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_SPOTS:
             newState = {...state, ...action.spots};
-            // // newState = {}
-            console.log(newState, 'newstate')
             return newState;
         default:
             return state
