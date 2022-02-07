@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: aliceblue;
+    background-color: black;
     top: 0;
     position: sticky;
 
@@ -37,13 +37,21 @@ li {
     align-self: center;
  }
 
+ .auth-buttons {
+     color: white;
+ }
+
+ .home-link {
+     color: white;
+ }
+
 /* .session-links {
     padding-right: 0;
     background-color: pink;
     justify-self: unset;
 } */
 
-.login {
+/* .login {
     background-color: pink;
     width: fit-content;
 }
@@ -57,11 +65,11 @@ li {
     background-color: yellow;
     /* padding-left: 10px;
     padding-right: 10px; */
-}
+/* } */
 
-.logo {
+/* .logo {
     background-color: bisque;
-}
+} */
 /* .fas.fa-user-circle {
     height: 100%;
     border: 1px solid red;

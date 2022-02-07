@@ -3,3 +3,8 @@ img {
     max-width: 100%;
     height: 30%;
 }
+
+.home-page {
+    background-color: black;
+    color: white;
+}
