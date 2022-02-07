@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
 import {Switch, Route} from 'react-router-dom';
 import * as sessionActions from './store/session';
+import SpotCard from './components/Spots/SpotCard';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <SignUpFormPage />
+          </Route>
+          <Route path={'/spots'}>
+            <SpotCard />
           </Route>
         </Switch>
       )}
