@@ -1,16 +1,19 @@
 import React from 'react';
 // import * as sessionActions from '../../store/session';
 
-const SpotCard = ({ spot }) => {
+const SpotCard = ({ spot, images }) => {
 
-    const { name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
+    const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
+    // const { spotId, url} = image;
+    const imageFound = images.find((image) => image.spotId === id);
+    // console.log('image found url', imageFound.url)
 
     return (
 
         <div className='spot-card'>
             <h3>{name}</h3>
             {/* get image info from spot images */}
-            <img ></img>
+            <img src={`${imageFound.url}`}></img>
             <div className='spot-details'>
                 <p>{description}</p>
                 <p>{city}, {state}, {country}</p>
