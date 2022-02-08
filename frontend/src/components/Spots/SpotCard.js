@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 // import * as sessionActions from '../../store/session';
-import { Link } from 'react-router-dom';
 import './SpotCard.css';
 
 
 const SpotCard = ({ spot, images, resorts, resortImages }) => {
+    const sessionUser = useSelector(state => state.session.user);
 
-    const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
+    const [userOwns, setUserOwns] = useState(false);
+
+    const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
+
+    useEffect(() => {
+        if (sessionUser?.id === userId) {
+            setUserOwns(true)
+        }
+    }, [sessionUser]);
+
 
     const imageFound = images?.find((image) => image.spotId === id);
     const resortArray = Object.values(resorts);
@@ -42,7 +52,6 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
     if (apresSki) activities.push('Apres Ski');
 
     return (
-
         <div className='spot-card'>
             <img className='main-spot-img' src={`${imageFound.url}`} alt='Rental'></img>
             <div className='spot-details'>
@@ -57,12 +66,19 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
             <div className='resort-details'>Nearby Resort(s)
                 <p>{resName}</p>
                 <a href={resortURL}>(Details)</a>
+                <p>Season Snow Level: {snowLevel}</p>
                 <ul className='activities-list'>Activities:
                     {activities.map((activity) => (
                         <li key={activity}>{activity}</li>
                     ))}
                 </ul>
             </div>
+            {userOwns && (
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            )}
         </div>
     )
 }
