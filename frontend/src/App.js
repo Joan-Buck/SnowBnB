@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import {Switch, Route} from 'react-router-dom';
 import * as sessionActions from './store/session';
 import SpotListing from './components/Spots/SpotListing';
+import MyListing from './components/Spots/MySpots';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path={'/spots'}>
             <SpotListing />
+          </Route>
+          <Route path={'/my-listings'}>
+            <MyListing />
           </Route>
         </Switch>
       )}

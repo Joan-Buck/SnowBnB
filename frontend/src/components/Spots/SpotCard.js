@@ -8,10 +8,9 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
 
-    const imageFound = images.find((image) => image.spotId === id);
+    const imageFound = images?.find((image) => image.spotId === id);
     const resortArray = Object.values(resorts);
     const resortFound = resortArray.filter((resort) => resort.state === spot.state);
-    // console.log('resortFound', resortFound)
 
     let resName;
     let downhillSkiing;

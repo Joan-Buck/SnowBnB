@@ -38,19 +38,28 @@ router.get('/',
 router.get('/user',
     asyncHandler(async (req, res) => {
 
-
-        // component side get user Id
-
-        // const { id } = req.params.user;
-        console.log('request user=================', req.user.id)
-
         const listings = await Spot.findAll({
-            // where: {
-            //     userId: user.id
-            // }
+            where: {
+                userId: req.user.id
+            },
+            order: [["state", 'ASC']]
         })
+
+         // adding in to get spot images
+         const spotImages = await SpotImage.findAll();
+
+
+         // adding in to get resorts
+         const resorts = await Resort.findAll()
+
+         // adding in to get resorts images
+         const resortImages = await ResortImage.findAll();
+
         return res.json({
-            listings
+            listings,
+            spotImages,
+            resorts,
+            resortImages
         })
     })
 )

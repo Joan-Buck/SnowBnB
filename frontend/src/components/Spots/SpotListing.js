@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getSpotsThunk, getUserSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
 
@@ -11,6 +12,7 @@ const SpotListing = () => {
     const images = useSelector(state => state.spots.spotImages);
     const resorts = useSelector(state => state.spots.resorts);
     const resortImages = useSelector(state => state.spots.resortImages);
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSpotsThunk())
@@ -18,18 +20,16 @@ const SpotListing = () => {
 
     const click = (e) => {
         e.preventDefault();
-
-        // add in dispatch here??
-        dispatch(getUserSpotsThunk(user.id))
-
+        dispatch(getUserSpotsThunk())
+        history.push('/my-listings')
     }
 
     return (
         <div>
-            {/* for logged in users a My Spots button will appear */}
             {user && (
                 <button onClick={click}>My Listings</button>
             )}
+
             {spots?.map((spot) => (
                 <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages}/>
             ))}

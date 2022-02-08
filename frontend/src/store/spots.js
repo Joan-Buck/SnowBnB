@@ -1,11 +1,6 @@
-// import { csrfFetch } from "./csrf";
-import { useSelector } from "react-redux";
-
-// const sessionUser = useSelector(state => state.session.user);
-//  // grab userId for user and send as param
-//  console.log('sessionUser', sessionUser);
 
 const LOAD_SPOTS = 'spots/loadSpots';
+const LOAD_USER_SPOTS = 'spots/loadUserSpots';
 
 export const loadSpots = (spots, spotImages, resorts, resortImages) => {
     return {
@@ -17,6 +12,16 @@ export const loadSpots = (spots, spotImages, resorts, resortImages) => {
     }
 };
 
+export const loadUserSpots = (spots, spotImages, resorts, resortImages) => {
+    return {
+        type: LOAD_USER_SPOTS,
+        spots,
+        spotImages,
+        resorts,
+        resortImages
+    }
+}
+
 export const getSpotsThunk = () => async(dispatch) => {
     const response = await fetch('/api/spots')
 
@@ -27,26 +32,15 @@ export const getSpotsThunk = () => async(dispatch) => {
     return response;
 }
 
-//testing out user spots thunk
-// can i get user store info in here?
-// get session user and send it as parameter
-export const getUserSpotsThunk = (id) => async(dispatch) => {
-    // const {id} = user;
-    // console.log('id', id)
-    const response = await fetch(`/api/spots/user`
-    // , {
-    //     method: 'GET',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({
-    //         id
-    //     })
-    // }
-    )
-    console.log('response', response)
+
+export const getUserSpotsThunk = () => async(dispatch) => {
+
+    const response = await fetch(`/api/spots/user`)
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadSpots(data))
+
+        dispatch(loadSpots(data));
     }
 }
 
