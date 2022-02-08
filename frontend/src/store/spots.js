@@ -13,7 +13,6 @@ export const getSpotsThunk = () => async(dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        // console.log('spots data', data);
         dispatch(loadSpots(data));
     }
     return response;
