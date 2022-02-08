@@ -1,7 +1,8 @@
 import React from 'react';
 // import * as sessionActions from '../../store/session';
+import { Link } from 'react-router-dom';
 
-const SpotCard = ({ spot, images, resorts, resortImages}) => {
+const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
 
@@ -11,15 +12,38 @@ const SpotCard = ({ spot, images, resorts, resortImages}) => {
     // console.log('resortFound', resortFound)
 
     let resName;
+    let downhillSkiing;
+    let snowboarding;
+    let nordicSkiing;
+    let apresSki;
+    let snowshoeing;
+    let snowLevel;
+    let resortURL;
+    let resortId;
+
     resortFound.map((resort) => {
-        const resName = resort.name;
+        resName = resort.name;
+        downhillSkiing = resort.downhillSkiing;
+        snowboarding = resort.snowboarding;
+        nordicSkiing = resort.nordicSkiing
+        apresSki = resort.apresSki;
+        snowshoeing = resort.snowshoeing;
+        snowLevel = resort.snowLevel;
+        resortURL = resort.resortURL;
+        resortId = resort.id;
     })
+
+    let activities = [];
+    if (downhillSkiing) activities.push('Downhill Skiing');
+    if (snowboarding) activities.push('Snowboarding');
+    if (nordicSkiing) activities.push('Nordic Skiing');
+    if (snowshoeing) activities.push('Snowshoeing');
+    if (apresSki) activities.push('Apres Ski');
 
     return (
 
         <div className='spot-card'>
             <h3>{name}</h3>
-            {/* get image info from spot images */}
             <img src={`${imageFound.url}`} alt='Rental'></img>
             <div className='spot-details'>
                 <p>{description}</p>
@@ -30,9 +54,13 @@ const SpotCard = ({ spot, images, resorts, resortImages}) => {
                 <p>Price: ${price}/night</p>
             </div>
             <div className='resort-details'>
-
-                {/* GET RESORT INFO OUT */}
-                 {/* <p>{resName}</p> */}
+                <p>{resName}</p>
+                <a href={resortURL}>(Details)</a>
+                <ul className='activities-list'>
+                    {activities.map((activity) => (
+                        <li key={activity}>{activity}</li>
+                    ))}
+                </ul>
             </div>
         </div>
     )
