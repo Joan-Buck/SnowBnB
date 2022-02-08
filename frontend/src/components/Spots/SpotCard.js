@@ -1,26 +1,31 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSpotsThunk } from '../../store/spots';
 
-const SpotCard = () => {
-    const dispatch = useDispatch();
+const SpotCard = ({ spot }) => {
 
-    const spots = useSelector(state => state.spots.spots);
-    // console.log('spots array', spots); 
-
-    useEffect(() => {
-        dispatch(getSpotsThunk())
-    }, [dispatch]);
-
+    const { name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
 
     return (
-        <div>
 
-            {spots?.map((spot) => (
-                <li key={spot.id}>{spot.name}</li>
-            ))}
-
+        <div className='spot-card'>
+            <h3>{name}</h3>
+            {/* get image info from spot images */}
+            <img ></img>
+            <div className='spot-details'>
+                <p>{description}</p>
+                <p>{city}, {state}, {country}</p>
+                <p>Number of Guests: {guests}</p>
+                <p>Number of Bedrooms: {bedrooms}</p>
+                <p>Number of Bathrooms: {bathrooms}</p>
+                <p>Price: ${price}/night</p>
+            </div>
+            <div className='resort-details'>
+                {/* <p>{name}</p>
+                <p>Number of Guests: {guests}</p>
+                <p>Number of Bedrooms: {bedrooms}</p>
+                <p>Number of Bathrooms: {bathrooms}</p>
+                <p>Price: ${price}/night</p> */}
+            </div>
         </div>
     )
 }
