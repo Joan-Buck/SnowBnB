@@ -6,7 +6,7 @@ function HomePage() {
 
     return (
         <div className='home-page'>
-            <Link to={'/spots'}>Explore where the snow is...</Link>
+            <Link className='spots-link' to={'/spots'}>Explore where the snow is...</Link>
             <img src='https://www.skimag.com/wp-content/uploads/2021/05/SKAK_16.jpg?width=1999' />
         </div>
     )

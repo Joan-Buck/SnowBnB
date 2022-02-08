@@ -1,0 +1,41 @@
+.spot-card {
+    /* border: black 1px solid; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: rgb(248, 244, 244);
+    border-radius: 10px;
+    /* margin-bottom: 20px; */
+}
+
+.spot-details {
+    display: flex;
+    flex-direction: column;
+    /* border: black 1px solid; */
+    width: 30%;
+}
+
+.resort-details {
+    display: flex;
+    flex-direction: column;
+    /* border: black 1px solid; */
+    width: 30%;
+    padding: 0;
+    margin: 20px;
+}
+
+.activities-list {
+    display: inline;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+}
+
+.main-spot-img {
+    width: 10%;
+    height: 10%;
+    border-radius: 10px;
+    width: 30%;
+    height: 80%;
+    align-self: center;
+    margin: auto;
+}

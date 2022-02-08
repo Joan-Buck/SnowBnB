@@ -1,6 +1,7 @@
 import React from 'react';
 // import * as sessionActions from '../../store/session';
 import { Link } from 'react-router-dom';
+import './SpotCard.css';
 
 const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
@@ -43,9 +44,9 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
     return (
 
         <div className='spot-card'>
-            <h3>{name}</h3>
-            <img src={`${imageFound.url}`} alt='Rental'></img>
+            <img className='main-spot-img' src={`${imageFound.url}`} alt='Rental'></img>
             <div className='spot-details'>
+                <h3>{name}</h3>
                 <p>{description}</p>
                 <p>{city}, {state}, {country}</p>
                 <p>Number of Guests: {guests}</p>
@@ -53,10 +54,10 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
                 <p>Number of Bathrooms: {bathrooms}</p>
                 <p>Price: ${price}/night</p>
             </div>
-            <div className='resort-details'>
+            <div className='resort-details'>Nearby Resort(s)
                 <p>{resName}</p>
                 <a href={resortURL}>(Details)</a>
-                <ul className='activities-list'>
+                <ul className='activities-list'>Activities:
                     {activities.map((activity) => (
                         <li key={activity}>{activity}</li>
                     ))}
