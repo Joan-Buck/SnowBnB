@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './SpotCard.css';
 
+
 const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price } = spot;
