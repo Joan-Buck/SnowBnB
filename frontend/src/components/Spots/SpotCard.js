@@ -66,7 +66,7 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
             <div className='resort-details'>Nearby Resort(s)
                 <p>{resName}</p>
                 <a href={resortURL}>(Details)</a>
-                <p>Season Snow Level: {snowLevel}</p>
+                <p>Snow Level: {snowLevel}</p>
                 <ul className='activities-list'>Activities:
                     {activities.map((activity) => (
                         <li key={activity}>{activity}</li>
@@ -74,9 +74,9 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
                 </ul>
             </div>
             {userOwns && (
-                <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                <div className='spot-buttons'>
+                    <button>Edit Listing</button>
+                    <button>Delete Listing</button>
                 </div>
             )}
         </div>
