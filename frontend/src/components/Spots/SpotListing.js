@@ -8,8 +8,9 @@ const SpotListing = () => {
     const dispatch = useDispatch();
 
     const spots = useSelector(state => state.spots.spots);
-    const images = useSelector(state => state.spots.spotImages)
-    // console.log('spots array', images);
+    const images = useSelector(state => state.spots.spotImages);
+    const resorts = useSelector(state => state.spots.resorts);
+    const resortImages = useSelector(state => state.spots.resortImages);
 
     useEffect(() => {
         dispatch(getSpotsThunk())
@@ -20,7 +21,7 @@ const SpotListing = () => {
         <div>
             {/* for logged in users a My Spots button will appear */}
             {spots?.map((spot) => (
-                <SpotCard spot={spot} images={images}/>
+                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages}/>
             ))}
         </div>
     )

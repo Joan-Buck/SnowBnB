@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 
 // do I need require auth?
 // const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Spot, SpotImage } = require('../../db/models');
+const { Spot, SpotImage, Resort, ResortImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -15,9 +15,20 @@ asyncHandler(async(req, res) => {
     });
 
     // adding in to get spot images
-    // const spotImages = await SpotImage.findAll
+    const spotImages = await SpotImage.findAll();
+
+
+    // adding in to get resorts
+    const resorts = await Resort.findAll()
+
+    // adding in to get resorts images
+    const resortImages = await ResortImage.findAll();
+
     return res.json({
-        spots
+        spots,
+        spotImages,
+        resorts,
+        resortImages
     })
 })
 )

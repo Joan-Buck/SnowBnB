@@ -1,11 +1,13 @@
 
 const LOAD_SPOTS = 'spots/loadSpots';
 
-export const loadSpots = (spots, spotImages) => {
+export const loadSpots = (spots, spotImages, resorts, resortImages) => {
     return {
         type: LOAD_SPOTS,
         spots,
-        spotImages
+        spotImages,
+        resorts,
+        resortImages
     }
 };
 
@@ -25,7 +27,7 @@ const spotReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_SPOTS:
-            newState = {...state, ...action.spots, ...action.spotImages};
+            newState = {...state, ...action.spots, ...action.spotImages, ...action.resorts, ...action.resortImages};
             return newState;
         default:
             return state
