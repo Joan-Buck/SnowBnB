@@ -31,7 +31,7 @@ export const addNewSpot = spot => ({
 })
 
 export const getSpotsThunk = () => async (dispatch) => {
-    const response = await fetch('/api/spots')
+    const response = await fetch('/api/spots/')
 
     if (response.ok) {
         const data = await response.json();
@@ -53,7 +53,7 @@ export const getUserSpotsThunk = () => async (dispatch) => {
 }
 
 export const createSpotThunk = (payload) => async dispatch => {
-    const response = await csrfFetch('/api/spots/user', {
+    const response = await csrfFetch('/api/spots/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

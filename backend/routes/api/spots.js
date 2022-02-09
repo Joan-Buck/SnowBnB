@@ -42,15 +42,15 @@ router.get('/user',
             order: [["updatedAt", 'DESC']]
         })
 
-         // adding in to get spot images
-         const spotImages = await SpotImage.findAll();
+        // adding in to get spot images
+        const spotImages = await SpotImage.findAll();
 
 
-         // adding in to get resorts
-         const resorts = await Resort.findAll()
+        // adding in to get resorts
+        const resorts = await Resort.findAll()
 
-         // adding in to get resorts images
-         const resortImages = await ResortImage.findAll();
+        // adding in to get resorts images
+        const resortImages = await ResortImage.findAll();
 
         return res.json({
             listings,
@@ -62,9 +62,9 @@ router.get('/user',
 )
 
 // add new spot
-router.post('/user',
-    asyncHandler(async(req, res) => {
-        const {name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
+router.post('/',
+    asyncHandler(async (req, res) => {
+        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
         // need to pass in the user id
         const userId = req.user.id;
         const newSpotData = {

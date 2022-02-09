@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SpotCard from './SpotCard';
 import NewSpotForm from './NewSpotForm';
@@ -30,8 +30,8 @@ const MyListing = () => {
             {showForm && (
                 <NewSpotForm />
             )}
-             {spots?.map((spot) => (
-                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages}/>
+            {spots.map((spot) => (
+                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages} />
             ))}
         </div>
     )

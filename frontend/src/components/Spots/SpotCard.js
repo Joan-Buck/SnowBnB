@@ -18,7 +18,7 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
     }, [sessionUser]);
 
 
-    const imageFound = images?.find((image) => image.spotId === id);
+    const imageFound = images.find((image) => image.spotId === id);
     const resortArray = Object.values(resorts);
     const resortFound = resortArray.filter((resort) => resort.state === spot.state);
 
@@ -53,7 +53,7 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     return (
         <div className='spot-card'>
-            <img className='main-spot-img' src={`${imageFound?.url}`} alt='Rental'></img>
+            {imageFound ? <img className='main-spot-img' src={`${imageFound.url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3>{name}</h3>
                 <p>{description}</p>

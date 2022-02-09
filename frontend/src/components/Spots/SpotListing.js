@@ -1,8 +1,7 @@
 import React, { useEffect, } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { getSpotsThunk, getUserSpotsThunk } from '../../store/spots';
+import { getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
 
 const SpotListing = () => {
@@ -12,25 +11,18 @@ const SpotListing = () => {
     const images = useSelector(state => state.spots.spotImages);
     const resorts = useSelector(state => state.spots.resorts);
     const resortImages = useSelector(state => state.spots.resortImages);
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSpotsThunk())
     }, [dispatch]);
 
-    const click = (e) => {
-        e.preventDefault();
-        dispatch(getUserSpotsThunk())
-        history.push('/my-listings')
-    }
-
     return (
         <div>
             {user && (
-                <button onClick={click}>My Listings</button>
+                <a href={'/my-listings'}>My Listings</a>
             )}
 
-            {spots?.map((spot) => (
+            {spots.map((spot) => (
                 <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages} />
             ))}
         </div>
