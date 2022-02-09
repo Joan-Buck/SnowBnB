@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import './SpotCard.css';
 
 
-const SpotCard = ({ spot, images, resorts, resortImages }) => {
+const SpotCard = ({ spot, resorts }) => {
     const sessionUser = useSelector(state => state.session.user);
 
     const [userOwns, setUserOwns] = useState(false);
@@ -17,10 +17,10 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
         }
     }, [sessionUser]);
 
-
-    const imageFound = images.find((image) => image.spotId === id);
-    const resortArray = Object.values(resorts);
-    const resortFound = resortArray.filter((resort) => resort.state === spot.state);
+    const images = spot.SpotImages
+    // const imageFound = images.find((image) => image.spotId === id);
+    // const resortArray = Object.values(resorts);
+    const resortFound = resorts.filter((resort) => resort.state === spot.state);
 
     let resName;
     let downhillSkiing;
@@ -53,7 +53,7 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     return (
         <div className='spot-card'>
-            {imageFound ? <img className='main-spot-img' src={`${imageFound.url}`} alt='Rental'></img> : <div>No Images Found</div>}
+            {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3>{name}</h3>
                 <p>{description}</p>

@@ -70,9 +70,9 @@ const NewSpotForm = ({ hideForm }) => {
 
         // hide form after submit
         let newSpot = await dispatch(createSpotThunk(payload));
-        hideForm();
         if (newSpot) {
-            history.push('/my-listings')
+            hideForm();
+            // history.push('/my-listings')
         }
     }
 
@@ -98,8 +98,7 @@ return (
     <div className="spot-form">
         <form className="new-spot-form"
             onSubmit={submitCreateForm}>
-            {/* set spot state as spot created in return on 70, if !validationErrors set Spot Created to true */}
-            {/* {spotCreated && <Redirect to='/path' />} */}
+
             <ul className="add-spot-form-errors">
                 {validationErrors.length > 0 && validationErrors.map((error) => {
                     <li key={error}>{error}</li>

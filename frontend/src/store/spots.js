@@ -15,13 +15,13 @@ export const loadSpots = ({ spots, spotImages, resorts, resortImages }) => {
     }
 };
 
-export const loadUserSpots = ({ listings, spotImages, resorts, resortImages }) => {
+export const loadUserSpots = ({ listings, resorts }) => {
     return {
         type: LOAD_USER_SPOTS,
         listings,
-        spotImages,
+        // spotImages,
         resorts,
-        resortImages
+        // resortImages
     }
 }
 
@@ -62,11 +62,12 @@ export const createSpotThunk = (payload) => async dispatch => {
     if (response.ok) {
         const newSpotToAdd = await response.json();
         dispatch(addNewSpot(newSpotToAdd))
+        return newSpotToAdd;
     }
 }
 
-
-const initialState = { spots: [], listings: [], spotImages: [], resorts: [], resortImages: [], };
+// set initial state to objects and refactor
+const initialState = { spots: {}, listings: {}, resorts: {} };
 const spotReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
@@ -75,12 +76,25 @@ const spotReducer = (state = initialState, action) => {
             return { ...state, spots, spotImages, resorts, resortImages }
         }
         case LOAD_USER_SPOTS: {
-            const { listings, spotImages, resorts, resortImages } = action
-            return { ...state, listings, spotImages, resorts, resortImages }
+            const  listings = {}
+            const resorts = {}
+            newState = {}
+            action.listings.forEach(listing => listings[listing.id] = listing);
+            action.resorts.forEach(resort => resorts[resort.id] = resort);
+            newState.listings = listings;
+            newState.resorts = resorts;
+            return newState
         }
-        case ADD_SPOT:
-            newState = { ...state, ...action.spot }
+        case ADD_SPOT: {
+            newState = { ...state}
+            const listings = [action.spot.newSpot, ...state.spots.listings]
+            const spotImages = [...state.spotImages, action.spot.newImage]
+            newState.listings = listings
+            newState.spotImages = spotImages
+
+
             return newState;
+        }
         default:
             return state
     }

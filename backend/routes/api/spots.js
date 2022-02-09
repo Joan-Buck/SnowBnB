@@ -10,23 +10,26 @@ const router = express.Router();
 router.get('/',
     asyncHandler(async (req, res) => {
         const spots = await Spot.findAll({
-            order: [["state", 'ASC']]
+            include: {model: SpotImage},
+
         });
 
-        // adding in to get spot images
-        const spotImages = await SpotImage.findAll();
+        // // adding in to get spot images
+        // const spotImages = await SpotImage.findAll();
 
         // adding in to get resorts
-        const resorts = await Resort.findAll()
+        const resorts = await Resort.findAll({
+            include: {model: ResortImage}
+        })
 
         // adding in to get resorts images
-        const resortImages = await ResortImage.findAll();
+        // const resortImages = await ResortImage.findAll();
 
         return res.json({
             spots,
-            spotImages,
+            // spotImages,
             resorts,
-            resortImages
+            // resortImages
         })
     })
 )
@@ -40,24 +43,26 @@ router.get('/user',
             where: {
                 userId: req.user.id
             },
-            order: [["updatedAt", 'DESC']]
+            include: SpotImage
         })
 
         // adding in to get spot images
-        const spotImages = await SpotImage.findAll();
+        // const spotImages = await SpotImage.findAll();
 
 
         // adding in to get resorts
-        const resorts = await Resort.findAll()
+        const resorts = await Resort.findAll({
+            include: ResortImage
+        })
 
         // adding in to get resorts images
-        const resortImages = await ResortImage.findAll();
+        // const resortImages = await ResortImage.findAll();
 
         return res.json({
             listings,
-            spotImages,
+            // spotImages,
             resorts,
-            resortImages
+            // resortImages
         })
     })
 )
@@ -158,7 +163,8 @@ router.post('/',
         // res.redirect('/api/spots/user');
 
         return res.json({
-            newSpot
+            newSpot,
+            newImage
         })
     })
 )
