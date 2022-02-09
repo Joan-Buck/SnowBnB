@@ -86,14 +86,14 @@ router.post('/user',
 
         const allSpots = await Spot.findAll();
 
-        let spotId = allSpots.length;
+        // let spotId = allSpots.length;
 
         const newImageData = {
             // need to get spot id
-            spotId,
+            spotId: newSpot.id,
             url: imageURL
         }
-        
+
         const newImage = await SpotImage.create(newImageData)
         // return res.redirect('/api/spots/user');
     })
