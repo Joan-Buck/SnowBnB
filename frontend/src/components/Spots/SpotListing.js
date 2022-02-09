@@ -31,7 +31,7 @@ const SpotListing = () => {
             )}
 
             {spots?.map((spot) => (
-                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages}/>
+                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages} />
             ))}
         </div>
     )

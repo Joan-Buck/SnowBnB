@@ -5,7 +5,7 @@ const LOAD_USER_SPOTS = 'spots/loadUserSpots';
 const ADD_SPOT = 'spots/addNewSpot';
 
 
-export const loadSpots = (spots, spotImages, resorts, resortImages) => {
+export const loadSpots = ({ spots, spotImages, resorts, resortImages }) => {
     return {
         type: LOAD_SPOTS,
         spots,
@@ -15,10 +15,10 @@ export const loadSpots = (spots, spotImages, resorts, resortImages) => {
     }
 };
 
-export const loadUserSpots = (spots, spotImages, resorts, resortImages) => {
+export const loadUserSpots = ({ listings, spotImages, resorts, resortImages }) => {
     return {
         type: LOAD_USER_SPOTS,
-        spots,
+        listings,
         spotImages,
         resorts,
         resortImages
@@ -30,7 +30,7 @@ export const addNewSpot = spot => ({
     spot
 })
 
-export const getSpotsThunk = () => async(dispatch) => {
+export const getSpotsThunk = () => async (dispatch) => {
     const response = await fetch('/api/spots')
 
     if (response.ok) {
@@ -41,21 +41,21 @@ export const getSpotsThunk = () => async(dispatch) => {
 }
 
 
-export const getUserSpotsThunk = () => async(dispatch) => {
+export const getUserSpotsThunk = () => async (dispatch) => {
 
     const response = await fetch(`/api/spots/user`)
 
     if (response.ok) {
         const data = await response.json();
 
-        dispatch(loadSpots(data));
+        dispatch(loadUserSpots(data));
     }
 }
 
 export const createSpotThunk = (payload) => async dispatch => {
     const response = await csrfFetch('/api/spots/user', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
 
@@ -67,15 +67,20 @@ export const createSpotThunk = (payload) => async dispatch => {
 }
 
 
-const initialState = {};
+const initialState = { spots: [], listings: [], spotImages: [], resorts: [], resortImages: [], };
 const spotReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case LOAD_SPOTS:
-            newState = {...state, ...action.spots, ...action.spotImages, ...action.resorts, ...action.resortImages};
-            return newState;
+        case LOAD_SPOTS: {
+            const { spots, spotImages, resorts, resortImages } = action
+            return { ...state, spots, spotImages, resorts, resortImages }
+        }
+        case LOAD_USER_SPOTS: {
+            const { listings, spotImages, resorts, resortImages } = action
+            return { ...state, listings, spotImages, resorts, resortImages }
+        }
         case ADD_SPOT:
-            newState = {...state, ...action.spot}
+            newState = { ...state, ...action.spot }
             return newState;
         default:
             return state
