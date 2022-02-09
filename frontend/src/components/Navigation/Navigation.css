@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    /* background-color: black; */
     top: 0;
     position: sticky;
 
@@ -38,11 +38,11 @@ li {
  }
 
  .auth-buttons {
-     color: white;
+     color: black;
  }
 
  .home-link {
-     color: white;
+     color: black;
  }
 
 /* .session-links {
@@ -76,5 +76,5 @@ li {
 } */
 
 .profile-button {
-    background-color: transparent;
+    /* background-color: transparent; */
 }

@@ -36,11 +36,11 @@ const Navigation = ({ isLoaded }) => {
                 <ul>
                     <li>
                         <div className="home-link">
-                            <NavLink exact to={'/'}>Home</NavLink>
-                        {/* </div>
-                        <div className="logo"> */}
-                            LOGO
+                            <NavLink exact to={'/'}>SnowBnB</NavLink>
                         </div>
+                        {/* <div className="logo">
+                            SnowBnB
+                        </div> */}
 
                         {isLoaded && sessionLinks}
 
