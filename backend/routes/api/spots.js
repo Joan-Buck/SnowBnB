@@ -39,7 +39,7 @@ router.get('/user',
             where: {
                 userId: req.user.id
             },
-            order: [["state", 'ASC']]
+            order: [["updatedAt", 'DESC']]
         })
 
          // adding in to get spot images
@@ -64,11 +64,37 @@ router.get('/user',
 // add new spot
 router.post('/user',
     asyncHandler(async(req, res) => {
+        const {name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
         // need to pass in the user id
         const userId = req.user.id;
-        const newSpotData = {...req.body, userId}
+        const newSpotData = {
+            name,
+            description,
+            address,
+            city,
+            state,
+            zipcode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            guests,
+            userId
+        }
 
         const newSpot = await Spot.create(newSpotData)
+
+        const allSpots = await Spot.findAll();
+
+        let spotId = allSpots.length;
+
+        const newImageData = {
+            // need to get spot id
+            spotId,
+            url: imageURL
+        }
+        
+        const newImage = await SpotImage.create(newImageData)
         // return res.redirect('/api/spots/user');
     })
 )
