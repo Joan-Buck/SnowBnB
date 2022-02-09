@@ -53,7 +53,7 @@ const SpotCard = ({ spot, images, resorts, resortImages }) => {
 
     return (
         <div className='spot-card'>
-            <img className='main-spot-img' src={`${imageFound.url}`} alt='Rental'></img>
+            <img className='main-spot-img' src={`${imageFound?.url}`} alt='Rental'></img>
             <div className='spot-details'>
                 <h3>{name}</h3>
                 <p>{description}</p>
