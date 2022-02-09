@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 
-const NewSpotForm = () => {
+const NewSpotForm = ({hideForm}) => {
     const dispatch = useDispatch();
-    // const history = useHistory();
     const [name, setName] = useState('');
     const [ description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -22,7 +20,7 @@ const NewSpotForm = () => {
     const [renderForm, setRenderForm] = useState(false);
 
 
-    const createForm = async (e) => {
+    const submitCreateForm = async (e) => {
         e.preventDefault();
 
         const payload = {
@@ -41,12 +39,11 @@ const NewSpotForm = () => {
         };
 
         let newSpot = await dispatch(createSpotThunk(payload));
-        if (newSpot) {
             // history.push('/spots')
 
             // add in hide form??
-            setRenderForm(false);
-        }
+        hideForm();
+
     }
 
     return (
@@ -186,7 +183,7 @@ const NewSpotForm = () => {
                     >
                     </input>
                 </label>
-                <button onClick={createForm}>
+                <button onClick={submitCreateForm}>
                     Add to My Listings!
                 </button>
             </form>

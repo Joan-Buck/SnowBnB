@@ -27,7 +27,7 @@ const MyListing = () => {
                 Add a new listing...
             </button>
             {renderForm && (
-                <NewSpotForm />
+                <NewSpotForm hideForm={() => setRenderForm(false)}/>
             )}
             {spots.map((spot) => (
                 <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages} />
