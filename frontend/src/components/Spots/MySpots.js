@@ -18,7 +18,6 @@ const MyListing = () => {
 
     const showForm = (e) => {
         e.preventDefault();
-
         setRenderForm(true);
     }
 
@@ -27,7 +26,7 @@ const MyListing = () => {
             <button onClick={showForm} className='add-new-spot'>
                 Add a new listing...
             </button>
-            {showForm && (
+            {renderForm && (
                 <NewSpotForm />
             )}
             {spots.map((spot) => (

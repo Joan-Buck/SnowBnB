@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const NewSpotForm = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const [name, setName] = useState('');
     const [ description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -19,6 +19,7 @@ const NewSpotForm = () => {
     const [bathrooms, setBathrooms] = useState(0);
     const [guests, setGuests] = useState(0);
     const [imageURL, setImageURL] = useState('');
+    const [renderForm, setRenderForm] = useState(false);
 
 
     const createForm = async (e) => {
@@ -44,6 +45,7 @@ const NewSpotForm = () => {
             // history.push('/spots')
 
             // add in hide form??
+            setRenderForm(false);
         }
     }
 
