@@ -61,7 +61,6 @@ export const createSpotThunk = (payload) => async dispatch => {
 
     if (response.ok) {
         const newSpotToAdd = await response.json();
-        console.log('new spot in thunk -------', newSpotToAdd)
         dispatch(addNewSpot(newSpotToAdd))
     }
 }

@@ -95,7 +95,11 @@ router.post('/',
         }
 
         const newImage = await SpotImage.create(newImageData)
-        // return res.redirect('/api/spots/user');
+        res.redirect('/api/spots/user');
+
+        return res.json({
+            newSpot
+        })
     })
 )
 
