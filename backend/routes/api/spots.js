@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.get('/',
     asyncHandler(async (req, res) => {
+
         const spots = await Spot.findAll({
             include: { model: SpotImage },
 
@@ -20,6 +21,25 @@ router.get('/',
 
         return res.json({
             spots,
+            resorts
+        })
+    })
+)
+
+router.get('/:spotId',
+    asyncHandler(async (req, res) => {
+        const {spotId} = req.params;
+
+        const spot = await Spot.findByPk(spotId, {
+            include: SpotImage
+        })
+
+        const resorts = await Resort.findAll({
+            include: {model: ResortImage}
+        })
+
+        return res.json({
+            spot,
             resorts
         })
     })
@@ -162,7 +182,7 @@ router.delete('/:spotId',
         const spot = await Spot.findByPk(spotId, {
             include: SpotImage
         });
-        console.log('spot', spot)
+
         spot.SpotImages.forEach(image => image.destroy())
 
         spot.destroy();
