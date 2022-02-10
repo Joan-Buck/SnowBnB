@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteSpotThunk } from '../../store/spots';
 // import * as sessionActions from '../../store/session';
 import './SpotCard.css';
 
 
 const SpotCard = ({ spot, resorts }) => {
     const sessionUser = useSelector(state => state.session.user);
-
+    const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
@@ -51,6 +52,8 @@ const SpotCard = ({ spot, resorts }) => {
     if (snowshoeing) activities.push('Snowshoeing');
     if (apresSki) activities.push('Apres Ski');
 
+
+
     return (
         <div className='spot-card'>
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
@@ -76,7 +79,9 @@ const SpotCard = ({ spot, resorts }) => {
             {userOwns && (
                 <div className='spot-buttons'>
                     <button>Edit Listing</button>
-                    <button>Delete Listing</button>
+                    <button className='delete-spot-button'
+                        onClick={() => dispatch(deleteSpotThunk(id, userId))}
+                    >Delete Listing</button>
                 </div>
             )}
         </div>

@@ -20,7 +20,8 @@ router.get('/',
 
         return res.json({
             spots,
-            resorts        })
+            resorts
+        })
     })
 )
 
@@ -149,6 +150,24 @@ router.post('/',
         })
 
         return res.json(listing)
+    })
+)
+
+// delete spot
+router.delete('/:spotId',
+    asyncHandler(async (req, res) => {
+
+        const { spotId } = req.params;
+
+        const spot = await Spot.findByPk(spotId, {
+            include: SpotImage
+        });
+        console.log('spot', spot)
+        spot.SpotImages.forEach(image => image.destroy())
+
+        spot.destroy();
+
+        return res.json({ id: spot.id });
     })
 )
 
