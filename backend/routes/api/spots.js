@@ -26,24 +26,6 @@ router.get('/',
     })
 )
 
-router.get('/:spotId',
-    asyncHandler(async (req, res) => {
-        const {spotId} = req.params;
-
-        const spot = await Spot.findByPk(spotId, {
-            include: SpotImage
-        })
-
-        const resorts = await Resort.findAll({
-            include: {model: ResortImage}
-        })
-
-        return res.json({
-            spot,
-            resorts
-        })
-    })
-)
 
 
 // get spots for specific user
@@ -77,6 +59,27 @@ router.get('/user',
         })
     })
 )
+
+
+router.get('/:spotId',
+    asyncHandler(async (req, res) => {
+        const {spotId} = req.params;
+
+        const spot = await Spot.findByPk(spotId, {
+            include: SpotImage
+        })
+
+        const resorts = await Resort.findAll({
+            include: {model: ResortImage}
+        })
+
+        return res.json({
+            spot,
+            resorts
+        })
+    })
+)
+
 
 // create new spot validation middleware
 
