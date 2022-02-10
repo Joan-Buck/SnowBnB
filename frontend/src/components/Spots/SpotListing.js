@@ -1,6 +1,7 @@
 import React, { useEffect, } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
  // need to refactor here the same way as in MySpot
@@ -26,7 +27,7 @@ const SpotListing = () => {
         <div>
             {user && (
                 // this needs to be nav link
-                <a href={'/my-listings'}>My Listings</a>
+                <NavLink to={'/my-listings'}>My Listings</NavLink>
             )}
 
             {spots.map((spot) => (

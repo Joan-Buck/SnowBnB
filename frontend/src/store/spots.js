@@ -5,6 +5,7 @@ const LOAD_USER_SPOTS = 'spots/loadUserSpots';
 const ADD_SPOT = 'spots/addNewSpot';
 const DELETE_SPOT = 'spots/deleteSpot';
 const LOAD_ONE_SPOT = 'spots/loadOneSpot';
+const EDIT_SPOT = 'spots/editSpot';
 
 export const loadSpots = ({ spots, spotImages, resorts, resortImages }) => {
     return {
@@ -39,6 +40,14 @@ export const loadOneSpot = (spot) => ({
     type: LOAD_ONE_SPOT,
     spot
 })
+
+
+export const editSpot = (spot, userId) => ({
+    type: EDIT_SPOT,
+    spot,
+    userId
+})
+
 
 export const getSpotsThunk = () => async (dispatch) => {
     const response = await fetch('/api/spots/')
@@ -86,20 +95,32 @@ export const deleteSpotThunk = (spotId, userId) => async dispatch => {
     }
 }
 
+export const editSpotThunk = (spotId, userId) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        // body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const editedSpot = await response.json();
+        dispatch(editSpot(editedSpot))
+        return editedSpot;
+    }
+}
+
 
 export const loadOneSpotThunk = (spot) => async dispatch => {
-    // console.log(spot, 'spot in thunk')
     const response = await fetch(`/api/spots/${spot.id}`)
     console.log('response in fetch', response)
 
     if (response.ok) {
         const data = await response.json();
         dispatch(loadOneSpot(data))
-        console.log('data=======', data)
         return data;
     }
 }
-// set initial state to objects and refactor
+
 const initialState = { spots: {}, listings: {}, resorts: {} };
 const spotReducer = (state = initialState, action) => {
     let newState;
@@ -116,7 +137,6 @@ const spotReducer = (state = initialState, action) => {
             return { ...state, listings, resorts }
         }
         case LOAD_ONE_SPOT: {
-            // add in one spot that i called
             const newState = {...state, [action.spot.spot.id]: action.spot}
         }   return newState
         case ADD_SPOT: {
@@ -129,6 +149,12 @@ const spotReducer = (state = initialState, action) => {
             const newListings = { ...state.listings }
             delete newListings[action.spotId];
             return { ...state, spots: newSpots, listings: newListings };
+        }
+        case EDIT_SPOT: {
+            const newState = {...state}
+            newState[action.spot].spot = action.spot
+            return newState
+
         }
         default:
             return state

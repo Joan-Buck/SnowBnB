@@ -1,31 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { deleteSpotThunk } from '../../store/spots';
 import './SingleSpot.css'
 
 const SingleSpot = () => {
-    // const dispatch = useDispatch();
+
     const { spotId } = useParams();
-    console.log(spotId)
 
     const spots = useSelector(state => state.spots.spots)
     const spot = spots.find(spot => Number(spot.id) === Number(spotId))
-    // console.log('spots======', spots)
-    // console.log('spot=====', spot)
     const images = spot.SpotImages;
-    console.log(images);
-
     const resorts = useSelector(state => state.spots.resorts);
     const resort = resorts.find(resort => resort.state === spot.state)
     const resortImages = resort.ResortImages
-    // const resorts = Object.values(resortsObj)
 
-
-    // useEffect(() => {
-    //     dispatch(loadOneSpotThunk(spot))
-    // }, [dispatch]);
-
-    // [action.spot.resort]
 
 
     return (

@@ -63,17 +63,17 @@ router.get('/user',
 
 router.get('/:spotId',
     asyncHandler(async (req, res) => {
-        const {spotId} = req.params;
+        const { spotId } = req.params;
 
         const spot = await Spot.findByPk(spotId, {
             include: SpotImage
         })
 
         const resorts = await Resort.findAll({
-            include: {model: ResortImage}
+            include: { model: ResortImage }
         })
         console.log(spot, 'spot backend')
-        
+
         return res.json({
             spot,
             resorts
@@ -177,6 +177,21 @@ router.post('/',
     })
 )
 
+// edit spot
+router.put('/:spotId',
+    asyncHandler(async (req, res) => {
+        const { spotId } = req.params;
+
+        const spot = await Spot.findByPk(spotId, {
+            include: SpotImage
+        })
+
+        return res.json({spot})
+
+    })
+
+
+)
 // delete spot
 router.delete('/:spotId',
     asyncHandler(async (req, res) => {
