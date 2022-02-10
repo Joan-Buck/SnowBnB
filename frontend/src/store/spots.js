@@ -4,6 +4,7 @@ const LOAD_SPOTS = 'spots/loadSpots';
 const LOAD_USER_SPOTS = 'spots/loadUserSpots';
 const ADD_SPOT = 'spots/addNewSpot';
 const DELETE_SPOT = 'spots/deleteSpot';
+const LOAD_ONE_SPOT = 'spots/loadOneSpot';
 
 export const loadSpots = ({ spots, spotImages, resorts, resortImages }) => {
     return {
@@ -19,9 +20,7 @@ export const loadUserSpots = ({ listings, resorts }) => {
     return {
         type: LOAD_USER_SPOTS,
         listings,
-        // spotImages,
         resorts,
-        // resortImages
     }
 }
 
@@ -34,6 +33,11 @@ export const deleteSpot = (spotId, userId) => ({
     type: DELETE_SPOT,
     spotId,
     userId
+})
+
+export const loadOneSpot = (spot) => ({
+    type: LOAD_ONE_SPOT,
+    spot
 })
 
 export const getSpotsThunk = () => async (dispatch) => {
@@ -81,6 +85,20 @@ export const deleteSpotThunk = (spotId, userId) => async dispatch => {
         dispatch(deleteSpot(spotId, userId))
     }
 }
+
+
+export const loadOneSpotThunk = (spot) => async dispatch => {
+    // console.log(spot, 'spot in thunk')
+    const response = await fetch(`/api/spots/${spot.id}`)
+    console.log('response in fetch', response)
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(loadOneSpot(data))
+        console.log('data=======', data)
+        return data;
+    }
+}
 // set initial state to objects and refactor
 const initialState = { spots: {}, listings: {}, resorts: {} };
 const spotReducer = (state = initialState, action) => {
@@ -97,6 +115,10 @@ const spotReducer = (state = initialState, action) => {
             action.resorts.forEach(resort => resorts[resort.id] = resort);
             return { ...state, listings, resorts }
         }
+        case LOAD_ONE_SPOT: {
+            // add in one spot that i called
+            const newState = {...state, [action.spot.spot.id]: action.spot}
+        }   return newState
         case ADD_SPOT: {
             const listings = { ...state.listings, [action.spot.id]: action.spot }
             return { ...state, listings }

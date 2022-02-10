@@ -25,6 +25,7 @@ const SpotListing = () => {
     return (
         <div>
             {user && (
+                // this needs to be nav link
                 <a href={'/my-listings'}>My Listings</a>
             )}
 

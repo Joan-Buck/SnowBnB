@@ -7,6 +7,7 @@ import {Switch, Route} from 'react-router-dom';
 import * as sessionActions from './store/session';
 import SpotListing from './components/Spots/SpotListing';
 import MyListing from './components/Spots/MySpots';
+import SingleSpot from './components/Spots/SingleSpot';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,8 +28,11 @@ function App() {
           <Route path='/signup'>
             <SignUpFormPage />
           </Route>
-          <Route path={'/spots'}>
+          <Route  exact path={'/spots'}>
             <SpotListing />
+          </Route>
+          <Route path={'/spots/:spotId'}>
+            <SingleSpot />
           </Route>
           <Route path={'/my-listings'}>
             <MyListing />

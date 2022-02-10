@@ -72,7 +72,8 @@ router.get('/:spotId',
         const resorts = await Resort.findAll({
             include: {model: ResortImage}
         })
-
+        console.log(spot, 'spot backend')
+        
         return res.json({
             spot,
             resorts
@@ -132,7 +133,7 @@ const validateCreateSpot = [
         .withMessage("Please confirm the number of guests your listing can host")
         .isNumeric()
         .withMessage("Please confirm the number of guests your listing can host"),
-    check('url')
+    check('imageURL')
         .exists({ checkFalsy: true })
         .withMessage("Please provide an image URL to display on your listing."),
     handleValidationErrors

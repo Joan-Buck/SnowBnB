@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteSpotThunk } from '../../store/spots';
+import { deleteSpotThunk, loadOneSpotThunk } from '../../store/spots';
 // import * as sessionActions from '../../store/session';
 import './SpotCard.css';
 
@@ -59,6 +60,11 @@ const SpotCard = ({ spot, resorts }) => {
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3>{name}</h3>
+            <NavLink className='details-link' to={`/spots/${id}`}
+                // onClick={() => dispatch(loadOneSpotThunk(spot))}
+            >
+                Listing Details
+            </NavLink>
                 <p>{description}</p>
                 <p>{city}, {state}, {country}</p>
                 <p>Number of Guests: {guests}</p>
@@ -68,7 +74,7 @@ const SpotCard = ({ spot, resorts }) => {
             </div>
             <div className='resort-details'>Nearby Resort(s)
                 <p>{resName}</p>
-                <a href={resortURL}>(Details)</a>
+                <a href={resortURL}>(Resort Details)</a>
                 <p>Snow Level: {snowLevel}</p>
                 <ul className='activities-list'>Activities:
                     {activities.map((activity) => (

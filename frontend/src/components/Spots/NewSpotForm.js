@@ -216,10 +216,10 @@ const NewSpotForm = ({ hideForm }) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="url">
+                    htmlFor="imageURL">
                     <input
                         type="text"
-                        name="url"
+                        name="imageURL"
                         placeholder="Image URL"
                         value={imageURL}
                         onChange={(e) => setImageURL(e.target.value)}
