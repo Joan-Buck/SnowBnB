@@ -117,7 +117,7 @@ const validateCreateSpot = [
 
 // add new spot
 router.post('/',
-    // validateCreateSpot,
+    validateCreateSpot,
     asyncHandler(async (req, res) => {
         const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
         const userId = req.user.id;
