@@ -1,6 +1,4 @@
-* {
-    font-family: Helvetica;
-}
+
 
 .login-form-div {
     /* border: 1px black solid; */
@@ -14,7 +12,6 @@
 }
 
 form {
-    /* border: 1px black solid; */
     margin: 0 auto;
     width: 30%;
 
@@ -22,7 +19,11 @@ form {
 
 input {
     border-radius: 5px;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
     width: 50%;
 }
 
@@ -33,10 +34,14 @@ input {
 .login-button {
     border-radius: 5px;
     margin: 5px;
+    background-color: black;
+    color: white;
 }
 
 .login-demo-user-button {
     margin: auto;
     border-radius: 5px;
-    padding: 5px
+    padding: 5px;
+    background-color: black;
+    color: white;
 }
