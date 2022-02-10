@@ -1,14 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
+const NewSpotForm = ({ hideForm }) => {
 
-const NewSpotForm = () => {
     const dispatch = useDispatch();
-    // const history = useHistory();
     const [name, setName] = useState('');
-    const [ description, setDescription] = useState('');
+    const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
@@ -18,12 +16,43 @@ const NewSpotForm = () => {
     const [bedrooms, setBedrooms] = useState(0);
     const [bathrooms, setBathrooms] = useState(0);
     const [guests, setGuests] = useState(0);
-    const [imageURL, setImageURL] = useState('');
-    const [renderForm, setRenderForm] = useState(false);
+    const [imageURL, setImageURL] = useState('https://www.skimag.com/wp-content/uploads/2021/03/Liam_Doran-5549-s.jpg?width=2000');
+    // const [redirect, setRedirect] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
 
 
-    const createForm = async (e) => {
+
+    // useEffect(() => {
+    //     let errors = [];
+    //     if (name.length < 1) errors.push("Please give your new listing a name.");
+    //     if (name.length > 255) errors.push("Names must be no longer than 255 characters.");
+    //     if (description.length < 1) errors.push("Please briefly describe your listing.");
+    //     if (description.length > 255) errors.push("Descriptions must be no longer than 255 characters.");
+    //     if (address.length < 1) errors.push("Please provide a street address for your listing.")
+    //     if (address.length > 100) errors.push("Street addresses must be no longer than 100 characters.");
+    //     if (state.length < 3) errors.push("Please provide the full state name.")
+    //     if (state.length > 50) errors.push("State names must be no longer than 50 characters.");
+    //     if (zipcode.length < 5) errors.push("Please provide a zipcode");
+    //     if (zipcode.length > 15) errors.push("Zip Codes must be no longer than 15 characters.");
+    //     if (country.length < 1) errors.push("Please provide the country where your listing is located");
+    //     if (country.length > 50) errors.push("Countries must be no longer than 50 characters.");
+    //     if (price < 1) errors.push("Please provide a price per night.");
+    //     // no price restriction for upper limit, DB limits to decimal (6,2)
+    //     if (bedrooms < 1) errors.push("Please provide the number of bedrooms for your listing.");
+    //     if (bathrooms < 1) errors.push("Please provide the number of bathrooms for your listing.");
+    //     if (guests < 1) errors.push("Please confirm the number of guests your listing can host.");
+    //     if (imageURL.length < 1) errors.push("Please provide an image URL to display on your listing.");
+    //     setValidationErrors(errors);
+
+    // }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
+
+    // console.log('errrors=========', validationErrors);
+
+
+    const submitCreateForm = async (e) => {
         e.preventDefault();
+
+        setValidationErrors([]);
 
         const payload = {
             name,
@@ -40,20 +69,32 @@ const NewSpotForm = () => {
             imageURL
         };
 
-        let newSpot = await dispatch(createSpotThunk(payload));
-        if (newSpot) {
-            // history.push('/spots')
+        const newSpot = await dispatch(createSpotThunk(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setValidationErrors(data.errors)
 
-            // add in hide form??
-            setRenderForm(false);
+            }
+            );
+
+        if (newSpot) {
+            hideForm();
         }
     }
 
+
     return (
         <div className="spot-form">
-            <form className="new-spot-form">
+            <form className="new-spot-form"
+                onSubmit={submitCreateForm}>
+                <ul className="add-spot-form-errors">
+                    {validationErrors.length > 0 && validationErrors.map((error) =>
+                        <li key={error}>{error}</li>
+                    )}
+                </ul>
+
                 <label
-                htmlFor="name">
+                    htmlFor="name">
                     <input
                         type="text"
                         name="name"
@@ -63,9 +104,8 @@ const NewSpotForm = () => {
                     >
                     </input>
                 </label>
-
                 <label
-                htmlFor="description">
+                    htmlFor="description">
                     <input
                         type="textarea"
                         name="description"
@@ -77,7 +117,7 @@ const NewSpotForm = () => {
                 </label>
 
                 <label
-                htmlFor="address">
+                    htmlFor="address">
                     <input
                         type="text"
                         name="address"
@@ -88,7 +128,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="city">
+                    htmlFor="city">
                     <input
                         type="text"
                         name="city"
@@ -99,7 +139,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="state">
+                    htmlFor="state">
                     <input
                         type="text"
                         name="state"
@@ -110,7 +150,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="zipcode">
+                    htmlFor="zipcode">
                     <input
                         type="text"
                         name="zipcode"
@@ -121,7 +161,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="country">
+                    htmlFor="country">
                     <input
                         type="text"
                         name="country"
@@ -132,7 +172,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="price">
+                    htmlFor="price">
                     <input
                         type="number"
                         name="price"
@@ -143,7 +183,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="bedrooms">
+                    htmlFor="bedrooms">
                     <input
                         type="number"
                         name="bedrooms"
@@ -154,7 +194,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="number">
+                    htmlFor="number">
                     <input
                         type="number"
                         name="bathrooms"
@@ -165,7 +205,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="guests">
+                    htmlFor="guests">
                     <input
                         type="number"
                         name="guests"
@@ -176,7 +216,7 @@ const NewSpotForm = () => {
                     </input>
                 </label>
                 <label
-                htmlFor="url">
+                    htmlFor="url">
                     <input
                         type="text"
                         name="url"
@@ -186,7 +226,7 @@ const NewSpotForm = () => {
                     >
                     </input>
                 </label>
-                <button onClick={createForm}>
+                <button type="submit" >
                     Add to My Listings!
                 </button>
             </form>

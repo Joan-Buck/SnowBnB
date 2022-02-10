@@ -6,10 +6,19 @@ import { getUserSpotsThunk } from '../../store/spots';
 
 const MyListing = () => {
     const dispatch = useDispatch();
-    const spots = useSelector(state => state.spots.listings);
-    const images = useSelector(state => state.spots.spotImages);
-    const resorts = useSelector(state => state.spots.resorts);
-    const resortImages = useSelector(state => state.spots.resortImages);
+    // const spots = useSelector(state => state.spots.listings);
+    // make this SpotsArr = Object.values(spots)
+
+    const spotsObj = useSelector(state => state.spots.listings)
+    const spots = Object.values(spotsObj).sort((a, b) => {
+        const aDate = new Date(a.updatedAt)
+        const bDate = new Date(b.updatedAt)
+        return (bDate - aDate)
+    })
+    // const images = useSelector(state => state.spots.spotImages);
+    const resortsObj = useSelector(state => state.spots.resorts);
+    const resorts = Object.values(resortsObj)
+    // const resortImages = useSelector(state => state.spots.resortImages);
     const [renderForm, setRenderForm] = useState(false);
 
     useEffect(() => {
@@ -27,10 +36,10 @@ const MyListing = () => {
                 Add a new listing...
             </button>
             {renderForm && (
-                <NewSpotForm />
+                <NewSpotForm hideForm={() => setRenderForm(false)} />
             )}
             {spots.map((spot) => (
-                <SpotCard spot={spot} images={images} resorts={resorts} resortImages={resortImages} />
+                <SpotCard key={spot.id} spot={spot} resorts={resorts} />
             ))}
         </div>
     )
