@@ -14,23 +14,13 @@ router.get('/',
 
         });
 
-        // // adding in to get spot images
-        // const spotImages = await SpotImage.findAll();
-
-        // adding in to get resorts
         const resorts = await Resort.findAll({
             include: { model: ResortImage }
         })
 
-        // adding in to get resorts images
-        // const resortImages = await ResortImage.findAll();
-
         return res.json({
             spots,
-            // spotImages,
-            resorts,
-            // resortImages
-        })
+            resorts        })
     })
 )
 
@@ -121,8 +111,6 @@ const validateCreateSpot = [
     check('url')
         .exists({ checkFalsy: true })
         .withMessage("Please provide an image URL to display on your listing."),
-    // .isURL()
-    // .withMessage("Please provide an image URL to display on your listing."),
     handleValidationErrors
 ]
 
@@ -132,7 +120,6 @@ router.post('/',
     // validateCreateSpot,
     asyncHandler(async (req, res) => {
         const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
-        // need to pass in the user id
         const userId = req.user.id;
         const newSpotData = {
             name,
@@ -160,10 +147,6 @@ router.post('/',
         const listing = await Spot.findByPk(newSpot.id, {
             include: SpotImage
         })
-
-        // re render not redirect
-        // add to frontend
-        // res.redirect('/api/spots/user');
 
         return res.json(listing)
     })

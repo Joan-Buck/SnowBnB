@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
-import {useHistory} from 'react-router-dom';
 
 const NewSpotForm = ({ hideForm }) => {
     const dispatch = useDispatch();
-    const [name, setName] = useState('Joan');
-    const [description, setDescription] = useState('My place');
-    const [address, setAddress] = useState('123 123 ave');
-    const [city, setCity] = useState('bozeman');
-    const [state, setState] = useState('Montana');
-    const [zipcode, setZipcode] = useState('1231');
-    const [country, setCountry] = useState('USA');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipcode, setZipcode] = useState('');
+    const [country, setCountry] = useState('');
     const [price, setPrice] = useState(0);
     const [bedrooms, setBedrooms] = useState(0);
     const [bathrooms, setBathrooms] = useState(0);
@@ -21,32 +20,31 @@ const NewSpotForm = ({ hideForm }) => {
     const [validationErrors, setValidationErrors] = useState([]);
 
 
-    const history = useHistory();
 
-    // useEffect(() => {
-    //     let errors = [];
-    //     if (name.length < 1) errors.push("Please give your new listing a name.");
-    //     if (name.length > 255) errors.push("Names must be no longer than 255 characters.");
-    //     if (description.length < 1) errors.push("Please briefly describe your listing.");
-    //     if (description.length > 255) errors.push("Descriptions must be no longer than 255 characters.");
-    //     if (address.length < 1) errors.push("Please provide a street address for your listing.")
-    //     if (address.length > 100) errors.push("Street addresses must be no longer than 100 characters.");
-    //     if (state.length < 3) errors.push("Please provide the full state name.")
-    //     if (state.length > 50) errors.push("State names must be no longer than 50 characters.");
-    //     if (zipcode.length < 5) errors.push("Please provide a zipcode");
-    //     if (zipcode.length > 15) errors.push("Zip Codes must be no longer than 15 characters.");
-    //     if (country.length < 1) errors.push("Please provide the country where your listing is located");
-    //     if (country.length > 50) errors.push("Countries must be no longer than 50 characters.");
-    //     if (price < 1) errors.push("Please provide a price per night.");
-    //     // no price restriction for upper limit, DB limits to decimal (6,2)
-    //     if (bedrooms < 1) errors.push("Please provide the number of bedrooms for your listing.");
-    //     if (bathrooms < 1) errors.push("Please provide the number of bathrooms for your listing.");
-    //     if (guests < 1) errors.push("Please confirm the number of guests your listing can host.");
-    //     if (imageURL.length < 1) errors.push("Please provide an image URL to display on your listing.");
+    useEffect(() => {
+        let errors = [];
+        if (name.length < 1) errors.push("Please give your new listing a name.");
+        if (name.length > 255) errors.push("Names must be no longer than 255 characters.");
+        if (description.length < 1) errors.push("Please briefly describe your listing.");
+        if (description.length > 255) errors.push("Descriptions must be no longer than 255 characters.");
+        if (address.length < 1) errors.push("Please provide a street address for your listing.")
+        if (address.length > 100) errors.push("Street addresses must be no longer than 100 characters.");
+        if (state.length < 3) errors.push("Please provide the full state name.")
+        if (state.length > 50) errors.push("State names must be no longer than 50 characters.");
+        if (zipcode.length < 5) errors.push("Please provide a zipcode");
+        if (zipcode.length > 15) errors.push("Zip Codes must be no longer than 15 characters.");
+        if (country.length < 1) errors.push("Please provide the country where your listing is located");
+        if (country.length > 50) errors.push("Countries must be no longer than 50 characters.");
+        if (price < 1) errors.push("Please provide a price per night.");
+        // no price restriction for upper limit, DB limits to decimal (6,2)
+        if (bedrooms < 1) errors.push("Please provide the number of bedrooms for your listing.");
+        if (bathrooms < 1) errors.push("Please provide the number of bathrooms for your listing.");
+        if (guests < 1) errors.push("Please confirm the number of guests your listing can host.");
+        if (imageURL.length < 1) errors.push("Please provide an image URL to display on your listing.");
 
-    //     setValidationErrors(errors);
+        setValidationErrors(errors);
 
-    // }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
+    }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
 
     const submitCreateForm = async (e) => {
         e.preventDefault();
@@ -68,31 +66,19 @@ const NewSpotForm = ({ hideForm }) => {
             imageURL
         };
 
-        // hide form after submit
         let newSpot = await dispatch(createSpotThunk(payload));
         if (newSpot) {
             hideForm();
-            // history.push('/my-listings')
+        // To Do error handling
+            // return dispatch(createSpotThunk(payload))
+            //     .catch(async (res) => {
+            //         const data = await res.json();
+            //         if (data && data.errors) setValidationErrors(data.errors)
+            //         console.log('errors >>>>>', data.errors)
+            //     });
         }
     }
 
-    // }
-    //use state to render redirect component
-    // add in spot action
-
-
-
-    //trying to get error handling here
-    // return dispatch(createSpotThunk(payload))
-    //     .catch(async (res) => {
-    //         const data = await res.json();
-    //         if (data && data.errors) setValidationErrors(data.errors)
-    //         console.log('errors >>>>>', data.errors)
-    //     });
-    // if (newSpot) {
-    // can useHistory and do history push
-    // }
-// }
 
 return (
     <div className="spot-form">
