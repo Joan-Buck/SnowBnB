@@ -5,18 +5,18 @@ import {useHistory} from 'react-router-dom';
 
 const NewSpotForm = ({ hideForm }) => {
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zipcode, setZipcode] = useState('');
-    const [country, setCountry] = useState('');
+    const [name, setName] = useState('Joan');
+    const [description, setDescription] = useState('My place');
+    const [address, setAddress] = useState('123 123 ave');
+    const [city, setCity] = useState('bozeman');
+    const [state, setState] = useState('Montana');
+    const [zipcode, setZipcode] = useState('1231');
+    const [country, setCountry] = useState('USA');
     const [price, setPrice] = useState(0);
     const [bedrooms, setBedrooms] = useState(0);
     const [bathrooms, setBathrooms] = useState(0);
     const [guests, setGuests] = useState(0);
-    const [imageURL, setImageURL] = useState('');
+    const [imageURL, setImageURL] = useState('https://www.skimag.com/wp-content/uploads/2021/03/Liam_Doran-5549-s.jpg?width=2000');
     // const [redirect, setRedirect] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
 

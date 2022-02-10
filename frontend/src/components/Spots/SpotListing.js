@@ -12,7 +12,7 @@ const SpotListing = () => {
     // const resorts = useSelector(state => state.spots.resorts);
     // const resortImages = useSelector(state => state.spots.resortImages);
 
-    const spotsObj = useSelector(state => state.spots.listings)
+    const spotsObj = useSelector(state => state.spots.spots)
     const spots = Object.values(spotsObj)
     const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj)
@@ -29,7 +29,7 @@ const SpotListing = () => {
             )}
 
             {spots.map((spot) => (
-                <SpotCard spot={spot} resorts={resorts} />
+                <SpotCard key={spot.id} spot={spot} resorts={resorts} />
             ))}
         </div>
     )

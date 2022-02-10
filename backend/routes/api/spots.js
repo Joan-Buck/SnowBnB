@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/',
     asyncHandler(async (req, res) => {
         const spots = await Spot.findAll({
-            include: {model: SpotImage},
+            include: { model: SpotImage },
 
         });
 
@@ -19,7 +19,7 @@ router.get('/',
 
         // adding in to get resorts
         const resorts = await Resort.findAll({
-            include: {model: ResortImage}
+            include: { model: ResortImage }
         })
 
         // adding in to get resorts images
@@ -121,8 +121,8 @@ const validateCreateSpot = [
     check('url')
         .exists({ checkFalsy: true })
         .withMessage("Please provide an image URL to display on your listing."),
-        // .isURL()
-        // .withMessage("Please provide an image URL to display on your listing."),
+    // .isURL()
+    // .withMessage("Please provide an image URL to display on your listing."),
     handleValidationErrors
 ]
 
@@ -155,17 +155,17 @@ router.post('/',
             spotId: newSpot.id,
             url: imageURL
         }
+        await SpotImage.create(newImageData);
 
-        const newImage = await SpotImage.create(newImageData);
+        const listing = await Spot.findByPk(newSpot.id, {
+            include: SpotImage
+        })
 
         // re render not redirect
-            // add to frontend
+        // add to frontend
         // res.redirect('/api/spots/user');
 
-        return res.json({
-            newSpot,
-            newImage
-        })
+        return res.json(listing)
     })
 )
 

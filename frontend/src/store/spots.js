@@ -72,28 +72,19 @@ const spotReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_SPOTS: {
-            const { spots, spotImages, resorts, resortImages } = action
-            return { ...state, spots, spotImages, resorts, resortImages }
+            const { spots, resorts } = action
+            return { ...state, spots, resorts }
         }
         case LOAD_USER_SPOTS: {
-            const  listings = {}
+            const listings = {}
             const resorts = {}
-            newState = {}
             action.listings.forEach(listing => listings[listing.id] = listing);
             action.resorts.forEach(resort => resorts[resort.id] = resort);
-            newState.listings = listings;
-            newState.resorts = resorts;
-            return newState
+            return { ...state, listings, resorts }
         }
         case ADD_SPOT: {
-            newState = { ...state}
-            const listings = [action.spot.newSpot, ...state.spots.listings]
-            const spotImages = [...state.spotImages, action.spot.newImage]
-            newState.listings = listings
-            newState.spotImages = spotImages
-
-
-            return newState;
+            const listings = { ...state.listings, [action.spot.id]: action.spot }
+            return { ...state, listings }
         }
         default:
             return state
