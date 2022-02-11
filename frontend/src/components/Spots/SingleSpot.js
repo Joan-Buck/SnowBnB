@@ -39,7 +39,7 @@ const SingleSpot = () => {
             <p>Price: ${spot.price}/night</p>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
-                <ReviewListing />
+                <ReviewListing spotId={spotId}/>
             </div>
         </div>
 
