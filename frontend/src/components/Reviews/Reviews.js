@@ -9,7 +9,7 @@ const ReviewListing = ({spotId}) => {
 
     const reviewsObj = useSelector(state => state.reviews.reviews);
     const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spotId);
-    console.log(reviews)
+
 
     /* TO DO: filter for reviews by spotId and by userId */
 
@@ -21,7 +21,7 @@ const ReviewListing = ({spotId}) => {
         <div>
             <h3>Reviews</h3>
             {/* TO DO: if not owner of this spot, add review button renders */}
-
+            {/* TO DO: if there are no reviews for spots, add in comment about no reviews yet */}
             {reviews.map((review) => (
                 <ReviewCard key={review.id} review={review}/>
             ))}

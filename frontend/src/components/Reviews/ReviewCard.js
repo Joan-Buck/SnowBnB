@@ -4,9 +4,9 @@ const ReviewCard = ({review}) => {
 
     return (
         <div>
-            <h3>{review.content}</h3>
-            <div className="review-details">UserName | Rating</div>
-            <div className="review-content">REVIEW CONTENT DETAILS............</div>
+            {/* TO DO: add in username for review */}
+            <p className="review-details"> USERNAME PLACEHOLDER | Rating: {review.rating}</p>
+            <p className="review-content">{review.content}</p>
             <div>
                 <button>Edit Review</button>
                 <button>Delete Review</button>

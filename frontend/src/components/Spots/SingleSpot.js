@@ -12,7 +12,7 @@ const SingleSpot = () => {
     useEffect(() => {
         dispatch(getSpotThunk(spotId))
     }, [dispatch, spotId])
-
+    
     const spot = useSelector(state => state.spots.spots[spotId])
     const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj);

@@ -9,6 +9,7 @@ const router = express.Router()
 router.get('/',
     asyncHandler(async (req, res) => {
         const reviews = await Review.findAll();
+        console.log(reviews)
         return res.json({reviews});
     })
 )
