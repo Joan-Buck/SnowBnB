@@ -67,8 +67,7 @@ const SpotResort = ({ resort }) => {
         <p>{resort.name}</p>
         <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
         <div>
-
-            <a href={resort.resortURL}>(Resort Details)</a>
+            <a href={resort.resortURL}>(Resort Website)</a>
             <p>Snow Level: {resort.snowLevel}</p>
             <ul className='activities-list'>Activities:
                 {activities?.map((activity) => (

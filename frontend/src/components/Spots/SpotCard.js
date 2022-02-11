@@ -61,10 +61,10 @@ const SpotCard = ({ spot, resorts, editable }) => {
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3>{name}</h3>
-                <NavLink className='details-link' to={`/spots/${id}`}
+               {sessionUser && ( <NavLink className='details-link' to={`/spots/${id}`}
                 >
                     Listing Details
-                </NavLink>
+                </NavLink>)}
                 <p>{description}</p>
                 <p>{city}, {state}, {country}</p>
                 <p>Number of Guests: {guests}</p>
@@ -74,7 +74,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
             </div>
             <div className='resort-details'>Nearby Resort(s)
                 <p>{resName}</p>
-                <a href={resortURL}>(Resort Details)</a>
+                {/* <a href={resortURL}>(Resort Details)</a> */}
                 <p>Snow Level: {snowLevel}</p>
                 <ul className='activities-list'>Activities:
                     {activities.map((activity) => (
