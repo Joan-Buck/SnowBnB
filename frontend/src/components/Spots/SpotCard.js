@@ -55,11 +55,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
     if (snowshoeing) activities.push('Snowshoeing');
     if (apresSki) activities.push('Apres Ski');
 
-    console.log("SpotCard", { activities })
-    // const showForm = (e) => {
-    //     e.preventDefault();
-    //     setRenderForm(true);
-    // }
 
     return (
         <div className='spot-card'>

@@ -46,7 +46,6 @@ const NewSpotForm = ({ hideForm }) => {
 
     // }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
 
-    // console.log('errrors=========', validationErrors);
 
 
     const submitCreateForm = async (e) => {
