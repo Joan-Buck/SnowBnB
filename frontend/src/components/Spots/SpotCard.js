@@ -72,7 +72,8 @@ const SpotCard = ({ spot, resorts, editable }) => {
                 <p>Number of Bathrooms: {bathrooms}</p>
                 <p>Price: ${price}/night</p>
             </div>
-            <div className='resort-details'>Nearby Resort(s)
+            <div className='resort-details'>
+               <h3>Nearby Resort(s)</h3>
                 <p>{resName}</p>
                 {/* <a href={resortURL}>(Resort Details)</a> */}
                 <p>Snow Level: {snowLevel}</p>
