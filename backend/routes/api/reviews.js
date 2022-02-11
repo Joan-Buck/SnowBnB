@@ -28,8 +28,29 @@ router.post('/',
             spotId
         }
         // add in spot Id to newReview create
-        const newReview = await Review.create({ content: content, rating: rating, userId: userId, spotId: spotId});
+        const newReview = await Review.create({ content: content, rating: rating, userId: userId, spotId: spotId });
         const review = await Review.findByPk(newReview.id)
+        return res.json({ review })
+    })
+)
+
+router.put('/:reviewId',
+    asyncHandler(async (req, res) => {
+        const { reviewId } = req.params;
+
+        const { content, rating, userId, spotId } = req.body;
+
+        const editedReviewData = {
+            content,
+            rating,
+            userId,
+            spotId
+        }
+
+        const review = await Review.findByPk(reviewId)
+
+        await review.update({ ...editedReviewData })
+
         return res.json({ review })
     })
 )

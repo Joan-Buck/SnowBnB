@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { getResortsThunk, getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
 // need to refactor here the same way as in MySpot
+
 const SpotListing = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);

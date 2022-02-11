@@ -42,17 +42,29 @@ export const createReviewThunk = (review) => async dispatch => {
     }
 }
 
+export const editReviewThunk = (review) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(review)
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(loadReview(data.review))
+        return data.review
+    }
+}
+
 // -------------------------------
 const initialState = { reviews: {} };
 const reviewReducer = (state = initialState, action) => {
     switch (action.type) {
-        // TO DO: LOAD_REVIEWS
         case LOAD_REVIEWS: {
             const reviews = {}
             action.reviews.forEach(review => { reviews[review.id] = review })
             return { ...state, reviews }
         }
-        // TO DO: LOAD_REVIEW - for edit and get 1 review
         case LOAD_REVIEW: {
             const reviews = {...state.reviews, [action.review.id]: action.review}
             return {...state, reviews}

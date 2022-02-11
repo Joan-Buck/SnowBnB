@@ -40,7 +40,7 @@ const ReviewListing = ({spotId}) => {
             )}
             {/* TO DO: if there are no reviews for spots, add in comment about no reviews yet */}
             {reviews.map((review) => (
-                <ReviewCard key={review.id} review={review}/>
+                <ReviewCard key={review.id} review={review} editable/>
             ))}
         </div>
     )
