@@ -111,6 +111,7 @@ router.post('/',
 
 // edit spot
 router.put('/:spotId',
+validateCreateSpot,
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
 

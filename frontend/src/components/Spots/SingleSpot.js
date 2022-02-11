@@ -28,6 +28,7 @@ const SingleSpot = () => {
                 {images?.map((image, i) => (
                     <img key={`${i}-${image}`} className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
                 ))}
+
             </div>
             <p>{spot.description}</p>
             <p>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
@@ -46,7 +47,7 @@ const SingleSpot = () => {
 
 const SpotResorts = ({ resorts }) => {
     return <div className='resort-details'>
-        Nearby Resort(s)
+        <h3>Nearby Resort(s)</h3>
         {resorts.map(resort => <SpotResort key={resort.id} resort={resort} />)}
     </div>
 }
@@ -55,13 +56,16 @@ const SpotResort = ({ resort }) => {
     return <>
         <p>{resort.name}</p>
         <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
+        <div>
+
         <a href={resort.resortURL}>(Resort Details)</a>
         <p>Snow Level: {resort.snowLevel}</p>
         <ul className='activities-list'>Activities:
             {resort.activities?.map((activity) => (
                 <li key={activity}>{activity}</li>
-            ))}
+                ))}
         </ul>
+                </div>
     </>
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { editSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 
@@ -17,13 +17,13 @@ const EditSpotForm = ({spot}) => {
     const [bathrooms, setBathrooms] = useState(spot.bathrooms);
     const [guests, setGuests] = useState(spot.guests);
     const [imageURL, setImageURL] = useState(spot.SpotImages[0]?.url ?? '');
-    // const [validationErrors, setValidationErrors] = useState([]);
+    const [validationErrors, setValidationErrors] = useState([]);
 
 
     const submitEditForm = async (e) => {
         e.preventDefault();
 
-        // setValidationErrors([]);
+        setValidationErrors([]);
 
         const editedSpot = {
             id,
@@ -42,16 +42,16 @@ const EditSpotForm = ({spot}) => {
         };
 
         const result = await dispatch(editSpotThunk(editedSpot))
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setValidationErrors(data.errors)
+        .catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setValidationErrors(data.errors)
 
-        // }
-        // );
+        }
+        );
 
-        // if (result) {
-        //     hideForm();
-        // }
+        if (result) {
+            // hideForm();
+        }
     }
 
 
@@ -59,11 +59,11 @@ const EditSpotForm = ({spot}) => {
         <div className="spot-form">
             <form className="new-spot-form"
                 onSubmit={submitEditForm}>
-                {/* <ul className="add-spot-form-errors">
+                <ul className="add-spot-form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>
                     )}
-                </ul> */}
+                </ul>
 
                 <label
                     htmlFor="name">

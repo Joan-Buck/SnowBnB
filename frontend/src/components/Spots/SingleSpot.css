@@ -1,5 +1,7 @@
-/* .spot-images-div {
-
+.spot-images-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     width: 10%;
     height: 10%;
     border-radius: 10px;
@@ -7,4 +9,30 @@
     height: 80%;
     align-self: center;
     margin: auto;
-} */
+}
+
+.spot-detail-card {
+    /* border: black 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: rgb(248, 244, 244);
+    border-radius: 10px;
+    /* margin-bottom: 20px; */
+}
+
+img {
+    /* height: 100%;
+    width: 100%; */
+}
+
+.resort-details {
+    /* width: auto; */
+    display: flex;
+    flex-direction: row;
+}
+
+.resort-img {
+    width: 100%;
+}
