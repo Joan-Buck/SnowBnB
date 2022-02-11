@@ -1,17 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import SignUpFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import HomePage from './components/HomePage';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import SpotListing from './components/Spots/SpotListing';
 import MyListing from './components/Spots/MySpots';
 import SingleSpot from './components/Spots/SingleSpot';
+import { getResortsThunk } from './store/spots';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    dispatch(getResortsThunk())
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(sessionActions.retainUserSessionThunk()).then(() => setIsLoaded(true));
@@ -19,7 +24,7 @@ function App() {
 
   return isLoaded && (
     <>
-      <Navigation isLoaded={isLoaded}/>
+      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch >
           <Route exact path={'/'}>
@@ -28,7 +33,7 @@ function App() {
           <Route path='/signup'>
             <SignUpFormPage />
           </Route>
-          <Route  exact path={'/spots'}>
+          <Route exact path={'/spots'}>
             <SpotListing />
           </Route>
           <Route path={'/spots/:spotId'}>

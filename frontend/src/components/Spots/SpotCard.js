@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteSpotThunk, loadOneSpot } from '../../store/spots';
+import { deleteSpotThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
 // import * as sessionActions from '../../store/session';
 import './SpotCard.css';
@@ -21,7 +21,7 @@ const SpotCard = ({ spot, resorts }) => {
         }
     }, [sessionUser]);
 
-    const images = spot.SpotImages
+    const images = spot.SpotImages ?? []
     const resortFound = resorts.filter((resort) => resort.state === spot.state);
 
     let resName;
@@ -58,16 +58,15 @@ const SpotCard = ({ spot, resorts }) => {
         setRenderForm(true);
     }
 
-
     return (
         <div className='spot-card'>
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3>{name}</h3>
-            <NavLink className='details-link' to={`/spots/${id}`}
-            >
-                Listing Details
-            </NavLink>
+                <NavLink className='details-link' to={`/spots/${id}`}
+                >
+                    Listing Details
+                </NavLink>
                 <p>{description}</p>
                 <p>{city}, {state}, {country}</p>
                 <p>Number of Guests: {guests}</p>
@@ -88,13 +87,13 @@ const SpotCard = ({ spot, resorts }) => {
             {userOwns && (
                 <div className='spot-buttons'>
                     <button
-                    onClick={showForm} className='edit-spot'
+                        onClick={showForm} className='edit-spot'
                     >Edit Listing</button>
-                     {renderForm && (
-                <EditSpotForm hideForm={() => setRenderForm(false)} />
-            )}
+                    {renderForm && (
+                        <EditSpotForm spot={spot} hideForm={() => setRenderForm(false)} />
+                    )}
                     <button className='delete-spot-button'
-                        onClick={() => dispatch(deleteSpotThunk(id, userId))}
+                        onClick={() => dispatch(deleteSpotThunk(id))}
                     >Delete Listing</button>
                 </div>
             )}

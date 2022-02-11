@@ -9,54 +9,8 @@ const router = express.Router();
 
 router.get('/',
     asyncHandler(async (req, res) => {
-
-        const spots = await Spot.findAll({
-            include: { model: SpotImage },
-
-        });
-
-        const resorts = await Resort.findAll({
-            include: { model: ResortImage }
-        })
-
-        return res.json({
-            spots,
-            resorts
-        })
-    })
-)
-
-
-
-// get spots for specific user
-router.get('/user',
-    asyncHandler(async (req, res) => {
-
-        const listings = await Spot.findAll({
-            where: {
-                userId: req.user.id
-            },
-            include: SpotImage
-        })
-
-        // adding in to get spot images
-        // const spotImages = await SpotImage.findAll();
-
-
-        // adding in to get resorts
-        const resorts = await Resort.findAll({
-            include: ResortImage
-        })
-
-        // adding in to get resorts images
-        // const resortImages = await ResortImage.findAll();
-
-        return res.json({
-            listings,
-            // spotImages,
-            resorts,
-            // resortImages
-        })
+        const spots = await Spot.findAll({ include: { model: SpotImage } });
+        return res.json({ spots })
     })
 )
 
@@ -64,26 +18,12 @@ router.get('/user',
 router.get('/:spotId',
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
-
-        const spot = await Spot.findByPk(spotId, {
-            include: SpotImage
-        })
-
-        const resorts = await Resort.findAll({
-            include: { model: ResortImage }
-        })
-        console.log(spot, 'spot backend')
-
-        return res.json({
-            spot,
-            resorts
-        })
+        const spot = await Spot.findByPk(spotId, { include: SpotImage })
+        return res.json({ spot })
     })
 )
 
-
 // create new spot validation middleware
-
 const validateCreateSpot = [
     check('name')
         .exists({ checkFalsy: true })
@@ -162,18 +102,10 @@ router.post('/',
         }
 
         const newSpot = await Spot.create(newSpotData);
+        await SpotImage.create({ spotId: newSpot.id, url: imageURL });
 
-        const newImageData = {
-            spotId: newSpot.id,
-            url: imageURL
-        }
-        await SpotImage.create(newImageData);
-
-        const listing = await Spot.findByPk(newSpot.id, {
-            include: SpotImage
-        })
-
-        return res.json(listing)
+        const spot = await Spot.findByPk(newSpot.id, { include: SpotImage })
+        return res.json({ spot })
     })
 )
 
@@ -182,30 +114,46 @@ router.put('/:spotId',
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
 
-        const spot = await Spot.findByPk(spotId, {
-            include: SpotImage
-        })
+        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
 
-        return res.json({spot})
+        const editedSpotData = {
+            name,
+            description,
+            address,
+            city,
+            state,
+            zipcode,
+            country,
+            price,
+            bedrooms,
+            bathrooms,
+            guests
+        }
 
+        // TODO: MAKE UPDATING WORK
+        const spot = await Spot.findByPk(spotId, { include: SpotImage })
+
+        // TODO: DEBUG THIS -- NEED TO UPDATE THE SPOT IMAGE
+        // delete image and replace it with new image
+        await spot.update({ ...editedSpotData })
+        const spotImage = spot.SpotImages[0]
+        if (spotImage) {
+            spotImage.update({url: imageURL})
+        }
+
+        // await spot.update({ spotId: spot.id, url: imageURL })
+
+        return res.json({ spot })
     })
-
-
 )
+
 // delete spot
 router.delete('/:spotId',
     asyncHandler(async (req, res) => {
-
         const { spotId } = req.params;
-
-        const spot = await Spot.findByPk(spotId, {
-            include: SpotImage
-        });
-
+        const spot = await Spot.findByPk(spotId, { include: SpotImage });
         spot.SpotImages.forEach(image => image.destroy())
-
         spot.destroy();
-
         return res.json({ id: spot.id });
     })
 )

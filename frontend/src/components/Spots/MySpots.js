@@ -2,28 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SpotCard from './SpotCard';
 import NewSpotForm from './NewSpotForm';
-import { getUserSpotsThunk } from '../../store/spots';
+import { getSpotsThunk, getResortsThunk } from '../../store/spots';
 
 const MyListing = () => {
     const dispatch = useDispatch();
-    // const spots = useSelector(state => state.spots.listings);
-    // make this SpotsArr = Object.values(spots)
 
-    const spotsObj = useSelector(state => state.spots.listings)
-    const spots = Object.values(spotsObj).sort((a, b) => {
+    const userId = useSelector(state => state.session.user.id)
+    const spotsObj = useSelector(state => state.spots.spots)
+    const resortsObj = useSelector(state => state.spots.resorts);
+
+    const [renderForm, setRenderForm] = useState(false);
+
+    useEffect(() => {
+        dispatch(getSpotsThunk())
+    }, [dispatch])
+
+    const spots = Object.values(spotsObj).filter(spot => spot.userId === userId).sort((a, b) => {
         const aDate = new Date(a.updatedAt)
         const bDate = new Date(b.updatedAt)
         return (bDate - aDate)
     })
-    // const images = useSelector(state => state.spots.spotImages);
-    const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj)
-    // const resortImages = useSelector(state => state.spots.resortImages);
-    const [renderForm, setRenderForm] = useState(false);
 
-    useEffect(() => {
-        dispatch(getUserSpotsThunk())
-    }, [dispatch])
 
     const showForm = (e) => {
         e.preventDefault();

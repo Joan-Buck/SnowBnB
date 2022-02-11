@@ -1,60 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { createSpotThunk } from "../../store/spots";
+import { editSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 
-const EditSpotForm = ({ hideForm }) => {
-
+const EditSpotForm = ({ spot, hideForm }) => {
+    const { id } = spot
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zipcode, setZipcode] = useState('');
-    const [country, setCountry] = useState('');
-    const [price, setPrice] = useState(0);
-    const [bedrooms, setBedrooms] = useState(0);
-    const [bathrooms, setBathrooms] = useState(0);
-    const [guests, setGuests] = useState(0);
-    const [imageURL, setImageURL] = useState('https://www.skimag.com/wp-content/uploads/2021/03/Liam_Doran-5549-s.jpg?width=2000');
-    // const [redirect, setRedirect] = useState(false);
-    const [validationErrors, setValidationErrors] = useState([]);
-
-
-
-    // useEffect(() => {
-    //     let errors = [];
-    //     if (name.length < 1) errors.push("Please give your new listing a name.");
-    //     if (name.length > 255) errors.push("Names must be no longer than 255 characters.");
-    //     if (description.length < 1) errors.push("Please briefly describe your listing.");
-    //     if (description.length > 255) errors.push("Descriptions must be no longer than 255 characters.");
-    //     if (address.length < 1) errors.push("Please provide a street address for your listing.")
-    //     if (address.length > 100) errors.push("Street addresses must be no longer than 100 characters.");
-    //     if (state.length < 3) errors.push("Please provide the full state name.")
-    //     if (state.length > 50) errors.push("State names must be no longer than 50 characters.");
-    //     if (zipcode.length < 5) errors.push("Please provide a zipcode");
-    //     if (zipcode.length > 15) errors.push("Zip Codes must be no longer than 15 characters.");
-    //     if (country.length < 1) errors.push("Please provide the country where your listing is located");
-    //     if (country.length > 50) errors.push("Countries must be no longer than 50 characters.");
-    //     if (price < 1) errors.push("Please provide a price per night.");
-    //     // no price restriction for upper limit, DB limits to decimal (6,2)
-    //     if (bedrooms < 1) errors.push("Please provide the number of bedrooms for your listing.");
-    //     if (bathrooms < 1) errors.push("Please provide the number of bathrooms for your listing.");
-    //     if (guests < 1) errors.push("Please confirm the number of guests your listing can host.");
-    //     if (imageURL.length < 1) errors.push("Please provide an image URL to display on your listing.");
-    //     setValidationErrors(errors);
-
-    // }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
-
-    // console.log('errrors=========', validationErrors);
+    const [name, setName] = useState(spot.name);
+    const [description, setDescription] = useState(spot.description);
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [zipcode, setZipcode] = useState(spot.zipcode);
+    const [country, setCountry] = useState(spot.country);
+    const [price, setPrice] = useState(spot.price);
+    const [bedrooms, setBedrooms] = useState(spot.bedrooms);
+    const [bathrooms, setBathrooms] = useState(spot.bathrooms);
+    const [guests, setGuests] = useState(spot.guests);
+    const [imageURL, setImageURL] = useState(spot.SpotImages[0]?.url ?? '');
+    // const [validationErrors, setValidationErrors] = useState([]);
 
 
     const submitEditForm = async (e) => {
         e.preventDefault();
 
-        setValidationErrors([]);
+        // setValidationErrors([]);
 
-        const payload = {
+        const editedSpot = {
+            id,
             name,
             description,
             address,
@@ -69,15 +41,15 @@ const EditSpotForm = ({ hideForm }) => {
             imageURL
         };
 
-        const newSpot = await dispatch(createSpotThunk(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setValidationErrors(data.errors)
+        const result = await dispatch(editSpotThunk(editedSpot))
+        // .catch(async (res) => {
+        //     const data = await res.json();
+        //     if (data && data.errors) setValidationErrors(data.errors)
 
-            }
-            );
+        // }
+        // );
 
-        if (newSpot) {
+        if (result) {
             hideForm();
         }
     }
@@ -85,14 +57,13 @@ const EditSpotForm = ({ hideForm }) => {
 
     return (
         <div className="spot-form">
-            
             <form className="new-spot-form"
                 onSubmit={submitEditForm}>
-                <ul className="add-spot-form-errors">
+                {/* <ul className="add-spot-form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>
                     )}
-                </ul>
+                </ul> */}
 
                 <label
                     htmlFor="name">
@@ -102,6 +73,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Name your listing..."
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -113,6 +85,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Describe your listing..."
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -125,6 +98,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -136,6 +110,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="City"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -147,6 +122,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="State"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -169,6 +145,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -180,6 +157,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Price per night"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -191,6 +169,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Number of Bedrooms"
                         value={bedrooms}
                         onChange={(e) => setBedrooms(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -202,6 +181,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Number of Bathrooms"
                         value={bathrooms}
                         onChange={(e) => setBathrooms(e.target.value)}
+
                     >
                     </input>
                 </label>
@@ -213,6 +193,7 @@ const EditSpotForm = ({ hideForm }) => {
                         placeholder="Number of Guests"
                         value={guests}
                         onChange={(e) => setGuests(e.target.value)}
+
                     >
                     </input>
                 </label>

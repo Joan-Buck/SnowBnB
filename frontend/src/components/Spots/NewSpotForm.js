@@ -54,7 +54,7 @@ const NewSpotForm = ({ hideForm }) => {
 
         setValidationErrors([]);
 
-        const payload = {
+        const newSpot = {
             name,
             description,
             address,
@@ -69,7 +69,7 @@ const NewSpotForm = ({ hideForm }) => {
             imageURL
         };
 
-        const newSpot = await dispatch(createSpotThunk(payload))
+        const result = await dispatch(createSpotThunk(newSpot))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setValidationErrors(data.errors)
@@ -77,7 +77,7 @@ const NewSpotForm = ({ hideForm }) => {
             }
             );
 
-        if (newSpot) {
+        if (result) {
             hideForm();
         }
     }
