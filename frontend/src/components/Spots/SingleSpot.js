@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSpotThunk } from '../../store/spots';
+import ReviewListing from '../Reviews/Reviews';
 import './SingleSpot.css'
 
 const SingleSpot = () => {
@@ -38,7 +39,7 @@ const SingleSpot = () => {
             <p>Price: ${spot.price}/night</p>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
-                REVIEWS COMING
+                <ReviewListing />
             </div>
         </div>
 
