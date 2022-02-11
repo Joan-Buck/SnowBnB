@@ -8,8 +8,8 @@ const ReviewListing = ({spotId}) => {
     const dispatch = useDispatch();
 
     const reviewsObj = useSelector(state => state.reviews.reviews);
-
-    const reviews = Object.values(reviewsObj).filter(review => review.spotId === spotId);
+    const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spotId);
+    console.log(reviews)
 
     /* TO DO: filter for reviews by spotId and by userId */
 
@@ -23,7 +23,7 @@ const ReviewListing = ({spotId}) => {
             {/* TO DO: if not owner of this spot, add review button renders */}
 
             {reviews.map((review) => (
-                <ReviewCard key={review.id} />
+                <ReviewCard key={review.id} review={review}/>
             ))}
         </div>
     )
