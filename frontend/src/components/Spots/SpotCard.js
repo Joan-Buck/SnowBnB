@@ -24,7 +24,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
     }, [sessionUser]);
 
     const images = spot.SpotImages ?? []
-    const resortFound = resorts.filter((resort) => resort.state === spot.state);
+    const nearbyResorts = resorts.filter((resort) => resort.state === spot.state);
 
     let resName;
     let downhillSkiing;
@@ -36,7 +36,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
     let resortURL;
     let resortId;
 
-    resortFound.map((resort) => {
+    nearbyResorts.map((resort) => {
         resName = resort.name;
         downhillSkiing = resort.downhillSkiing;
         snowboarding = resort.snowboarding;
@@ -55,6 +55,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
     if (snowshoeing) activities.push('Snowshoeing');
     if (apresSki) activities.push('Apres Ski');
 
+    console.log("SpotCard", { activities })
     // const showForm = (e) => {
     //     e.preventDefault();
     //     setRenderForm(true);
@@ -88,7 +89,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
             </div>
             {userOwns && editable && (
                 <div className='spot-buttons'>
-                    <EditSpotFormModal spot={spot}/>
+                    <EditSpotFormModal spot={spot} />
                     <button className='delete-spot-button'
                         onClick={() => dispatch(deleteSpotThunk(id))}
                     >Delete Listing</button>

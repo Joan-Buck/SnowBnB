@@ -28,9 +28,11 @@ img {
 }
 
 .resort-details {
-    /* width: auto; */
+    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: wrap;
+
 }
 
 .resort-img {

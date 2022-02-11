@@ -98,7 +98,6 @@ export const getResortsThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log({ d: data.resorts })
         dispatch(loadResorts(data.resorts));
     }
     return response;

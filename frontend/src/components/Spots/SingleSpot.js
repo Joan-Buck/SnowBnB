@@ -52,21 +52,32 @@ const SpotResorts = ({ resorts }) => {
     </div>
 }
 
+
 const SpotResort = ({ resort }) => {
+
+    let activities = [];
+
+    if (resort.downhillSkiing) activities.push('Downhill Skiing');
+    if (resort.snowboarding) activities.push('Snowboarding');
+    if (resort.nordicSkiing) activities.push('Nordic Skiing');
+    if (resort.snowshoeing) activities.push('Snowshoeing');
+    if (resort.apresSki) activities.push('Apres Ski');
+
     return <>
         <p>{resort.name}</p>
         <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
         <div>
 
-        <a href={resort.resortURL}>(Resort Details)</a>
-        <p>Snow Level: {resort.snowLevel}</p>
-        <ul className='activities-list'>Activities:
-            {resort.activities?.map((activity) => (
-                <li key={activity}>{activity}</li>
+            <a href={resort.resortURL}>(Resort Details)</a>
+            <p>Snow Level: {resort.snowLevel}</p>
+            <ul className='activities-list'>Activities:
+                {activities?.map((activity) => (
+                    <li key={activity}>{activity}</li>
                 ))}
-        </ul>
-                </div>
+            </ul>
+        </div>
     </>
 }
+
 
 export default SingleSpot;
