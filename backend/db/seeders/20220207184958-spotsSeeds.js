@@ -145,7 +145,7 @@ module.exports = {
 
     },
     {
-         userId: 4,
+         userId: 3,
          address: "12 Moose Trail Road",
          city: "Breckenridge",
          state: "Colorado",
@@ -163,7 +163,7 @@ module.exports = {
 
     },
     {
-         userId: 4,
+         userId: 2,
          address: "7 Main Street",
          city: "Frisco",
          state: "Colorado",
