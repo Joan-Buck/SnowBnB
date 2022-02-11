@@ -78,8 +78,6 @@ const validateCreateSpot = [
     handleValidationErrors
 ]
 
-
-// add new spot
 router.post('/',
     validateCreateSpot,
     asyncHandler(async (req, res) => {

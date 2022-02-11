@@ -8,9 +8,29 @@ const router = express.Router()
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const reviews = await Review.findAll();
-        console.log(reviews)
-        return res.json({reviews});
+        const reviews = await Review.findAll({
+            include: [User, Spot]
+        })
+        return res.json({ reviews });
+    })
+)
+
+router.post('/',
+    asyncHandler(async (req, res) => {
+        console.log(req.body)
+
+        const { content, rating, spotId } = req.body;
+        const userId = req.user.id
+
+        const newReviewData = {
+            content,
+            rating,
+            spotId
+        }
+        // add in spot Id to newReview create
+        const newReview = await Review.create({ content: content, rating: rating, userId: userId, spotId: spotId});
+        const review = await Review.findByPk(newReview.id)
+        return res.json({ review })
     })
 )
 
