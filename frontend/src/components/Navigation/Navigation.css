@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: black; */
+    background-color: rgb(231, 228, 228);
     top: 0;
     position: sticky;
 
@@ -36,9 +36,12 @@ li {
     align-self: center;
  }
 
- .auth-buttons {
-     color: black;
- }
+ /* .auth-buttons {
+    border-radius: 10px;
+    margin: 5px;
+    background-color: black;
+    color: white;
+ } */
 
  .home-link {
      color: black;
@@ -74,6 +77,6 @@ li {
     border: 1px solid red;
 } */
 
-.profile-button {
-    /* background-color: transparent; */
-}
+ /* .profile-button {
+    background-color: transparent;
+} */

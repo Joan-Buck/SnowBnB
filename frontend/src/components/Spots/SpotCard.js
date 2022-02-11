@@ -3,15 +3,17 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpotThunk } from '../../store/spots';
 import EditSpotForm from './EditSpotForm';
-// import * as sessionActions from '../../store/session';
+import { Modal } from '../../context/Modal';
 import './SpotCard.css';
+import EditSpotFormModal from './EditSpotModal';
 
 
-const SpotCard = ({ spot, resorts }) => {
+const SpotCard = ({ spot, resorts, editable }) => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
     const [renderForm, setRenderForm] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
 
@@ -53,10 +55,10 @@ const SpotCard = ({ spot, resorts }) => {
     if (snowshoeing) activities.push('Snowshoeing');
     if (apresSki) activities.push('Apres Ski');
 
-    const showForm = (e) => {
-        e.preventDefault();
-        setRenderForm(true);
-    }
+    // const showForm = (e) => {
+    //     e.preventDefault();
+    //     setRenderForm(true);
+    // }
 
     return (
         <div className='spot-card'>
@@ -84,14 +86,9 @@ const SpotCard = ({ spot, resorts }) => {
                     ))}
                 </ul>
             </div>
-            {userOwns && (
+            {userOwns && editable && (
                 <div className='spot-buttons'>
-                    <button
-                        onClick={showForm} className='edit-spot'
-                    >Edit Listing</button>
-                    {renderForm && (
-                        <EditSpotForm spot={spot} hideForm={() => setRenderForm(false)} />
-                    )}
+                    <EditSpotFormModal spot={spot}/>
                     <button className='delete-spot-button'
                         onClick={() => dispatch(deleteSpotThunk(id))}
                     >Delete Listing</button>

@@ -39,7 +39,7 @@ const MyListing = () => {
                 <NewSpotForm hideForm={() => setRenderForm(false)} />
             )}
             {spots.map((spot) => (
-                <SpotCard key={spot.id} spot={spot} resorts={resorts} />
+                <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
             ))}
         </div>
     )

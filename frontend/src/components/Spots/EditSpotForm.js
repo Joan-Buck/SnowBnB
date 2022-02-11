@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { editSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 
-const EditSpotForm = ({ spot, hideForm }) => {
+const EditSpotForm = ({spot}) => {
     const { id } = spot
     const dispatch = useDispatch();
     const [name, setName] = useState(spot.name);
@@ -49,9 +49,9 @@ const EditSpotForm = ({ spot, hideForm }) => {
         // }
         // );
 
-        if (result) {
-            hideForm();
-        }
+        // if (result) {
+        //     hideForm();
+        // }
     }
 
 
