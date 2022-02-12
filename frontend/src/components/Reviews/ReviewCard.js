@@ -22,9 +22,10 @@ const ReviewCard = ({ review, editable }) => {
         setRenderForm(true);
     }
 
+
     return (
         <div className="review-card-div">
-            <p className="review-details"> {review.User?.username} | Rating: {review.rating}</p>
+             <p className="review-details"> {review.User.username} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
             {userOwns && (<div>
                 <div className="review-buttons">

@@ -45,8 +45,9 @@ const validateCreateSpot = [
         .withMessage("Please provide the full state name."),
     check('zipcode')
         .exists({ checkFalsy: true })
+        .withMessage("Please provide a zipcode.")
         .isLength({ min: 5 })
-        .withMessage("Please provide a zipcode."),
+        .withMessage("Please provide a zipcode of at least 5 digits."),
     check('country')
         .exists({ checkFalsy: true })
         .withMessage("Please provide the country where your listing is located")

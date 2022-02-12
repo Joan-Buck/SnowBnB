@@ -41,7 +41,10 @@ router.post('/',
         }
 
         const newReview = await Review.create({ content: content, rating: rating, userId: userId, spotId: spotId });
-        const review = await Review.findByPk(newReview.id)
+        const review = await Review.findByPk(newReview.id, {
+            include: [User, Spot]
+        })
+        console.log(review)
         return res.json({ review })
     })
 )
@@ -60,7 +63,9 @@ router.put('/:reviewId',
             spotId
         }
 
-        const review = await Review.findByPk(reviewId)
+        const review = await Review.findByPk(reviewId, {
+            include: [User, Spot]
+        })
 
         await review.update({ ...editedReviewData })
 
