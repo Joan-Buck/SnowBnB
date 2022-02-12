@@ -6,6 +6,11 @@ button {
     color: white;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .form-errors {
     color: red;
     font-style: italic;

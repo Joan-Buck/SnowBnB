@@ -89,9 +89,6 @@ const reviewReducer = (state = initialState, action) => {
             delete reviews[action.reviewId]
             return { ...state, reviews }
         }
-
-
-
         default:
             return state
     }

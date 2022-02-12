@@ -23,9 +23,8 @@ const Navigation = ({ isLoaded }) => {
             <>
                 <div className='auth-buttons'>
                     <LoginFormModal />
-                    <NavLink to={'/signup'}>Sign Up</NavLink>
+                    <NavLink className={'signup-link'} to={'/signup'}>Sign Up</NavLink>
                 </div>
-
             </>
         )
     }
@@ -36,11 +35,13 @@ const Navigation = ({ isLoaded }) => {
                 <ul className='navbar-list'>
                     <li className='navbar-li'>
                         <div className="home-link">
-                            <NavLink exact to={'/'}>SnowBnB</NavLink>
+                            <NavLink exact to={'/spots'}>SnowBnB</NavLink>
                         </div>
-                        {isLoaded && sessionLinks}
-
                     </li>
+                    <li className='navbar-sessionlinks'>
+                        {isLoaded && sessionLinks}
+                    </li>
+
                 </ul>
             </div>
         </>
