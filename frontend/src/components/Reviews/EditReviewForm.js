@@ -49,7 +49,7 @@ const EditReviewForm = ({ review, hideForm }) => {
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                    <select name='rating' required onSelect={(e) => setRating(e.target.value)}>
+                    <select name='rating' required onChange={(e) => setRating(e.target.value)}>
                         <option value=''>
                             Please add a rating...
                         </option>

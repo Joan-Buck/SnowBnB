@@ -20,6 +20,9 @@ router.post('/',
         console.log(req.body)
 
         const { content, rating, spotId } = req.body;
+        console.log(req.body)
+        console.log('===========', rating)
+
         const userId = req.user.id
 
         const newReviewData = {
@@ -46,6 +49,8 @@ router.put('/:reviewId',
             userId,
             spotId
         }
+
+        console.log(editedReviewData)
 
         const review = await Review.findByPk(reviewId)
 
