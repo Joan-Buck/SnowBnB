@@ -66,11 +66,10 @@ const EditSpotForm = ({spot}) => {
                 </ul>
 
                 <label
-                    htmlFor="name">
+                    htmlFor="name">Listing Name
                     <input
                         type="text"
                         name="name"
-                        placeholder="Name your listing..."
                         value={name}
                         onChange={(e) => setName(e.target.value)}
 
@@ -78,11 +77,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="description">
+                    htmlFor="description">Description
                     <input
                         type="textarea"
                         name="description"
-                        placeholder="Describe your listing..."
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
 
@@ -91,11 +89,10 @@ const EditSpotForm = ({spot}) => {
                 </label>
 
                 <label
-                    htmlFor="address">
+                    htmlFor="address">Address
                     <input
                         type="text"
                         name="address"
-                        placeholder="Address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
 
@@ -103,11 +100,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="city">
+                    htmlFor="city">City
                     <input
                         type="text"
                         name="city"
-                        placeholder="City"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
 
@@ -115,11 +111,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="state">
+                    htmlFor="state">State
                     <input
                         type="text"
                         name="state"
-                        placeholder="State"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
 
@@ -127,22 +122,20 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="zipcode">
+                    htmlFor="zipcode">Zipcode
                     <input
                         type="text"
                         name="zipcode"
-                        placeholder="Zip Code"
                         value={zipcode}
                         onChange={(e) => setZipcode(e.target.value)}
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="country">
+                    htmlFor="country">Country
                     <input
                         type="text"
                         name="country"
-                        placeholder="Country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
 
@@ -150,11 +143,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="price">
+                    htmlFor="price">Price Per Night
                     <input
                         type="number"
                         name="price"
-                        placeholder="Price per night"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
 
@@ -162,11 +154,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="bedrooms">
+                    htmlFor="bedrooms">Number of Bedrooms
                     <input
                         type="number"
                         name="bedrooms"
-                        placeholder="Number of Bedrooms"
                         value={bedrooms}
                         onChange={(e) => setBedrooms(e.target.value)}
 
@@ -174,11 +165,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="number">
+                    htmlFor="number">Number of Bathrooms
                     <input
                         type="number"
                         name="bathrooms"
-                        placeholder="Number of Bathrooms"
                         value={bathrooms}
                         onChange={(e) => setBathrooms(e.target.value)}
 
@@ -186,11 +176,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="guests">
+                    htmlFor="guests">Number of Guests
                     <input
                         type="number"
                         name="guests"
-                        placeholder="Number of Guests"
                         value={guests}
                         onChange={(e) => setGuests(e.target.value)}
 
@@ -198,11 +187,10 @@ const EditSpotForm = ({spot}) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="imageURL">
+                    htmlFor="imageURL">Image URL
                     <input
                         type="text"
                         name="imageURL"
-                        placeholder="Image URL"
                         value={imageURL}
                         onChange={(e) => setImageURL(e.target.value)}
                     >

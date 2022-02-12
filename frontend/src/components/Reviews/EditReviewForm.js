@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editReviewThunk } from '../../store/reviews';
+import './ReviewForm.css';
 
 const EditReviewForm = ({ review, hideForm }) => {
     const dispatch = useDispatch()
@@ -48,7 +49,6 @@ return (
                 <input
                     type="textarea"
                     name="content"
-                    placeholder="Please write your review here..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 >

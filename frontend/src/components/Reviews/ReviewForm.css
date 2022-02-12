@@ -1,0 +1,19 @@
+.review-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+input {
+    border-radius: 10px;
+    border: 1px gray solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -1,7 +1,6 @@
 
 
 .login-form-div {
-    /* border: 1px black solid; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -25,7 +24,6 @@ input {
     padding: 0;
     margin-left: 0;
     margin-right: 0;
-    /* width: 50%; */
 }
 
 .errors-list {
