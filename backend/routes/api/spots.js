@@ -56,7 +56,7 @@ const validateCreateSpot = [
         .exists({ checkFalsy: true })
         .withMessage("Please provide a price per night.")
         .isDecimal()
-        .withMessage("Please provide a price per night."),
+        .withMessage("Please provide a monetary amount for price per night."),
     check('bedrooms')
         .exists({ checkFalsy: true })
         .withMessage("Please provide the number of bedrooms for your listing.")

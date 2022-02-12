@@ -46,4 +46,9 @@
     border-top: 1px solid rgb(221, 221, 221);
     margin-top: 10%;
     margin-left: 1%;
+    margin-right: 1%;
+}
+
+.review-card-div {
+    border-top: 1px solid rgb(221, 221, 221);
 }

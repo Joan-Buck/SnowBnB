@@ -23,7 +23,7 @@ const ReviewCard = ({ review, editable }) => {
     }
 
     return (
-        <div>
+        <div className="review-card-div">
             <p className="review-details"> {review.User?.username} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
             {userOwns && (<div>

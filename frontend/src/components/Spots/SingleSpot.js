@@ -40,7 +40,7 @@ const SingleSpot = () => {
             </div>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
-                <ReviewListing spotId={spotId} />
+                <ReviewListing spot={spot} />
             </div>
         </div>
 
