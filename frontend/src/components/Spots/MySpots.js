@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SpotCard from './SpotCard';
 import NewSpotForm from './NewSpotForm';
-import { getSpotsThunk, getResortsThunk } from '../../store/spots';
+import { getSpotsThunk } from '../../store/spots';
 
 const MyListing = () => {
     const dispatch = useDispatch();

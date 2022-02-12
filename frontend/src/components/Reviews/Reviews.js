@@ -12,11 +12,11 @@ const ReviewListing = ({spotId}) => {
 
     const reviewsObj = useSelector(state => state.reviews.reviews);
     // TO DO: get username and userId from reviews data
-    console.log('reviewsObj', reviewsObj)
-
     const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spotId);
+    // const userSpot = Object.values(reviewsObj).filter(review => review.User.username === sessionUser.username)
 
-    /* TO DO: filter for reviews by spotId and by userId */
+
+    // console.log('user >', user);
 
     const [renderForm, setRenderForm] = useState(false);
 
@@ -46,7 +46,6 @@ const ReviewListing = ({spotId}) => {
             {renderForm && (
                 <NewReviewForm hideForm={() => setRenderForm(false)} spotId={spotId}/>
             )}
-            {/* TO DO: if there are no reviews for spots, add in comment about no reviews yet */}
             {reviews.map((review) => (
                 <ReviewCard key={review.id} review={review} editable/>
             ))}

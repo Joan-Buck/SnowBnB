@@ -12,7 +12,7 @@ const SingleSpot = () => {
     useEffect(() => {
         dispatch(getSpotThunk(spotId))
     }, [dispatch, spotId])
-    
+
     const spot = useSelector(state => state.spots.spots[spotId])
     const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj);
@@ -24,22 +24,23 @@ const SingleSpot = () => {
 
     return (
         <div className='spot-detail-card'>
-            <h3>{spot.name}</h3>
-            <div className='spot-images-div'>
-                {images?.map((image, i) => (
-                    <img key={`${i}-${image}`} className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
-                ))}
-
+            <div className='spot-details'>
+                <h3>{spot.name}</h3>
+                <div className='spot-images-div'>
+                    {images?.map((image, i) => (
+                        <img key={`${i}-${image}`} className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
+                    ))}
+                </div>
+                <p>{spot.description}</p>
+                <p>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
+                <p>Number of Guests: {spot.guests}</p>
+                <p>Number of Bedrooms: {spot.bedrooms}</p>
+                <p>Number of Bathrooms: {spot.bathrooms}</p>
+                <p>Price: ${spot.price}/night</p>
             </div>
-            <p>{spot.description}</p>
-            <p>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
-            <p>Number of Guests: {spot.guests}</p>
-            <p>Number of Bedrooms: {spot.bedrooms}</p>
-            <p>Number of Bathrooms: {spot.bathrooms}</p>
-            <p>Price: ${spot.price}/night</p>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
-                <ReviewListing spotId={spotId}/>
+                <ReviewListing spotId={spotId} />
             </div>
         </div>
 
@@ -66,9 +67,9 @@ const SpotResort = ({ resort }) => {
 
     return <>
         <p>{resort.name}</p>
+        <a className='resort-url' href={resort.resortURL}>(Resort Website)</a>
         <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
         <div>
-            <a href={resort.resortURL}>(Resort Website)</a>
             <p>Snow Level: {resort.snowLevel}</p>
             <ul className='activities-list'>Activities:
                 {activities?.map((activity) => (

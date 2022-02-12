@@ -75,7 +75,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
             <div className='resort-details'>
                <h3>Nearby Resort(s)</h3>
                 <p>{resName}</p>
-                {/* <a href={resortURL}>(Resort Details)</a> */}
                 <p>Snow Level: {snowLevel}</p>
                 <ul className='activities-list'>Activities:
                     {activities.map((activity) => (

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { render } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
 import EditReviewForm from "./EditReviewForm";
@@ -25,11 +24,9 @@ const ReviewCard = ({ review, editable }) => {
 
     return (
         <div>
-            {/* TO DO: add in username for review */}
-            <p className="review-details"> {review.User.username}  {review.userId} | Rating: {review.rating}</p>
+            <p className="review-details"> {review.User?.username} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
             {userOwns && (<div>
-                {/* only show controls if user owns review */}
                 <div className="review-buttons">
                     <button onClick={showForm}>Edit Review</button>
                 {userOwns && renderForm && (
