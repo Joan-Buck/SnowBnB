@@ -17,7 +17,6 @@ const NewSpotForm = ({ hideForm }) => {
     const [bathrooms, setBathrooms] = useState(1);
     const [guests, setGuests] = useState(0);
     const [imageURL, setImageURL] = useState('');
-    // const [redirect, setRedirect] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
 
 

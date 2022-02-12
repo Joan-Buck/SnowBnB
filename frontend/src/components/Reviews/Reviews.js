@@ -7,6 +7,8 @@ import NewReviewForm from './NewReviewForm';
 
 const ReviewListing = ({spotId}) => {
     const dispatch = useDispatch();
+    const [userOwns, setUserOwns] = useState(false);
+    const sessionUser = useSelector(state => state.session.user);
 
     const reviewsObj = useSelector(state => state.reviews.reviews);
     // TO DO: get out user data from reviews state
@@ -22,6 +24,12 @@ const ReviewListing = ({spotId}) => {
     useEffect(() => {
         dispatch(getReviewsThunk())
     }, [dispatch]);
+
+    // useEffect(() => {
+    //     if (sessionUser?.id === userId) {
+    //         setUserOwns(true)
+    //     }
+    // }, [sessionUser]);
 
     const showForm = (e) => {
         e.preventDefault();
@@ -40,7 +48,7 @@ const ReviewListing = ({spotId}) => {
             )}
             {/* TO DO: if there are no reviews for spots, add in comment about no reviews yet */}
             {reviews.map((review) => (
-                <ReviewCard key={review.id} review={review} />
+                <ReviewCard key={review.id} review={review} editable/>
             ))}
         </div>
     )

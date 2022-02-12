@@ -10,6 +10,7 @@ const EditReviewForm = ({ review, hideForm }) => {
     const [rating, setRating] = useState(review.rating);
     const [userId, setUserId] = useState(review.userId);
     const [spotId, setSpotId] = useState(review.spotId)
+    const [renderForm, setRenderForm] = useState(false);
 
 
     const submitEditReviewForm = async (e) => {
@@ -22,12 +23,11 @@ const EditReviewForm = ({ review, hideForm }) => {
             spotId,
             userId
         }
+     await dispatch(editReviewThunk(editedReview));
 
-        const result = await dispatch(editReviewThunk(editedReview));
-        console.log(result, 'result')
-        if (result) {
+        // if (result) {
             hideForm()
-        }
+        // }
     }
 
 

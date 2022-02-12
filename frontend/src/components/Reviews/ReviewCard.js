@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { render } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
 import EditReviewForm from "./EditReviewForm";
@@ -29,13 +30,13 @@ const ReviewCard = ({ review, editable }) => {
             <p className="review-content">{review.content}</p>
             <div>
                 {/* only show controls if user owns review */}
-                {userOwns && (
                 <div className="review-buttons">
-                    {/* <button>Edit Review</button> */}
+                    <button onClick={showForm}>Edit Review</button>
+                {userOwns && renderForm && (
                     <EditReviewForm review={review} hideForm={() => setRenderForm(false)} />
+                    )}
                     <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
                 </div>
-                 )}
             </div>
         </div>
     )

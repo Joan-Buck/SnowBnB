@@ -49,9 +49,9 @@ const EditSpotForm = ({spot}) => {
         }
         );
 
-        // if (result) {
-        //     // hideForm();
-        // }
+        if (result) {
+            // hideForm();
+        }
     }
 
 

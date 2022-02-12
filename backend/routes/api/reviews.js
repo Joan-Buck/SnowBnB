@@ -50,8 +50,6 @@ router.put('/:reviewId',
             spotId
         }
 
-        console.log(editedReviewData)
-
         const review = await Review.findByPk(reviewId)
 
         await review.update({ ...editedReviewData })
