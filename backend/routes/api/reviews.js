@@ -55,5 +55,15 @@ router.put('/:reviewId',
     })
 )
 
+router.delete('/:reviewId',
+    asyncHandler(async (req, res) => {
+        const { reviewId } = req.params;
+
+        const review = await Review.findByPk(reviewId);
+        review.destroy();
+        return res.json({ id: review.id })
+    })
+)
+
 
 module.exports = router;

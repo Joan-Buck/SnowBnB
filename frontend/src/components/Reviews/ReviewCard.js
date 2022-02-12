@@ -1,23 +1,19 @@
 import React from "react";
-import { useState } from "react";
-import EditReviewForm from "./EditReviewForm";
+import { useDispatch } from "react-redux";
+import { deleteReviewThunk } from "../../store/reviews";
 
-const ReviewCard = ({review, editable}) => {
-    const [userOwns, setUserOwns] = useState(false);
+const ReviewCard = ({review}) => {
+    const dispatch = useDispatch();
 
     return (
         <div>
             {/* TO DO: add in username for review */}
             <p className="review-details"> USERNAME PLACEHOLDER | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
-            {userOwns && editable && (
-                <div className='review-buttons'>
-                    <EditReviewForm review={review} />
-                    <button className='delete-review-button'
-                        // TO DO: add onclick for dispatch(deleteReviewThunk(id))
-                    >Delete Review</button>
-                </div>
-            )}
+            <div>
+                <button>Edit Review</button>
+                <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
+            </div>
         </div>
     )
 }
