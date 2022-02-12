@@ -26,7 +26,7 @@ const ReviewCard = ({ review, editable }) => {
     return (
         <div>
             {/* TO DO: add in username for review */}
-            <p className="review-details"> USERNAME PLACEHOLDER{review.userId} | Rating: {review.rating}</p>
+            <p className="review-details"> {review.User.username}  {review.userId} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
             {userOwns && (<div>
                 {/* only show controls if user owns review */}
