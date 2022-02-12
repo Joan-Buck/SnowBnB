@@ -28,7 +28,7 @@ const ReviewCard = ({ review, editable }) => {
             {/* TO DO: add in username for review */}
             <p className="review-details"> USERNAME PLACEHOLDER{review.userId} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
-            <div>
+            {userOwns && (<div>
                 {/* only show controls if user owns review */}
                 <div className="review-buttons">
                     <button onClick={showForm}>Edit Review</button>
@@ -37,7 +37,7 @@ const ReviewCard = ({ review, editable }) => {
                     )}
                     <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
                 </div>
-            </div>
+            </div>)}
         </div>
     )
 }
