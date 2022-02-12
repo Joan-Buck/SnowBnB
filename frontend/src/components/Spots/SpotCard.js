@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpotThunk } from '../../store/spots';
-import EditSpotForm from './EditSpotForm';
-import { Modal } from '../../context/Modal';
 import './SpotCard.css';
 import EditSpotFormModal from './EditSpotModal';
 
@@ -12,8 +10,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
-    const [renderForm, setRenderForm] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
 

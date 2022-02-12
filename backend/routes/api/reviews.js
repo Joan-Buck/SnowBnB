@@ -44,7 +44,6 @@ router.post('/',
         const review = await Review.findByPk(newReview.id, {
             include: [User, Spot]
         })
-        console.log(review)
         return res.json({ review })
     })
 )

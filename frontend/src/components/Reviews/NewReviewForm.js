@@ -23,7 +23,6 @@ const NewReviewForm = ({hideForm, spotId}) => {
 
         const result = await dispatch(createReviewThunk(newReview))
             .catch(async(res) => {
-                console.log(res)
                 const data = await res.json();
                 if (data && data.errors) setValidationErrors(data.errors)
             })

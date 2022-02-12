@@ -38,10 +38,6 @@ const Navigation = ({ isLoaded }) => {
                         <div className="home-link">
                             <NavLink exact to={'/'}>SnowBnB</NavLink>
                         </div>
-                        {/* <div className="logo">
-                            SnowBnB
-                        </div> */}
-
                         {isLoaded && sessionLinks}
 
                     </li>
