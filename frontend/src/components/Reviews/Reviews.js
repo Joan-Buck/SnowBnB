@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReviewCard from "./ReviewCard";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getReviewsThunk } from '../../store/reviews';
 import NewReviewForm from './NewReviewForm';
 
@@ -11,9 +11,9 @@ const ReviewListing = ({spotId}) => {
     const sessionUser = useSelector(state => state.session.user);
 
     const reviewsObj = useSelector(state => state.reviews.reviews);
-    // TO DO: get out user data from reviews state
-    // const userData = useSelector(state => state.reviews.reviews.User);
-    // console.log(userData)
+    // TO DO: get username and userId from reviews data
+    console.log('reviewsObj', reviewsObj)
+
     const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spotId);
 
     /* TO DO: filter for reviews by spotId and by userId */

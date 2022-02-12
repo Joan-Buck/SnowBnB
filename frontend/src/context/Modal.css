@@ -24,10 +24,6 @@
     width: 50%;
   }
 
-* {
-    font-family: Helvetica;
-}
-
 .login-form-div {
     /* border: 1px black solid; */
     display: flex;
