@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 
@@ -83,7 +83,7 @@ const NewSpotForm = ({ hideForm }) => {
         <div className="spot-form">
             <form className="new-spot-form"
                 onSubmit={submitCreateForm}>
-                <ul className="add-spot-form-errors">
+                <ul className="form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>
                     )}

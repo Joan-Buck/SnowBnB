@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createReviewThunk } from "../../store/reviews";
 
 
@@ -33,7 +33,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
     return (
         <div className="review-form">
             <form className="new-review-form" onSubmit={submitReviewForm}>
-            <ul className="add-review-form-errors">
+            <ul className="form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>
                     )}
@@ -53,7 +53,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                     <select name='rating'  onChange={(e) => setRating(e.target.value)}>
+                     <select name='rating' required onChange={(e) => setRating(e.target.value)}>
                             <option value=''>
                             Please add a rating...
                             </option>

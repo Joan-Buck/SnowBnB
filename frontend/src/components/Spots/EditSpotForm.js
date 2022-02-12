@@ -59,7 +59,7 @@ const EditSpotForm = ({spot}) => {
         <div className="spot-form">
             <form className="new-spot-form"
                 onSubmit={submitEditForm}>
-                <ul className="add-spot-form-errors">
+                <ul className="form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>
                     )}

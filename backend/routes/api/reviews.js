@@ -47,6 +47,7 @@ router.post('/',
 )
 
 router.put('/:reviewId',
+    validateCreateReview,
     asyncHandler(async (req, res) => {
         const { reviewId } = req.params;
 
