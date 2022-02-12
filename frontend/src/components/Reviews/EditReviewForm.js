@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {editReviewThunk} from '../../store/reviews';
+import { editReviewThunk } from '../../store/reviews';
 
-const EditReviewForm = ({ review }) => {
+const EditReviewForm = ({ review, hideForm }) => {
     const dispatch = useDispatch()
 
     const { id } = review
@@ -23,7 +23,11 @@ const EditReviewForm = ({ review }) => {
             userId
         }
 
-    const result = await dispatch(editReviewThunk(editedReview))
+        const result = await dispatch(editReviewThunk(editedReview));
+        console.log(result, 'result')
+        if (result) {
+            hideForm()
+        }
     }
 
 
@@ -45,7 +49,7 @@ const EditReviewForm = ({ review }) => {
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                    <select name='rating' required>
+                    <select name='rating' required onSelect={(e) => setRating(e.target.value)}>
                         <option value=''>
                             Please add a rating...
                         </option>

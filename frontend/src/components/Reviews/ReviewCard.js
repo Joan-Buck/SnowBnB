@@ -7,6 +7,7 @@ const ReviewCard = ({ review, editable }) => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
+    const [renderForm, setRenderForm] = useState(false);
 
     const { id, content, rating, spotId, userId } = review;
 
@@ -16,6 +17,11 @@ const ReviewCard = ({ review, editable }) => {
         }
     }, [sessionUser]);
 
+    const showForm = (e) => {
+        e.preventDefault();
+        setRenderForm(true);
+    }
+
     return (
         <div>
             {/* TO DO: add in username for review */}
@@ -23,11 +29,13 @@ const ReviewCard = ({ review, editable }) => {
             <p className="review-content">{review.content}</p>
             <div>
                 {/* only show controls if user owns review */}
-                {userOwns &&(<div className="review-buttons">
+                {userOwns && (
+                <div className="review-buttons">
                     {/* <button>Edit Review</button> */}
-                    <EditReviewForm review={review} />
+                    <EditReviewForm review={review} hideForm={() => setRenderForm(false)} />
                     <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
-                </div>)}
+                </div>
+                 )}
             </div>
         </div>
     )
