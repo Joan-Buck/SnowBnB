@@ -1,18 +1,33 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
+import EditReviewForm from "./EditReviewForm";
 
-const ReviewCard = ({review}) => {
+const ReviewCard = ({ review, editable }) => {
+    const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const [userOwns, setUserOwns] = useState(false);
+
+    const { id, content, rating, spotId, userId } = review;
+
+    useEffect(() => {
+        if (sessionUser?.id === userId) {
+            setUserOwns(true)
+        }
+    }, [sessionUser]);
 
     return (
         <div>
             {/* TO DO: add in username for review */}
-            <p className="review-details"> USERNAME PLACEHOLDER | Rating: {review.rating}</p>
+            <p className="review-details"> USERNAME PLACEHOLDER{review.userId} | Rating: {review.rating}</p>
             <p className="review-content">{review.content}</p>
             <div>
-                <button>Edit Review</button>
-                <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
+                {/* only show controls if user owns review */}
+                {userOwns &&(<div className="review-buttons">
+                    {/* <button>Edit Review</button> */}
+                    <EditReviewForm review={review} />
+                    <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
+                </div>)}
             </div>
         </div>
     )
