@@ -55,7 +55,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                     <select name='rating' onChange={(e) => setRating(e.target.value)} required>
+                     <select name='rating' onChange={(e) => setRating(e.target.value)} >
                             <option value=''>
                             Please add a rating...
                             </option>

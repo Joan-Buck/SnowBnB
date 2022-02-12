@@ -9,7 +9,11 @@ const ReviewListing = ({spot}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const reviewsObj = useSelector(state => state.reviews.reviews);
-    const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spot.id);
+    const reviews = Object.values(reviewsObj).filter(review => +review.spotId === +spot.id).sort((a, b) => {
+        const aDate = new Date(a.updatedAt)
+        const bDate = new Date(b.updatedAt)
+        return (bDate - aDate)
+    });
     const [renderForm, setRenderForm] = useState(false);
 
 
