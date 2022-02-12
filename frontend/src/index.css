@@ -5,3 +5,12 @@ button {
     background-color: black;
     color: white;
 }
+
+.form-errors {
+    color: red;
+    font-style: italic;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}

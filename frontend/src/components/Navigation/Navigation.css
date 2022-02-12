@@ -9,7 +9,7 @@
 
 }
 
-ul {
+.navbar-list {
     top: 0;
     position: sticky;
     display: flex;
@@ -24,7 +24,7 @@ ul {
     margin: 0;
 }
 
-li {
+.navbar-li {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

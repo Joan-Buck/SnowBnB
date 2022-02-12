@@ -34,8 +34,8 @@ const NewReviewForm = ({hideForm, spotId}) => {
         <div className="review-form">
             <form className="new-review-form" onSubmit={submitReviewForm}>
             <ul className="form-errors">
-                    {validationErrors.length > 0 && validationErrors.map((error) =>
-                        <li key={error}>{error}</li>
+                    {validationErrors.length > 0 && validationErrors.map((error, i) =>
+                        <li key={i}>{error}</li>
                     )}
                 </ul>
             <label
@@ -53,7 +53,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                     <select name='rating' required onChange={(e) => setRating(e.target.value)}>
+                     <select name='rating' onChange={(e) => setRating(e.target.value)}>
                             <option value=''>
                             Please add a rating...
                             </option>

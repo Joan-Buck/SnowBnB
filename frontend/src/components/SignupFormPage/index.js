@@ -40,7 +40,7 @@ const SignUpFormPage = () => {
         <div className='signup-form-div'>
             <form className="signup-form"
                 onSubmit={submit}>
-                <ul className='errors-list'>
+                <ul className='form-errors'>
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>)}
                 </ul>
@@ -52,7 +52,6 @@ const SignUpFormPage = () => {
                     name="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    required
                 />
                 <label>
                     Email
@@ -62,7 +61,6 @@ const SignUpFormPage = () => {
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                 />
                 <label>
                     Password
@@ -72,7 +70,6 @@ const SignUpFormPage = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
                 />
                 <label>
                     Confirm Password
@@ -82,7 +79,6 @@ const SignUpFormPage = () => {
                     name="confirmedPassword"
                     value={confirmPass}
                     onChange={(e) => setConfirmedPass(e.target.value)}
-                    required
                 />
                 <button
                     type="submit"

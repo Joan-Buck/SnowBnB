@@ -20,33 +20,6 @@ const NewSpotForm = ({ hideForm }) => {
     const [validationErrors, setValidationErrors] = useState([]);
 
 
-
-    // useEffect(() => {
-    //     let errors = [];
-    //     if (name.length < 1) errors.push("Please give your new listing a name.");
-    //     if (name.length > 255) errors.push("Names must be no longer than 255 characters.");
-    //     if (description.length < 1) errors.push("Please briefly describe your listing.");
-    //     if (description.length > 255) errors.push("Descriptions must be no longer than 255 characters.");
-    //     if (address.length < 1) errors.push("Please provide a street address for your listing.")
-    //     if (address.length > 100) errors.push("Street addresses must be no longer than 100 characters.");
-    //     if (state.length < 3) errors.push("Please provide the full state name.")
-    //     if (state.length > 50) errors.push("State names must be no longer than 50 characters.");
-    //     if (zipcode.length < 5) errors.push("Please provide a zipcode");
-    //     if (zipcode.length > 15) errors.push("Zip Codes must be no longer than 15 characters.");
-    //     if (country.length < 1) errors.push("Please provide the country where your listing is located");
-    //     if (country.length > 50) errors.push("Countries must be no longer than 50 characters.");
-    //     if (price < 1) errors.push("Please provide a price per night.");
-    //     // no price restriction for upper limit, DB limits to decimal (6,2)
-    //     if (bedrooms < 1) errors.push("Please provide the number of bedrooms for your listing.");
-    //     if (bathrooms < 1) errors.push("Please provide the number of bathrooms for your listing.");
-    //     if (guests < 1) errors.push("Please confirm the number of guests your listing can host.");
-    //     if (imageURL.length < 1) errors.push("Please provide an image URL to display on your listing.");
-    //     setValidationErrors(errors);
-
-    // }, [name, description, address, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL])
-
-
-
     const submitCreateForm = async (e) => {
         e.preventDefault();
 
@@ -83,12 +56,13 @@ const NewSpotForm = ({ hideForm }) => {
         <div className="spot-form">
             <form className="new-spot-form"
                 onSubmit={submitCreateForm}>
-                <ul className="form-errors">
-                    {validationErrors.length > 0 && validationErrors.map((error) =>
-                        <li key={error}>{error}</li>
-                    )}
-                </ul>
-
+                <div className="form-errors">
+                    <ul className="errors-list">
+                        {validationErrors.length > 0 && validationErrors.map((error, i) =>
+                            <li key={i}>{error}</li>
+                        )}
+                    </ul>
+                </div>
                 <label
                     htmlFor="name">
                     <input

@@ -38,8 +38,8 @@ return (
     <div className="review-form">
         <form className="new-review-form" onSubmit={submitEditReviewForm}>
         <ul className="form-errors">
-                    {validationErrors.length > 0 && validationErrors.map((error) =>
-                        <li key={error}>{error}</li>
+                    {validationErrors.length > 0 && validationErrors.map((error, i) =>
+                        <li key={i}>{error}</li>
                     )}
                 </ul>
             <label

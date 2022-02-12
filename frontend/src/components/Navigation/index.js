@@ -33,8 +33,8 @@ const Navigation = ({ isLoaded }) => {
     return (
         <>
             <div className='navbar'>
-                <ul>
-                    <li>
+                <ul className='navbar-list'>
+                    <li className='navbar-li'>
                         <div className="home-link">
                             <NavLink exact to={'/'}>SnowBnB</NavLink>
                         </div>
