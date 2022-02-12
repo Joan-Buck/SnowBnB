@@ -8,6 +8,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
 
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(1);
+    const [validationErrors, setValidationErrors] = useState([]);
 
     const submitReviewForm = async(e) => {
         e.preventDefault();
@@ -19,6 +20,10 @@ const NewReviewForm = ({hideForm, spotId}) => {
         }
 
         const result = await dispatch(createReviewThunk(newReview))
+            .catch(async(res) => {
+                const data = await res.json();
+                if (data && data.errors) setValidationErrors(data.errors)
+            })
 
         if (result) {
             hideForm()
@@ -28,6 +33,11 @@ const NewReviewForm = ({hideForm, spotId}) => {
     return (
         <div className="review-form">
             <form className="new-review-form" onSubmit={submitReviewForm}>
+            <ul className="add-review-form-errors">
+                    {validationErrors.length > 0 && validationErrors.map((error) =>
+                        <li key={error}>{error}</li>
+                    )}
+                </ul>
             <label
                     htmlFor="content">
                         Review Your Stay
@@ -37,13 +47,13 @@ const NewReviewForm = ({hideForm, spotId}) => {
                         placeholder="Please write your review here..."
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
-                        required
+
                     >
                     </input>
                 </label>
                 <label
                     htmlFor="rating"> Rate Your Stay
-                     <select name='rating' required onChange={(e) => setRating(e.target.value)}>
+                     <select name='rating'  onChange={(e) => setRating(e.target.value)}>
                             <option value=''>
                             Please add a rating...
                             </option>

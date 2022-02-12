@@ -74,7 +74,9 @@ const validateCreateSpot = [
         .withMessage("Please confirm the number of guests your listing can host"),
     check('imageURL')
         .exists({ checkFalsy: true })
-        .withMessage("Please provide an image URL to display on your listing."),
+        .withMessage("Please provide an image URL to display on your listing.")
+        .isLength({max: 255})
+        .withMessage("URLs must be no longer than 255 characters."),
     handleValidationErrors
 ]
 

@@ -71,9 +71,7 @@ const NewSpotForm = ({ hideForm }) => {
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setValidationErrors(data.errors)
-
-            }
-            );
+            });
 
         if (result) {
             hideForm();

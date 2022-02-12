@@ -15,22 +15,31 @@ router.get('/',
     })
 )
 
+const validateCreateReview = [
+    check('content')
+        .exists({ checkFalsy: true })
+        .withMessage("Please submit a review.")
+        .isLength({ max: 255 })
+        .withMessage("Reviews must be no longer than 255 characters."),
+    check('rating')
+        .exists({ checkFalsy: true })
+        .withMessage("Please rate your stay.")
+        .isNumeric()
+        .withMessage("Ratings must be 1-5."),
+        handleValidationErrors
+]
+
 router.post('/',
+    validateCreateReview,
     asyncHandler(async (req, res) => {
-        console.log(req.body)
-
         const { content, rating, spotId } = req.body;
-        console.log(req.body)
-        console.log('===========', rating)
-
         const userId = req.user.id
-
         const newReviewData = {
             content,
             rating,
             spotId
         }
-        // add in spot Id to newReview create
+
         const newReview = await Review.create({ content: content, rating: rating, userId: userId, spotId: spotId });
         const review = await Review.findByPk(newReview.id)
         return res.json({ review })
