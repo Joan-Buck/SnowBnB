@@ -29,8 +29,8 @@ const SingleSpot = () => {
                 <p className='spot-description'>{spot.description}</p>
                 <div className='spot-images-div'>
                     {images?.map((image, i) => (
-                        <div className='spot-img-container'>
-                            <img key={`${i}-${image}`} className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
+                        <div key={`${i}-${image}`} className='spot-img-container'>
+                            <img  className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
                         </div>
                     ))}
                 </div>

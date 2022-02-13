@@ -38,8 +38,8 @@ const ReviewListing = ({spot}) => {
             {renderForm && (
                 <NewReviewForm hideForm={() => setRenderForm(false)} spotId={spot.id}/>
             )}
-            {reviews.map((review) => (
-                <div className='single-review-container'>
+            {reviews.map((review, i) => (
+                <div key={`${i}`} className='single-review-container'>
 
                 <ReviewCard key={review.id} review={review} editable/>
                 </div>
