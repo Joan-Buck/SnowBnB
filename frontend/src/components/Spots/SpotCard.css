@@ -16,13 +16,6 @@
     margin-left: 10px;
 }
 
-/* .resort-details {
-    display: flex;
-    flex-direction: row;
-    width: 30%;
-    padding: 0;
-    margin: auto;
-} */
 
 .resort-activities-container {
     margin-top: 5px;
@@ -36,8 +29,6 @@
 }
 
 .main-spot-img {
-    /* width: 10%;
-    height: 10%; */
     border-radius: 10px;
     width: 30%;
     height: 80%;
