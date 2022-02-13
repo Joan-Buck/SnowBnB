@@ -68,14 +68,14 @@ const LoginForm = () => {
                 />
                 <button
                     type="submit"
-                    className='login-button'>
+                    className='login-button-modal'>
                     Log In
                 </button>
                 <button
                     type="submit"
                     className='login-demo-user-button'
                     onClick={click}>
-                    Log In as Demo User
+                    Demo Login
                 </button>
             </form>
         </div>
