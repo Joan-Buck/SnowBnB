@@ -1,76 +1,33 @@
+Instructions below for how to run this app on your local machine.
 
-# Create React App Template
+1. Clone this repo.
+* `git clone git@github.com:Joan-Buck/SnowBnB.git`
 
-A no-frills template from which to create React applications with
-[Create React App](https://github.com/facebook/create-react-app).
+2. Install dependencies in the `snowbnb` root directory.
+* `npm install`
 
-```sh
-npx create-react-app my-app --template @appacademy/simple --use-npm
-```
+3. Create a user in POSTGRESQL with password and create database attributes.
+* `CREATE USER <username> WITH CREATEDB PASSWORD <password>;`
 
-## Available Scripts
+4. Create a .env file in the backend directory based on the .env.example found within that directory.
 
-In the project directory, you can run:
+5. In your .env file, enter your database username, database password, desired database name, secure combination of characters for your JWT_SECRET, and your desired PORT (5000 recommended). JWT_EXPIRES_IN can be the same as it is in the .env.example file.
 
-### `npm start`
+6. Add the following proxy to your package.json file within your frontend directory, matching the 5000 port in the PORT configuration found in your .env file.
+* `"proxy":"http://localhost:5000"`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+7. Create the Database in your backend directory.
+* `npx dotenv sequelize db:create`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+8. Migrate and Seed the models for your database in your backend directory.
+* `npx dotenv sequelize db:migrate`
+* `npx dotenv sequelize db:seed:all`
 
-### `npm test`
+9. Start the server in the backend directory.
+* `npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+10. Start the server in the frontend. This should open the app in the default browser. If not, go to http://localhost:3000.
+* `npm start`
 
-### `npm run build`
+11. You can either create a new account or log in as the Demo User to use SnowBnB!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
