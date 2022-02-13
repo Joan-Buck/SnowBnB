@@ -25,18 +25,18 @@ const SingleSpot = () => {
     return (
         <div className='spot-detail-card'>
             <div className='spot-details'>
-                <h3>{spot.name}</h3>
+                <h3 className='spot-name'>{spot.name}</h3>
+                <p className='spot-description'>{spot.description}</p>
                 <div className='spot-images-div'>
                     {images?.map((image, i) => (
                         <img key={`${i}-${image}`} className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
                     ))}
                 </div>
-                <p>{spot.description}</p>
-                <p>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
-                <p>Number of Guests: {spot.guests}</p>
-                <p>Number of Bedrooms: {spot.bedrooms}</p>
-                <p>Number of Bathrooms: {spot.bathrooms}</p>
-                <p>Price: ${spot.price}/night</p>
+                <p className='spot-address'>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
+                <p className='spot-numbers'>Number of Guests: {spot.guests}</p>
+                <p className='spot-numbers'>Number of Bedrooms: {spot.bedrooms}</p>
+                <p className='spot-numbers'>Number of Bathrooms: {spot.bathrooms}</p>
+                <p className='spot-price'>Price: ${spot.price}/night</p>
             </div>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
@@ -49,7 +49,7 @@ const SingleSpot = () => {
 
 const SpotResorts = ({ resorts }) => {
     return <div className='resort-details'>
-        <h3>Nearby Resort(s)</h3>
+        <h3 className='resort-header'>Nearby Resort(s)</h3>
         {resorts.map(resort => <SpotResort key={resort.id} resort={resort} />)}
     </div>
 }
@@ -66,11 +66,11 @@ const SpotResort = ({ resort }) => {
     if (resort.apresSki) activities.push('Apres Ski');
 
     return <>
-        <p>{resort.name}</p>
+        <p className='resort-name'>{resort.name}</p>
         <a className='resort-url' href={resort.resortURL}>(Resort Website)</a>
         <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
         <div>
-            <p>Snow Level: {resort.snowLevel}</p>
+            <p className='resort-snow'>Snow Level: {resort.snowLevel}</p>
             <ul className='activities-list'>Activities:
                 {activities?.map((activity) => (
                     <li key={activity}>{activity}</li>

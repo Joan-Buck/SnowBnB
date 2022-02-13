@@ -4,13 +4,14 @@ import EditSpotForm from './EditSpotForm';
 
 function EditSpotFormModal({ spot }) {
     const [showModal, setShowModal] = useState(false);
-
+    const [renderForm, setRenderForm] = useState(false);
+    
     return (
         <>
             <button onClick={() => setShowModal(true)}>Update Listing</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditSpotForm spot={spot} />
+                    <EditSpotForm spot={spot} hideForm={() => setRenderForm(false)}/>
                 </Modal>
             )}
         </>

@@ -7,6 +7,8 @@
     height: 50%;
     align-self: center;
     margin: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .spot-detail-card {
@@ -21,14 +23,15 @@
 
 .spot-details {
     width: 100%;
-
+    margin-bottom: 40px;
 }
 .resort-details {
+    border-top: 1px solid rgb(221, 221, 221);
     width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /* margin: auto; */
+    margin: auto;
 
 }
 
@@ -36,10 +39,11 @@
     width: 50%;
     height: 50%;
     margin: auto;
+    box-shadow: 0 2px 5px 0 lightgray;
 }
 
-.resort-url {
-    /* align-self: center; */
+.spot-img-list {
+    box-shadow: 0 2px 5px 0 lightgray;
 }
 
 .reviews-div {
@@ -51,4 +55,24 @@
 
 .review-card-div {
     border-top: 1px solid rgb(221, 221, 221);
+}
+
+.spot-numbers {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-price {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-description {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-address {
+    margin: 3px;
+    font-size: 14px;
 }

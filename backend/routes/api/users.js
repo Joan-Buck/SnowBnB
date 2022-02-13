@@ -15,7 +15,7 @@ const validateSignup = [
         .exists({checkFalsy: true})
         .withMessage('Please provide an email.')
         .isEmail()
-        .withMessage('Please provide a valid email.'),
+        .withMessage('Please provide a valid email format.'),
     check('username')
         .exists({checkFalsy: true})
         .withMessage('Please provide a username.')

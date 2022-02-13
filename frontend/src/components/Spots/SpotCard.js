@@ -57,27 +57,17 @@ const SpotCard = ({ spot, resorts, editable }) => {
         <div className='spot-card'>
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
-                <h3>{name}</h3>
+                <h3 className='spot-name'>{name}</h3>
                {sessionUser && ( <NavLink className='details-link' to={`/spots/${id}`}
                 >
                     Listing Details
                 </NavLink>)}
-                <p>{description}</p>
-                <p>{city}, {state}, {country}</p>
-                <p>Number of Guests: {guests}</p>
-                <p>Number of Bedrooms: {bedrooms}</p>
-                <p>Number of Bathrooms: {bathrooms}</p>
-                <p>Price: ${price}/night</p>
+                <p className='spot-description'>{description}</p>
+                <p className='spot-location'>{city}, {state}, {country}</p>
             </div>
             <div className='resort-details'>
-               <h3>Nearby Resort(s)</h3>
-                <p>{resName}</p>
-                <p>Snow Level: {snowLevel}</p>
-                <ul className='activities-list'>Activities:
-                    {activities.map((activity) => (
-                        <li key={activity}>{activity}</li>
-                    ))}
-                </ul>
+               <h3 className='resort-header'>Nearby Resort(s)</h3>
+                <p className='resort-name'>{resName}</p>
             </div>
             {userOwns && editable && (
                 <div className='spot-buttons'>

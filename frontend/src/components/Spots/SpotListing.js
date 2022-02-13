@@ -21,7 +21,7 @@ const SpotListing = () => {
     return (
         <div>
             {user && (
-                <NavLink to={'/my-listings'}>My Listings</NavLink>
+                <NavLink className={'my-listings-link'} to={'/my-listings'}>My Listings</NavLink>
             )}
             {spots.map((spot) => (
                 <SpotCard key={spot.id} spot={spot} resorts={resorts} editable/>
