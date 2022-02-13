@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { editSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 
-const EditSpotForm = ({spot, hideForm}) => {
+const EditSpotForm = ({spot, closeModal}) => {
     const { id } = spot
     const dispatch = useDispatch();
     const [name, setName] = useState(spot.name);
@@ -46,11 +46,10 @@ const EditSpotForm = ({spot, hideForm}) => {
             const data = await res.json();
             if (data && data.errors) setValidationErrors(data.errors)
 
-        }
-        );
+        });
 
         if (result) {
-            hideForm();
+            closeModal()
         }
     }
 

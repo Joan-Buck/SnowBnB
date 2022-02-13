@@ -7,7 +7,8 @@
     width: 100%;
     justify-content: center;
     font-size: 14px;
-    margin-bottom: 30px;
+    margin: 30px auto;
+    /* margin-bottom: 30px; */
 }
 
 form {
@@ -43,12 +44,12 @@ input {
     cursor: pointer;
 }
 
-.login-demo-user-button {
+/* .login-demo-user-button {
     border-radius: 10px;
     margin: 5px;
     background-color: black;
     color: white;
-}
+} */
 
 /* .navbar-sessionlinks {
     color: pink

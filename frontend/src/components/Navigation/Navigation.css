@@ -53,5 +53,7 @@
 
 .auth-buttons {
     display: flex;
-    font-size: 13px;
+    font-size: 12px;
+    align-items: center;
+    width: 10%;
 }

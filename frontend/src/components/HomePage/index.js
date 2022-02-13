@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <div className='home-page'>
             <Link className='spots-link' to={'/spots'}>Explore the snow...</Link>
-            <img src='https://www.skimag.com/wp-content/uploads/2021/05/SKAK_16.jpg?width=1999' alt='Ski Resort' />
+            <img className='home-image' src='https://www.skimag.com/wp-content/uploads/2021/05/SKAK_16.jpg?width=1999' alt='Ski Resort' />
         </div>
     )
 }
