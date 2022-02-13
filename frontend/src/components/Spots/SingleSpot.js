@@ -24,7 +24,7 @@ const SingleSpot = () => {
 
     return (
         <div className='spot-detail-card'>
-            <div className='spot-details'>
+            <div className='spot-details-div'>
                 <h3 className='spot-name'>{spot.name}</h3>
                 <p className='spot-description'>{spot.description}</p>
                 <div className='spot-images-div'>
@@ -52,7 +52,9 @@ const SingleSpot = () => {
 const SpotResorts = ({ resorts }) => {
     return <div className='resort-details'>
         <h3 className='resort-header'>Nearby Resort(s)</h3>
-        {resorts.map(resort => <SpotResort key={resort.id} resort={resort} />)}
+        <div>
+            {resorts.map(resort => <SpotResort key={resort.id} resort={resort} />)}
+        </div>
     </div>
 }
 
@@ -67,19 +69,25 @@ const SpotResort = ({ resort }) => {
     if (resort.snowshoeing) activities.push('Snowshoeing');
     if (resort.apresSki) activities.push('Apres Ski');
 
-    return <>
-        <p className='resort-name'>{resort.name}</p>
-        <a className='resort-url' href={resort.resortURL}>(Resort Website)</a>
-        <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
-        <div>
-            <p className='resort-snow'>Snow Level: {resort.snowLevel}</p>
-            <ul className='activities-list'>Activities:
-                {activities?.map((activity) => (
-                    <li key={activity}>{activity}</li>
-                ))}
-            </ul>
-        </div>
-    </>
+    return (
+        <>
+            <div className='top-resort-details-container'>
+                <p className='resort-name'>{resort.name}</p>
+                <a className='resort-url' href={resort.resortURL}>(Resort Website)</a>
+                <p className='resort-snow'>Snow Level: {resort.snowLevel}</p>
+            </div>
+            <div className='resort-img-container'>
+                <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
+            </div>
+            <div className='resort-activities-container'>
+                <ul className='activities-list'>Activities:
+                    {activities?.map((activity) => (
+                        <li key={activity}>{activity}</li>
+                    ))}
+                </ul>
+            </div>
+        </>
+    )
 }
 
 

@@ -1,5 +1,6 @@
 .spot-card {
-
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
@@ -11,20 +12,27 @@
 .spot-details {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 80%;
     margin-left: 10px;
 }
 
-.resort-details {
+/* .resort-details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 30%;
     padding: 0;
     margin: auto;
+} */
+
+.resort-activities-container {
+    margin-top: 5px;
 }
 
 .activities-list {
     display: inline;
+    list-style: inside;
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 .main-spot-img {
@@ -48,10 +56,17 @@
 
 .resort-header {
     font-size: 20px;
-
 }
 
 .my-listings-link {
     text-decoration: underline;
     padding-top: 20px;
+}
+
+.resort-name {
+    margin: 3px;
+}
+
+.resort-snow {
+    margin: 3px;
 }

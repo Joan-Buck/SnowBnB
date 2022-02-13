@@ -23,7 +23,7 @@ const Navigation = ({ isLoaded }) => {
             <>
                 <div className='auth-buttons'>
                     <LoginFormModal />
-                    <NavLink className={'signup-link'} to={'/signup'}>Sign Up</NavLink>
+                    <NavLink className='signup-link' to={'/signup'}>Sign Up</NavLink>
                 </div>
             </>
         )
