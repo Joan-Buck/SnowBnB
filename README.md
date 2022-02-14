@@ -1,4 +1,14 @@
-Instructions below for how to run this app on your local machine.
+###SnowBnB is an app for rental listings near mountain resorts with snow-related activities. In order to run SnowBnB on your local machine, follow the instructions below.
+
+#Technologies Used
+* Javascript
+* Express
+* React
+* Redux
+* Sequelize
+* PostgreSQL
+* CSS
+* Heroku
 
 1. Clone this repo with the following terminal command:
     `git clone git@github.com:Joan-Buck/SnowBnB.git`
@@ -6,7 +16,7 @@ Instructions below for how to run this app on your local machine.
 2. Install dependencies in the `snowbnb` root directory with the following terminal command:
     `npm install`
 
-3. Create a user in POSTGRESQL with password and create database attributes with the following psql command:
+3. Create a user in PostgrSQL with password and create database attributes with the following psql command:
     `CREATE USER <username> WITH CREATEDB PASSWORD <password>;`
 
 4. Create a .env file in the backend directory based on the .env.example found within that directory.
