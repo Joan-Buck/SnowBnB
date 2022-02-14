@@ -1,4 +1,4 @@
-SnowBnB is an app for rental listings near mountain resorts with snow-related activities. In order to run SnowBnB on your local machine, follow the instructions below.
+[SnowBnB](url) is an app for rental listings near mountain resorts with snow-related activities. In order to run SnowBnB on your local machine, follow the instructions below.
 
 Technologies Used
 * Javascript
@@ -30,8 +30,8 @@ Technologies Used
     `npx dotenv sequelize db:create`
 
 8. Migrate and Seed the models for your database in your backend directory with the following terminal commands:
-    `npx dotenv sequelize db:migrate`
-    `npx dotenv sequelize db:seed:all`
+   First: `npx dotenv sequelize db:migrate`
+   Second: `npx dotenv sequelize db:seed:all`
 
 9. Start the server in the backend directory with the following terminal command:
     `npm start`
