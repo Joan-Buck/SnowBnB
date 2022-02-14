@@ -1,4 +1,4 @@
-SnowBnB is an app for rental listings near mountain resorts with snow-related activities. In order to run SnowBnB on your local machine, follow the instructions below.
+[SnowBnB](url) is an app for rental listings near mountain resorts with snow-related activities. In order to run SnowBnB on your local machine, follow the instructions below.
 
 Technologies Used
 * Javascript
