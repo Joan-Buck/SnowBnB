@@ -1,0 +1,26 @@
+.listings-container {
+    margin-top: 30px;
+    width: 100vw;
+}
+
+.title-container {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-text {
+    margin:auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.spot-card-container{
+  width: 90%;
+  margin: 50px auto;
+}
+
+.my-listings-link:hover {
+    font-weight: 600;
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
+import './SpotListing.css';
 
 const SpotListing = () => {
     const dispatch = useDispatch();
@@ -19,12 +20,17 @@ const SpotListing = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className={'listings-container'}>
+            <div className='title-container'>
+                <div className='title-text'>All Rentals</div>
             {user && (
-                <NavLink className={'my-listings-link'} to={'/my-listings'}>My Listings</NavLink>
-            )}
+                <NavLink className={'my-listings-link'} to={'/my-listings'}>View My Listings</NavLink>
+                )}
+            </div>
             {spots.map((spot) => (
-                <SpotCard key={spot.id} spot={spot} resorts={resorts} editable/>
+                <div className={'spot-card-container'}>
+                    <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
+                </div>
             ))}
         </div>
     )
