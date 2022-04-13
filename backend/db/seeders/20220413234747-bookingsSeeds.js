@@ -14,6 +14,7 @@ module.exports = {
         userId: 1,
         startDate: new Date('May 17, 2022 12:00:00'),
         endDate: new Date('May 20, 2022 12:00:00'),
+        numGuests: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -22,6 +23,7 @@ module.exports = {
         userId: 1,
         startDate: new Date('April 24, 2022 12:00:00'),
         endDate: new Date('April 25, 2022 12:00:00'),
+        numGuests: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -30,6 +32,7 @@ module.exports = {
         userId: 1,
         startDate: new Date('June 10, 2022 12:00:00'),
         endDate: new Date('June 17, 2022 12:00:00'),
+        numGuests: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
