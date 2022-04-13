@@ -14,7 +14,7 @@ function HomePage() {
                     <a href='https://www.linkedin.com/in/joan-buck/' target="_blank" rel="noopener noreferrer" className={'footer-link'}>
                         <BsLinkedin />
                     </a>
-                    <a href='https://github.com/Joan-Buck/capstone-project' target="_blank" rel="noopener noreferrer" className={'footer-link'}>
+                    <a href='https://github.com/Joan-Buck/SnowBnB' target="_blank" rel="noopener noreferrer" className={'footer-link'}>
                         <BsGithub />
                     </a>
                 </div>
