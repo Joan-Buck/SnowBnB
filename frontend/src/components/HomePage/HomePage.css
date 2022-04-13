@@ -46,7 +46,7 @@
 
   .footer-link {
     text-decoration: none;
-    color: gray;
+    color: black;
     padding: 1px 6px;
     display: flex;
     flex-direction: row-reverse;
@@ -54,5 +54,5 @@
   }
 
   .footer-link:hover {
-    color: black;
+    color: gray;
   }
