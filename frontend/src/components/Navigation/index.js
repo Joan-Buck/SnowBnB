@@ -35,7 +35,7 @@ const Navigation = ({ isLoaded }) => {
                 <ul className='navbar-list'>
                     <li className='navbar-li'>
                         <div className="home-link">
-                            <NavLink exact to={'/spots'}>SnowBnB</NavLink>
+                            <NavLink exact to={'/'}>SnowBnB</NavLink>
                         </div>
                     </li>
                     <li className='navbar-sessionlinks'>
