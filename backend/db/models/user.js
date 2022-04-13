@@ -11,17 +11,17 @@ module.exports = (sequelize, DataTypes) => {
         len: [4, 30],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
-            throw new Error ('Cannot be an email.');
+            throw new Error('Cannot be an email.');
           }
         }
       }
     },
-    email:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [3, 256]
-        }
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 256]
+      }
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: {exclude: ['hashedPassword']}
+        attributes: { exclude: ['hashedPassword'] }
       },
       loginUser: {
         attributes: {}
@@ -46,21 +46,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  User.prototype.toSafeObject = function() {
-    const {id, username, email} = this;
-    return {id, username, email};
+  User.prototype.toSafeObject = function () {
+    const { id, username, email } = this;
+    return { id, username, email };
   };
 
-  User.prototype.validatePassword = function(password) {
+  User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString())
   };
 
-  User.getCurrentUserById = async function(id) {
+  User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
   };
 
-  User.login = async function ({credential, password}) {
-    const {Op} = require('sequelize');
+  User.login = async function ({ credential, password }) {
+    const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function({username, email, password}) {
+  User.signup = async function ({ username, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
@@ -86,8 +86,9 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.Spot, {foreignKey: "userId"})
-    User.hasMany(models.Review, {foreignKey: "userId"})
+    User.hasMany(models.Spot, { foreignKey: "userId" })
+    User.hasMany(models.Review, { foreignKey: "userId" })
+    User.hasMany(models.Booking, { foreignKey: "userId" })
   };
   return User;
 };
