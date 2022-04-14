@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Joan-Buck/SnowBnB/issues"
   },
-  "homepage": "https://github.com/Joan-Buck/SnowBnB#readme"
+  "homepage": "https://github.com/Joan-Buck/SnowBnB#readme",
+  "dependencies": {
+    "dayjs": "^1.11.0"
+  }
 }

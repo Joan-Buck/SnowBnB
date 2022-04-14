@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { getBookingsThunk, deleteBookingThunk } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
-// import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 
 const MyBookings = () => {
@@ -31,8 +31,8 @@ const MyBookings = () => {
                     {bookings.map((booking, i) => (
                         <div key={i}>
                             <div>Spot ID: {booking.spotId}</div>
-                            <div>Starting {booking.startDate}</div>
-                            <div>Ending{booking.endDate}</div>
+                            <div>Starting {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
+                            <div>Ending {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
                             <div>Num Guests{booking.numGuests}</div>
                             <button onClick={() => dispatch(deleteBookingThunk(booking.id))}>DELETE</button>
                         </div>
