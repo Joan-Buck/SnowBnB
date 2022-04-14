@@ -46,7 +46,7 @@ const SingleSpot = () => {
                         <p className='spot-price'>Price: ${spot.price}/night</p>
                     </div>
                     <div className={'booking-form-container'}>
-                        <BookingForm />
+                        <BookingForm spot={spot} sessionUser={sessionUser}/>
                     </div>
                 </div>
             </div>
