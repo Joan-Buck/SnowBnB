@@ -9,14 +9,16 @@ const MyBookings = () => {
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const sessionUser = useSelector(state => state.session.user);
     const bookings = Object.values(bookingsObj).filter(booking => +booking.userId === sessionUser.id)
+    // let spots = [];
+    // bookings.forEach(booking => spots.push(booking.Spot))
+    // console.log('=======', spots)
+
+    // const filteredSpots = spots.filter(spot => +booking.spotId === spot.id)
 
     useEffect(() => {
         dispatch(getBookingsThunk())
     }, [dispatch])
 
-    // <div className="reviewDate">
-// {dayjs(review.createdAt).format("MMM YYYY")}
-// </div>
 
     return (
         <div className={'bookings-container'}>
@@ -30,11 +32,11 @@ const MyBookings = () => {
                 <div>
                     {bookings.map((booking, i) => (
                         <div key={i}>
-                            <div>Spot ID: {booking.spotId}</div>
-                            <div>Starting {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
-                            <div>Ending {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
-                            <div>Num Guests{booking.numGuests}</div>
-                            <button onClick={() => dispatch(deleteBookingThunk(booking.id))}>DELETE</button>
+                            <div>{booking.Spot.name}</div>
+                            <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
+                            <div>Ending: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
+                            <div>Num Guests: {booking.numGuests}</div>
+                            <button onClick={() => dispatch(deleteBookingThunk(booking.id))}>Delete</button>
                         </div>
 
                     ))}
