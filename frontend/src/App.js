@@ -8,6 +8,7 @@ import * as sessionActions from './store/session';
 import SpotListing from './components/Spots/SpotListing';
 import MyListing from './components/Spots/MySpots';
 import SingleSpot from './components/Spots/SingleSpot';
+import MyBookings from './components/Bookings/MyBookings';
 import { getResortsThunk } from './store/spots';
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path={'/my-listings'}>
             <MyListing />
+          </Route>
+          <Route path={'/my-bookings'}>
+            <MyBookings />
           </Route>
         </Switch>
       )}

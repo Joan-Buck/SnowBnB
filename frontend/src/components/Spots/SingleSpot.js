@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSpotThunk } from '../../store/spots';
 import ReviewListing from '../Reviews/Reviews';
+import BookingForm from '../Bookings/BookingForm';
 import './SingleSpot.css'
 
 const SingleSpot = () => {
@@ -25,20 +26,29 @@ const SingleSpot = () => {
     return (
         <div className='spot-detail-card'>
             <div className='spot-details-div'>
-                <h3 className='spot-name'>{spot.name}</h3>
-                <p className='spot-description'>{spot.description}</p>
+                <div className='spot-title-info-container'>
+                    <h3 className='spot-name'>{spot.name}</h3>
+                    <p className='spot-description'>{spot.description}</p>
+                </div>
                 <div className='spot-images-div'>
                     {images?.map((image, i) => (
                         <div key={`${i}-${image}`} className='spot-img-container'>
-                            <img  className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
+                            <img className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
                         </div>
                     ))}
                 </div>
-                <p className='spot-address'>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
-                <p className='spot-numbers'>Number of Guests: {spot.guests}</p>
-                <p className='spot-numbers'>Number of Bedrooms: {spot.bedrooms}</p>
-                <p className='spot-numbers'>Number of Bathrooms: {spot.bathrooms}</p>
-                <p className='spot-price'>Price: ${spot.price}/night</p>
+                <div>
+                    <div className={'spot-details-container'}>
+                        <p className='spot-address'>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
+                        <p className='spot-numbers'>Number of Guests: {spot.guests}</p>
+                        <p className='spot-numbers'>Number of Bedrooms: {spot.bedrooms}</p>
+                        <p className='spot-numbers'>Number of Bathrooms: {spot.bathrooms}</p>
+                        <p className='spot-price'>Price: ${spot.price}/night</p>
+                    </div>
+                    <div className={'booking-form-container'}>
+                        <BookingForm />
+                    </div>
+                </div>
             </div>
             <SpotResorts resorts={nearbyResorts} />
             <div className='reviews-div'>
