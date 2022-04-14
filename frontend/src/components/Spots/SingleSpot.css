@@ -1,3 +1,16 @@
+.spot-detail-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: rgb(248, 244, 244);
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 2px 5px 0 lightgray;
+}
+
+
 .spot-images-div {
     display: flex;
     flex-direction: row;
@@ -12,21 +25,32 @@
     justify-content: space-around;
 }
 
-.spot-detail-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 40px;
-    background-color: rgb(248, 244, 244);
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    box-shadow: 0 2px 5px 0 lightgray;
-}
 
 .spot-details-div {
     width: 100%;
     margin-left: 10px;
+}
+
+
+
+.spot-numbers {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-price {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-description {
+    margin: 3px;
+    font-size: 14px;
+}
+
+.spot-address {
+    margin: 3px;
+    font-size: 14px;
 }
 
 .resort-details {
@@ -89,25 +113,7 @@
     font-size: 14px;
 }
 
-.spot-numbers {
-    margin: 3px;
-    font-size: 14px;
-}
 
-.spot-price {
-    margin: 3px;
-    font-size: 14px;
-}
-
-.spot-description {
-    margin: 3px;
-    font-size: 14px;
-}
-
-.spot-address {
-    margin: 3px;
-    font-size: 14px;
-}
 
 /* .single-review-container {
     /* color: red; */
