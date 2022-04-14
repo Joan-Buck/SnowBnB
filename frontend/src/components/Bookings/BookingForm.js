@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createBookingThunk, getBookingsThunk } from '../../store/bookings';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import './BookingForm.css';
 
 const BookingForm = ({spot, sessionUser}) => {
     // TO DO: add in dispatches
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
-    const [available, setAvailable] = useState('disabled');
+    const [available, setAvaible] = useState('')
+    const [disable, setDisabled] = useState('disabled');
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const bookings = Object.values(bookingsObj).filter(booking => +booking.spotId === spot.id)
 
@@ -25,7 +26,7 @@ const BookingForm = ({spot, sessionUser}) => {
     }, [])
 
     useEffect(() => {
-        endDate ? setAvailable(false) : setAvailable('disabled')
+        endDate ? setDisabled(false) : setDisabled('disabled')
     }, [endDate])
 
 
@@ -55,7 +56,7 @@ const BookingForm = ({spot, sessionUser}) => {
             />
             </div>
             <div>
-                <button disabled={available} onClick={handleBooking}>Reserve Stay</button>
+                <button disabled={disable} onClick={handleBooking} className={disable ? 'inactiveBtn' : 'activeBtn'}>Reserve Stay</button>
             </div>
         </div>
     )
