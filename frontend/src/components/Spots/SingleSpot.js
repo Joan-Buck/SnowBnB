@@ -9,7 +9,7 @@ import './SingleSpot.css'
 const SingleSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
-
+    const sessionUser = useSelector(state => state.session.user);
     useEffect(() => {
         dispatch(getSpotThunk(spotId))
     }, [dispatch, spotId])

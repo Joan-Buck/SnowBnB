@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_BOOKINGS = 'bookings/loadBookings';
-const LOAD_BOOKING = 'bookings/loadBookings';
+const LOAD_BOOKING = 'booking/loadBooking';
 const DELETE_BOOKING = 'bookings/deleteBookings';
 
 export const loadBookings = (bookings) => {
@@ -28,6 +28,7 @@ export const getBookingsThunk = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log('get data', data)
         dispatch(loadBookings(data.bookings))
     }
     return response;
@@ -48,7 +49,8 @@ export const createBookingThunk = (booking) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadBooking(data.booking));
+        console.log('====', data)
+        dispatch(loadBooking(data));
         return data.booking
     }
 }

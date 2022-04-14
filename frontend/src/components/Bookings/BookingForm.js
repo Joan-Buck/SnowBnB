@@ -16,10 +16,17 @@ const BookingForm = ({spot, sessionUser}) => {
       setEndDate(end);
     };
 
-    const handleBooking = () => {
+    const handleBooking = async () => {
         const newBooking = {
-
+            userId: sessionUser.id,
+            spotId: spot.id,
+            startDate,
+            endDate,
+            numGuests: 2
         }
+
+         dispatch(createBookingThunk(newBooking))
+
     }
 
     return (
