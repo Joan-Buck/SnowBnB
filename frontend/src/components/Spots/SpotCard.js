@@ -4,21 +4,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpotThunk } from '../../store/spots';
 import './SpotCard.css';
 import EditSpotFormModal from './EditSpotModal';
-
+import { Modal } from '../../context/Modal';
+import GuestBookingsModal from './GuestBookingsModal';
+import { getBookingsThunk } from '../../store/bookings';
 
 const SpotCard = ({ spot, resorts, editable }) => {
     const sessionUser = useSelector(state => state.session.user);
+    const bookingsObj = useSelector(state => state.bookings.bookings);
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
-
+    const [showModal, setShowModal] = useState(false);
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
+    // GET ALL BOOKINGS AND FILTER WHERE bookin = sessionUser.id
+    const bookedListings = Object.values(bookingsObj).filter(booking => booking.spotId === spot.id);
 
     useEffect(() => {
         if (sessionUser?.id === userId) {
             setUserOwns(true)
         }
     }, [sessionUser]);
+
+    useEffect(() => {
+        dispatch(getBookingsThunk())
+    }, [dispatch])
 
     const images = spot.SpotImages ?? []
     const nearbyResorts = resorts.filter((resort) => resort.state === spot.state);
@@ -58,7 +67,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
             {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3 className='spot-name'>{name}</h3>
-               {sessionUser && ( <NavLink className='details-link' to={`/spots/${id}`}
+                {sessionUser && (<NavLink className='details-link' to={`/spots/${id}`}
                 >
                     Listing Details
                 </NavLink>)}
@@ -66,7 +75,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
                 <p className='spot-location'>{city}, {state}, {country}</p>
             </div>
             <div className='resort-details'>
-               <h3 className='resort-header'>Nearby Resort(s)</h3>
+                <h3 className='resort-header'>Nearby Resort(s)</h3>
                 <p className='resort-name'>{resName}</p>
             </div>
             {userOwns && editable && (
@@ -75,8 +84,15 @@ const SpotCard = ({ spot, resorts, editable }) => {
                     <button className='delete-spot-button'
                         onClick={() => dispatch(deleteSpotThunk(id))}
                     >Delete Listing</button>
+                    <GuestBookingsModal bookings={bookedListings} />
                 </div>
             )}
+
+            {/* {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <GuestBookingsModal setShowModal={setShowModal} bookings={bookedListings} />
+                </Modal>
+            )} */}
         </div>
     )
 }

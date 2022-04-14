@@ -1,0 +1,6 @@
+.guest-bookings-container {
+    height: 100%;
+    width: 100%;
+    background-color: aqua;
+    z-index: 1000;
+}
