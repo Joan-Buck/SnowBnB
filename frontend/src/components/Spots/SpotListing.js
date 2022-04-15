@@ -34,8 +34,8 @@ const SpotListing = () => {
             <div className={'listings-map-container'}>
                 <div className={'listings-container'}>
                     {spots.map((spot) => (
-                        <div key={spot.id} className={'spot-card-container'} onMouseEnter={(e) => setHoveredSpot(spots[e.target.id])}
-                        onMouseLeave={(e) => {setHoveredSpot(null)}}>
+                        <div key={spot.id} className={'spot-card-container'} onMouseEnter={(e) => setHoveredSpot(spot)}
+                        onMouseLeave={(e) => setHoveredSpot(null)}>
                             <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
                         </div>
                     ))}
