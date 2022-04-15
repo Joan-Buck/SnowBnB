@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Joan-Buck/SnowBnB#readme",
   "dependencies": {
+    "@react-google-maps/api": "^2.8.1",
     "dayjs": "^1.11.0",
     "react-datepicker": "^4.7.0"
   }

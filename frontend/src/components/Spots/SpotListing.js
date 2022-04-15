@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
+import MapContainer from '../Maps';
 import './SpotListing.css';
 
 const SpotListing = () => {
@@ -35,8 +36,9 @@ const SpotListing = () => {
                         </div>
                     ))}
                 </div>
-                <div className={'map-container'}>
-                    MAP
+                 <div className={'map-container'}>
+                     MAP
+                    <MapContainer />
                 </div>
             </div>
         </div>

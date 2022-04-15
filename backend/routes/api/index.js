@@ -5,6 +5,7 @@ const spotsRouter = require('./spots.js');
 const resortsRouter = require('./resorts.js');
 const reviewsRouter = require('./reviews.js');
 const bookingsRouter = require('./bookings.js');
+const mapsRouter = require('./maps');
 const {restoreUser} =  require('../../utils/auth');
 
 
@@ -17,5 +18,6 @@ router.use(restoreUser);
 router.use('/spots', spotsRouter);
 router.use('/reviews', reviewsRouter);
 router.use('/bookings', bookingsRouter);
+router.use('/maps', mapsRouter);
 
 module.exports = router;
