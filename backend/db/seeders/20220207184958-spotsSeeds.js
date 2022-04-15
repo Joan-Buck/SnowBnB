@@ -22,6 +22,8 @@ module.exports = {
         bedrooms: 1,
         bathrooms: 1,
         guests: 3,
+        latitude: 45.28474756488971,
+        longitude:-111.40162602631477,
         createdAt: new Date(),
         updatedAt: new Date()
     },
@@ -38,6 +40,8 @@ module.exports = {
         bedrooms: 1,
         bathrooms: 1.5,
         guests: 4,
+        latitude: 45.287389526012966,
+        longitude: -111.39951244580288,
         createdAt: new Date(),
         updatedAt: new Date()
 
@@ -55,6 +59,8 @@ module.exports = {
         bedrooms: 4,
         bathrooms: 4,
         guests: 10,
+        latitude: 43.48706029402663,
+        longitude: -110.76180779392936,
         createdAt: new Date(),
         updatedAt: new Date()
     },
@@ -71,6 +77,8 @@ module.exports = {
         bedrooms: 2,
         bathrooms: 1,
         guests: 4,
+        latitude: 50.07010246479342,
+        longitude: -122.94664464168874,
         createdAt: new Date(),
         updatedAt: new Date()
     },
@@ -87,6 +95,8 @@ module.exports = {
         bedrooms: 2,
         bathrooms: 2,
         guests: 6,
+        latitude: 39.358375885805756,
+        longitude: -120.25769252243825,
         createdAt: new Date(),
         updatedAt: new Date()
 
@@ -104,8 +114,8 @@ module.exports = {
         bedrooms: 2,
         bathrooms: 2,
         guests: 4,
-        // latitude: 38.9399, // N
-        // longitude: 119.9772, // W
+        latitude: 38.95276809755906,
+        longitude: -119.95671399813749,
         createdAt: new Date(),
         updatedAt: new Date()
 
@@ -123,6 +133,8 @@ module.exports = {
          bedrooms: 2,
          bathrooms: 2,
          guests: 6,
+         latitude: 36.59622092811703,
+         longitude: -105.44972572610129,
          createdAt: new Date(),
          updatedAt: new Date()
 
@@ -140,6 +152,8 @@ module.exports = {
          bedrooms: 1,
          bathrooms: 1,
          guests: 3,
+         latitude: 36.59550080496814,
+         longitude: -105.45070666953873,
          createdAt: new Date(),
          updatedAt: new Date()
 
@@ -157,6 +171,8 @@ module.exports = {
          bedrooms: 3,
          bathrooms: 2,
          guests: 8,
+         latitude: 39.48730281476924,
+         longitude: -106.06693141949629,
          createdAt: new Date(),
          updatedAt: new Date()
 
@@ -175,6 +191,8 @@ module.exports = {
          bedrooms: 2,
          bathrooms: 2,
          guests: 4,
+         latitude: 39.59245162902008,
+         longitude: -106.09341967818354,
          createdAt: new Date(),
          updatedAt: new Date()
     }
