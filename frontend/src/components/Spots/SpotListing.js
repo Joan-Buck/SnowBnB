@@ -36,9 +36,8 @@ const SpotListing = () => {
                         </div>
                     ))}
                 </div>
-                 <div className={'map-container'}>
-                     MAP
-                    <MapContainer />
+                 <div className={'map-container'} >
+                    <MapContainer spots={spots}/>
                 </div>
             </div>
         </div>
