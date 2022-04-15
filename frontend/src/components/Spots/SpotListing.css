@@ -1,6 +1,6 @@
-.listings-container {
+.all-listings-container {
     margin-top: 30px;
-    width: 100vw;
+
 }
 
 .title-container {
@@ -10,17 +10,36 @@
     align-items: center;
 }
 
+.listings-map-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.listings-container {
+    margin-bottom: 50px;
+    width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 .title-text {
     margin:auto;
     font-size: 24px;
     font-weight: bold;
 }
 
-.spot-card-container{
+/* .spot-card-container{
   width: 90%;
   margin: 50px auto;
-}
+} */
 
 .my-listings-link:hover {
     font-weight: 600;
+}
+
+.map-container {
+    background-color: gray;
+    width: 50%;
 }

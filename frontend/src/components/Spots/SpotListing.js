@@ -20,18 +20,25 @@ const SpotListing = () => {
     }, [dispatch]);
 
     return (
-        <div className={'listings-container'}>
+        <div className={'all-listings-container'}>
             <div className='title-container'>
                 <div className='title-text'>All Rentals</div>
-            {user && (
-                <NavLink className={'my-listings-link'} to={'/my-listings'}>View My Listings</NavLink>
+                {user && (
+                    <NavLink className={'my-listings-link'} to={'/my-listings'}>View My Listings</NavLink>
                 )}
             </div>
-            {spots.map((spot) => (
-                <div className={'spot-card-container'}>
-                    <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
+            <div className={'listings-map-container'}>
+                <div className={'listings-container'}>
+                    {spots.map((spot) => (
+                        <div className={'spot-card-container'}>
+                            <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
+                        </div>
+                    ))}
                 </div>
-            ))}
+                <div className={'map-container'}>
+                    MAP
+                </div>
+            </div>
         </div>
     )
 }
