@@ -1,0 +1,32 @@
+.search-bar-container {
+    display: flex;
+
+}
+.search-bar-form {
+    display: flex;
+}
+
+.search-start-date {
+    background-color: gray;
+    height: 50px;
+    width: 100px;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    /* border-radius: 25px; */
+}
+
+.search-start-date:hover {
+    /* background-color:#EBEBEB; */
+}
+
+#date-range-picker {
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+}

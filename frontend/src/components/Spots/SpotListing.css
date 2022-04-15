@@ -25,6 +25,10 @@
     height: 100vh;
 }
 
+.listings-container::-webkit-scrollbar {
+    display: none;
+}
+
 
 .title-text {
     margin:auto;

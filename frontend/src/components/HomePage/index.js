@@ -2,11 +2,15 @@ import React from 'react';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
 import { BsLinkedin, BsGithub } from "react-icons/bs";
+import SearchBar from '../Search/SearchBar';
 
 function HomePage() {
 
     return (
         <div className={'home-component'}>
+            <div className={'home-search'}>
+                <div className={'search-container'}><SearchBar /></div>
+            </div>
             <NavLink className={'home-spots-link'} to={'/spots'}>
                 <div className={'home-banner-div'}>
                     <div className={'home-banner-img-container'}>
