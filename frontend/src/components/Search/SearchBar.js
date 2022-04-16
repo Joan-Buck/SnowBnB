@@ -43,7 +43,7 @@ const SearchBar = () => {
     }, [state]);
 
     const handleSearch = (e) => {
-
+        // TO DO: add in error handling for location
         history.push(`/search/${location}/${state[0].startDate.toISOString().slice(0, 10)}/${state[0].endDate.toISOString().slice(0, 10)}/${guests}`)
     }
 

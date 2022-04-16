@@ -34,7 +34,7 @@ const Maps = ({ apiKey, spots, hoveredSpot }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={5}>
+          zoom={8}>
           {spots.map((spot) => (
             <Marker position={{ lat: Number(spot.latitude), lng: Number(spot.longitude) }}
               onClick={() => setSelectedSpot(spot)} />

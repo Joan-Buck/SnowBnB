@@ -28,35 +28,35 @@ const SearchResult = () => {
         dispatch(getBookingsThunk())
     }, [dispatch])
 
-        let searchResults;
-        let listingIds = [];
-        let listingsWithBookings = {};
-        let searchSet = new Set();
+    let searchResults;
+    let listingIds = [];
+    let listingsWithBookings = {};
+    let searchSet = new Set();
 
 
-        const filteredResults = spots.map(spot => {
+    const filteredResults = spots.map(spot => {
 
-            if ((location.toLowerCase() === spot.city.toLowerCase() || location.toLowerCase() === spot.state.toLowerCase()) && +spot.guests >= +guests) {
-                if (spot.Bookings.length) {
-                    listingIds.push(spot.id)
-                    listingsWithBookings[spot.id] = spot
-                } else if (spot.Bookings.length === 0) {
-                    searchSet.add(spot)
-                }
+        if ((location.toLowerCase() === spot.city.toLowerCase() || location.toLowerCase() === spot.state.toLowerCase()) && +spot.guests >= +guests) {
+            if (spot.Bookings.length) {
+                listingIds.push(spot.id)
+                listingsWithBookings[spot.id] = spot
+            } else if (spot.Bookings.length === 0) {
+                searchSet.add(spot)
             }
-        })
+        }
+    })
 
-            bookings.forEach(b => {
-                if (listingIds.includes(b.spotId)) {
+    bookings.forEach(b => {
+        if (listingIds.includes(b.spotId)) {
 
-                    if (!(startDate >= b.startDate.slice(0,10) && startDate <= b.endDate.slice(0, 10)
-                        || endDate >= b.startDate.slice(0, 10) && endDate <= b.endDate.slice(0, 10))) {
-                        searchSet.add(listingsWithBookings[b.spotId])
-                    }
-                }
-            });
+            if (!(startDate >= b.startDate.slice(0, 10) && startDate <= b.endDate.slice(0, 10)
+                || endDate >= b.startDate.slice(0, 10) && endDate <= b.endDate.slice(0, 10))) {
+                searchSet.add(listingsWithBookings[b.spotId])
+            }
+        }
+    });
 
-            searchResults = Array.from(searchSet)
+    searchResults = Array.from(searchSet)
 
 
     return (
@@ -66,12 +66,18 @@ const SearchResult = () => {
             </div>
             <div className={'listings-map-container'}>
                 <div className={'listings-container'}>
-                    {searchResults.map((spot) => (
-                        <div key={spot.id} className={'spot-card-container'} onMouseEnter={(e) => setHoveredSpot(spot)}
-                            onMouseLeave={(e) => setHoveredSpot(null)}>
-                            <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
-                        </div>
-                    ))}
+                    {searchResults.length ?
+                        <>
+                            {searchResults.map((spot) => (
+                                <div key={spot.id} className={'spot-card-container'} onMouseEnter={(e) => setHoveredSpot(spot)}
+                                    onMouseLeave={(e) => setHoveredSpot(null)}>
+                                    <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
+                                </div>
+                            ))}
+                        </>
+                        :
+                        <div>No rentals were found matching your search. Please <NavLink className={'search-link'} to={'/'}>search</NavLink> again.</div>
+                    }
                 </div>
                 <div className={'map-container'} >
                     <MapContainer spots={searchResults} hoveredSpot={hoveredSpot} />

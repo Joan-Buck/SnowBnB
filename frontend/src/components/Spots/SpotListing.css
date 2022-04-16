@@ -49,3 +49,11 @@
     /* background-color: gray; */
     width: 50%;
 }
+
+.search-link {
+    font-weight: 600;
+}
+
+.search-link:hover {
+    background-color: #f1ebeb;
+}
