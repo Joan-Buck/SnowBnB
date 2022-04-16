@@ -2,4 +2,34 @@
     background-color: #d8d8dd !important;
     color: black;
     cursor: auto;
+    width: 50%;
+    margin: auto;
+    padding: 5px;
+}
+
+.activeBtn {
+    cursor: auto;
+    width: 50%;
+    padding: 5px;
+    margin: auto;
+}
+
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+}
+
+.react-datepicker {
+    margin: auto;
+}
+.reserve-stay-button-container{
+    width: 100%;
+    display: flex;
+    padding-top: 10px;
+}
+
+.booking-form-select {
+    width: 50%;
+    margin: auto;
+    padding-top: 10px;
 }

@@ -85,7 +85,8 @@ const BookingForm = ({ spot, sessionUser }) => {
 
                 </>
             }
-            <div><DatePicker
+            <div className='date-picker-container'>
+                <DatePicker
                 selected={startDate}
                 onChange={onChange}
                 startDate={startDate}
@@ -94,8 +95,8 @@ const BookingForm = ({ spot, sessionUser }) => {
                 inline
             />
             </div>
-            <Select options={options}></Select>
-            <div>
+            <Select options={options} className='booking-form-select'><label>Guests</label></Select>
+            <div className='reserve-stay-button-container'>
                 <button disabled={disable} onClick={handleBooking} className={disable ? 'inactiveBtn' : 'activeBtn'}>Reserve Stay</button>
             </div>
         </div>
