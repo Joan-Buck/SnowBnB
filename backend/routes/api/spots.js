@@ -2,13 +2,13 @@ const express = require('express');
 const asyncHandler = require('express-async-handler')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Spot, SpotImage, Resort, ResortImage } = require('../../db/models');
+const { Spot, SpotImage, Resort, ResortImage, Booking } = require('../../db/models');
 
 const router = express.Router();
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const spots = await Spot.findAll({ include: { model: SpotImage } });
+        const spots = await Spot.findAll({ include: [SpotImage, Booking]  });
         return res.json({ spots })
     })
 )

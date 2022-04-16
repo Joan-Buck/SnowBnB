@@ -19,9 +19,10 @@
     /* border-radius: 25px; */
 }
 
-.search-start-date:hover {
+/* TO DO: add in hover effect */
+/* .search-start-date:hover {
     /* background-color:#EBEBEB; */
-}
+/* }  */
 
 #date-range-picker {
     height: fit-content;

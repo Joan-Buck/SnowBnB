@@ -10,6 +10,7 @@ import MyListing from './components/Spots/MySpots';
 import SingleSpot from './components/Spots/SingleSpot';
 import MyBookings from './components/Bookings/MyBookings';
 import { getResortsThunk } from './store/spots';
+import SearchResult from './components/Search/SearchResults';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path={'/my-bookings'}>
             <MyBookings />
+          </Route>
+          <Route path={'/search/:location/:startDate/:endDate/:guests'}>
+            <SearchResult />
           </Route>
         </Switch>
       )}
