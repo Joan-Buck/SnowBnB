@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createBookingThunk, getBookingsThunk } from '../../store/bookings';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './BookingForm.css';
+import Select from 'react-select';
 
 const BookingForm = ({ spot, sessionUser }) => {
-    // TO DO: add in dispatches
     const dispatch = useDispatch();
+    const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const [available, setAvailable] = useState(true)
+    const [guests, setGuests] = useState(1);
     const [disable, setDisabled] = useState('disabled');
     const [datesBooked, setDatesBooked] = useState([])
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const bookings = Object.values(bookingsObj).filter(booking => +booking.spotId === spot.id)
+
+    const options = []
+    for (let i = 1; i <= spot.guests; i++) {
+        options.push({ value: `${i}`, label: `${i}` })
+    }
+
+    console.log(options)
 
     useEffect(() => {
         dispatch(getBookingsThunk())
@@ -26,7 +36,7 @@ const BookingForm = ({ spot, sessionUser }) => {
         setStartDate(start);
         setEndDate(end);
     };
-   
+
     useEffect(() => {
         // TO DO: format dates getBookedDates.push(`${dayjs(item.startDate).format("MMM DD, YYYY")} - ${dayjs(item.endDate).format("MMM DD YYYY")}`)
         if (startDate && endDate) {
@@ -61,11 +71,10 @@ const BookingForm = ({ spot, sessionUser }) => {
         }
 
         dispatch(createBookingThunk(newBooking))
-
+        history.push('/my-bookings');
     }
 
     return (
-        // TO DO: add in form
         <div className={'booking-form-container'}>
             {!available &&
                 <>
@@ -85,6 +94,7 @@ const BookingForm = ({ spot, sessionUser }) => {
                 inline
             />
             </div>
+            <Select options={options}></Select>
             <div>
                 <button disabled={disable} onClick={handleBooking} className={disable ? 'inactiveBtn' : 'activeBtn'}>Reserve Stay</button>
             </div>

@@ -24,7 +24,7 @@ const SingleSpot = () => {
     const nearbyResorts = resorts.filter(resort => resort.state === spot.state)
 
     return (
-        <div className='spot-detail-card'>
+        <div className='spot-detail-container'>
             <div className='spot-details-div'>
                 <div className='spot-title-info-container'>
                     <h3 className='spot-name'>{spot.name}</h3>
@@ -37,7 +37,7 @@ const SingleSpot = () => {
                         </div>
                     ))}
                 </div>
-                <div>
+                <div className='spot-details-sub-container'>
                     <div className={'spot-details-info-container'}>
                         <p className='spot-address'>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
                         <p className='spot-numbers'>Number of Guests: {spot.guests}</p>
@@ -83,7 +83,7 @@ const SpotResort = ({ resort }) => {
         <>
             <div className='top-resort-details-container'>
                 <p className='resort-name'>{resort.name}</p>
-                <a className='resort-url' href={resort.resortURL}>(Resort Website)</a>
+                <a className='resort-url' href={resort.resortURL} target="_blank" rel="noopener noreferrer">(Resort Website)</a>
                 <p className='resort-snow'>Snow Level: {resort.snowLevel}</p>
             </div>
             <div className='resort-img-container'>
