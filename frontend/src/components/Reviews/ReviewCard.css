@@ -1,0 +1,17 @@
+
+.review-card-rating {
+    padding-top: 3px;
+    display: flex;
+    padding-left: 3px;
+  }
+
+.fa-solid.fa-star {
+    color: #ffc107;
+
+  }
+
+  .review-details {
+      display: flex;
+      align-items: center;
+      padding-bottom: 5px;
+  }
