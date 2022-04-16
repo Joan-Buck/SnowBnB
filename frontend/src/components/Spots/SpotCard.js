@@ -16,7 +16,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
     const [showModal, setShowModal] = useState(false);
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
-    // GET ALL BOOKINGS AND FILTER WHERE bookin = sessionUser.id
     const bookedListings = Object.values(bookingsObj).filter(booking => booking.spotId === spot.id);
 
     useEffect(() => {
@@ -64,7 +63,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
 
     return (
         <div className='spot-card'>
-            {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
+            {images[0] ? <img className='main-spot-img' src={`${images[1].url}`} alt='Rental'></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3 className='spot-name'>{name}</h3>
                 {sessionUser && (<NavLink className='details-link' to={`/spots/${id}`}
