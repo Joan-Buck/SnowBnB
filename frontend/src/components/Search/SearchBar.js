@@ -79,6 +79,7 @@ const SearchBar = () => {
                                 months={2}
                                 ranges={state}
                                 direction="horizontal"
+                                minDate={new Date()}
                             />
                         </div>
                     }
