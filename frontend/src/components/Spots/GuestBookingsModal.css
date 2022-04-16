@@ -1,4 +1,33 @@
 .guest-bookings-container {
-    background-color: aqua;
-   
+    background-color: white;
+    height: auto;
+    width: 400px;
+}
+
+.guest-bookings-title-container {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.guest-bookings-title {
+    margin:auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.guest-bookings-text {
+    margin: auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.booked-listings-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.bookings-item {
+    margin-bottom: 20px;
 }

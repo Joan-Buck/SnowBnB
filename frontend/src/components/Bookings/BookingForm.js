@@ -36,7 +36,7 @@ const BookingForm = ({ spot, sessionUser }) => {
     };
 
     useEffect(() => {
-        // TO DO: format dates getBookedDates.push(`${dayjs(item.startDate).format("MMM DD, YYYY")} - ${dayjs(item.endDate).format("MMM DD YYYY")}`)
+
         if (startDate && endDate) {
             let getBookedDates = [];
 

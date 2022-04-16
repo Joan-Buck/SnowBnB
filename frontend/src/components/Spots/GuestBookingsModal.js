@@ -12,22 +12,28 @@ function GuestBookingsModal({ bookings }) {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className={'guest-bookings-container'}>
-                        {bookings.length ?
-                            <>
+                        <div className='guest-bookings-title-container'>
                             <div className='guest-bookings-title'>Upcoming Stays</div>
-                                {bookings.map((booking, i) => (
-                                    <div key={i} >
-                                        {/* <div>{booking.Spot.name}</div> */}
-                                        <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
-                                        <div>Ending: {dayjs(booking.endDate).format("MMM DD, YYYY")}</div>
-                                        <div>Num Guests: {booking.numGuests}</div>
-                                    </div>
+                        </div>
+                        <div className='booked-listings-container'>
+                            {bookings.length ?
+                                <>
+                                    <ol>
+                                        {bookings.map((booking, i) => (
+                                            <li key={i} className={'bookings-item'}>
+                                                {/* <div>{booking.Spot.name}</div> */}
+                                                <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
+                                                <div>Ending: {dayjs(booking.endDate).format("MMM DD, YYYY")}</div>
+                                                <div>Num Guests: {booking.numGuests}</div>
+                                            </li>
 
-                                ))}
-                            </>
-                            :
-                            <div className='guest-bookings-title'>There are currently no bookings on this listing.</div>
-                    }
+                                        ))}
+                                    </ol>
+                                </>
+                                :
+                                <div className='guest-bookings-text'>There are currently no bookings on this listing.</div>
+                            }
+                        </div>
                     </div>
                 </Modal>)}
         </>

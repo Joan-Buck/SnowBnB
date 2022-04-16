@@ -27,7 +27,7 @@ const MyBookings = () => {
         <div className={'bookings-container'}>
             <div className={'bookings-title-container'}>
                 <div className={'bookings-title-text'}>
-                    My Bookings
+                    My Upcoming Stays
                 </div>
             </div>
             <div className={'bookings-list-container'}>
@@ -39,7 +39,7 @@ const MyBookings = () => {
                                     <li key={i} className={'my-bookings-item'}>
                                         <NavLink to={`spots/${booking.Spot.id}`} className={'booked-spot-link'}>{booking.Spot.name}</NavLink>
                                         <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
-                                        <div>Ending: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
+                                        <div>Ending: {dayjs(booking.endDate).format("MMM DD, YYYY")}</div>
                                         <div>Number of Guests: {booking.numGuests}</div>
                                         <button onClick={() => dispatch(deleteBookingThunk(booking.id))}>Delete</button>
                                     </li>
@@ -48,7 +48,7 @@ const MyBookings = () => {
                             </ol>
                         </>
                         :
-                        <div className='my-bookings-title'>You don't have any upcoming trips, find one <NavLink className={'spots-link'}to={'/spots'}>here</NavLink>.</div>
+                        <div className='my-bookings-title'>You don't have any upcoming stays, find one <NavLink className={'spots-link'}to={'/spots'}>here</NavLink>.</div>
                     }
                 </div>
 
