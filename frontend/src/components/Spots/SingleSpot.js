@@ -85,7 +85,7 @@ const SpotResort = ({ resort }) => {
             <div className='top-resort-details-container'>
                 <p className='resort-name'>{resort.name}</p>
                 <a className='resort-url' href={resort.resortURL} target="_blank" rel="noopener noreferrer">(Resort Website)</a>
-                <p className='resort-snow'>Snow Level: {resort.snowLevel}</p>
+                {/* <p className='resort-snow'>Snow Level: {resort.snowLevel}</p> */}
             </div>
             <div className='resort-img-container'>
                 <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>

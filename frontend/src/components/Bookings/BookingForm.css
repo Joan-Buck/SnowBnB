@@ -33,3 +33,12 @@
     margin: auto;
     padding-top: 10px;
 }
+
+.booking-form-booked-dates{
+    display: flex;
+    justify-content: center;
+}
+
+.booking-form-booked-date {
+    margin: auto;
+}

@@ -5,7 +5,7 @@ import { createBookingThunk, getBookingsThunk } from '../../store/bookings';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './BookingForm.css';
-import Select from 'react-select';
+import dayjs from 'dayjs';
 
 const BookingForm = ({ spot, sessionUser }) => {
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const BookingForm = ({ spot, sessionUser }) => {
 
                 if (startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
                     || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd) {
-                    getBookedDates.push(`${dateSliceStart} - ${dateSliceEnd}`)
+                    getBookedDates.push(`${dayjs(dateSliceStart).format("MMM DD, YYYY")} - ${dayjs(dateSliceEnd).format("MMM DD, YYYY")}`)
                 }
             })
             setDatesBooked(getBookedDates)
@@ -76,9 +76,9 @@ const BookingForm = ({ spot, sessionUser }) => {
         <div className={'booking-form-container'}>
             {!available &&
                 <>
-                    <div>The following dates are already booked:</div>
+                    <div className='booking-form-booked-dates'>The following dates are already booked:</div>
                     {datesBooked && (datesBooked.map((ele) =>
-                        <div key={ele.id}>{ele}</div>
+                        <div className='booking-form-booked-date' key={ele.id}>{ele}</div>
                     ))}
 
                 </>
