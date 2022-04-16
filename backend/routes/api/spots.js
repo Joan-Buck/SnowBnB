@@ -102,9 +102,8 @@ router.post('/',
             latitude,
             longitude
         }
-        console.log({latitude})
-        console.log({longitude})
-        
+
+
         const newSpot = await Spot.create(newSpotData);
         await SpotImage.create({ spotId: newSpot.id, url: imageURL });
 
@@ -119,7 +118,7 @@ validateCreateSpot,
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
 
-        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
+        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL, latitude, longitude } = req.body;
 
         const editedSpotData = {
             name,
@@ -132,21 +131,21 @@ validateCreateSpot,
             price,
             bedrooms,
             bathrooms,
-            guests
+            guests,
+            latitude,
+            longitude
         }
 
-        // TODO: MAKE UPDATING WORK
+
         const spot = await Spot.findByPk(spotId, { include: SpotImage })
 
-        // TODO: DEBUG THIS -- NEED TO UPDATE THE SPOT IMAGE
-        // delete image and replace it with new image
+
         await spot.update({ ...editedSpotData })
         const spotImage = spot.SpotImages[0]
         if (spotImage) {
             spotImage.update({url: imageURL})
         }
 
-        // await spot.update({ spotId: spot.id, url: imageURL })
 
         return res.json({ spot })
     })
