@@ -68,15 +68,15 @@ const SpotCard = ({ spot, resorts, editable }) => {
                 <h3 className='spot-name'>{name}</h3>
                 {sessionUser && (<NavLink className='details-link' to={`/spots/${id}`}
                 >
-                    Listing Details
+                    See more info...
                 </NavLink>)}
                 <p className='spot-description'>{description}</p>
                 <p className='spot-location'>{city}, {state}, {country}</p>
             </div>
-            <div className='resort-details'>
+            {/* <div className='resort-details'>
                 <h3 className='resort-header'>Nearby Resort(s)</h3>
                 <p className='resort-name'>{resName}</p>
-            </div>
+            </div> */}
             {userOwns && editable && (
                 <div className='spot-buttons'>
                     <EditSpotFormModal spot={spot} />

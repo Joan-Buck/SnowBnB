@@ -1,0 +1,51 @@
+.bookings-container {
+    margin-top: 30px;
+}
+
+.bookings-title-container {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookings-title-text {
+    margin:auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.bookings-list-container {
+    margin-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100vh;
+}
+
+.my-bookings-container {
+    display: flex;
+    justify-content: center;
+}
+
+.my-bookings-item{
+    margin-bottom: 20px;
+}
+
+
+.booked-spot-link {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.booked-spot-link:hover {
+    background-color: #f1ebeb;
+}
+
+.spots-link {
+    font-weight: 600;
+}
+
+.spots-link:hover {
+    background-color: #f1ebeb;
+}
