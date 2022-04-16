@@ -21,7 +21,7 @@ const BookingForm = ({ spot, sessionUser }) => {
 
     const options = []
     for (let i = 1; i <= spot.guests; i++) {
-        options.push({ value: `${i}`, label: `${i}` })
+        options.push(i)
     }
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const BookingForm = ({ spot, sessionUser }) => {
             spotId: spot.id,
             startDate,
             endDate,
-            numGuests: 2
+            numGuests: guests
         }
 
         dispatch(createBookingThunk(newBooking))
@@ -85,16 +85,24 @@ const BookingForm = ({ spot, sessionUser }) => {
             }
             <div className='date-picker-container'>
                 <DatePicker
-                selected={startDate}
-                onChange={onChange}
-                startDate={startDate}
-                endDate={endDate}
-                selectsRange
-                inline
-                minDate={new Date()}
-            />
+                    selected={startDate}
+                    onChange={onChange}
+                    startDate={startDate}
+                    endDate={endDate}
+                    selectsRange
+                    inline
+                    minDate={new Date()}
+                />
             </div>
-            <Select options={options} className='booking-form-select'><label>Guests</label></Select>
+            <label htmlFor='guests'>Guests
+                <select name='numGuests' className='booking-form-select' onChange={(e) => setGuests(e.target.value)}>
+                    {options.map(option => {
+                        return <option value={`${option}`}>
+                            {option}
+                        </option>
+                    })}
+                </select>
+            </label>
             <div className='reserve-stay-button-container'>
                 <button disabled={disable} onClick={handleBooking} className={disable ? 'inactiveBtn' : 'activeBtn'}>Reserve Stay</button>
             </div>
