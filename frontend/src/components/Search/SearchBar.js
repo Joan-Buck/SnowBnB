@@ -44,25 +44,26 @@ const SearchBar = () => {
 
     const handleSearch = (e) => {
 
-            history.push(`/search/${location}/${state[0].startDate.toISOString().slice(0, 10)}/${state[0].endDate.toISOString().slice(0, 10)}/${guests}`)
+        history.push(`/search/${location}/${state[0].startDate.toISOString().slice(0, 10)}/${state[0].endDate.toISOString().slice(0, 10)}/${guests}`)
     }
 
     return (
         <div className={'search-bar-container'}>
             <div className={'search-bar-form'}>
                 <label
+                    className='search-label'
                     htmlFor="location">
                     Location
-                <div className='search-location-text'>
-                    <input
-                        className='search-input'
-                        type="text"
-                        placeholder='Where are you going?'
-                        onChange={(e) => setLocation(e.target.value.toLowerCase())}
-                        value={location}
-                    >
-                    </input>
-                </div>
+                    <div className='search-location-text'>
+                        <input
+                            className='search-input'
+                            type="text"
+                            placeholder='Enter city or state'
+                            onChange={(e) => setLocation(e.target.value.toLowerCase())}
+                            value={location}
+                        >
+                        </input>
+                    </div>
                 </label>
                 <div id="search_check_parent">
                     <div id="search_start_date" onClick={() => setShowPicker(!showPicker)}>
@@ -84,18 +85,20 @@ const SearchBar = () => {
                 </div>
 
                 <label
+                    className='search-guests-label'
                     htmlFor="guests">
                     Guests
-                <div className='search-guests-text'>
-                    <input
-                        type="integer"
-                        name="guests"
-                        placeholder='Guests'
-                        onChange={(e) => setGuests(e.target.value)}
-                        value={guests}
-                    >
-                    </input>
-                </div>
+                    <div className='search-guests-text'>
+                        <input
+                            className='search-input'
+                            type="integer"
+                            name="guests"
+                            placeholder='Guests'
+                            onChange={(e) => setGuests(e.target.value)}
+                            value={guests}
+                        >
+                        </input>
+                    </div>
                 </label>
                 <button type='submit' onClick={handleSearch}>Search</button>
             </div>

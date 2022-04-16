@@ -1,39 +1,96 @@
 .search-bar-container {
     display: flex;
     background-color: rgb(231, 228, 228);
+    /* margin-bottom: 20px; */
 
 }
 .search-bar-form {
     display: flex;
     margin: auto;
-    border: 1px solid black;
-    width: 60%;
-    justify-content: space-around;
+    /* border: 1px solid black; */
+    width: 50%;
+    justify-content: space-between;
+    height: 60px;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 10px;
 
 }
 
-.search-start-date {
-    /* background-color: gray; */
-    border: 1px solid black;
+.search-label {
+    font-weight: 600;
+    font-size: 14px;
+    /* border: 1px solid black; */
     height: 50px;
-    width: 100px;
+    border-radius: 15px;
+    width: 100%;
+    background-color: white;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.search-guests-label {
+    font-weight: 600;
+    font-size: 14px;
+    /* border: 1px solid black; */
+    height: 50px;
+    border-radius: 15px;
+    width: 50%;
+    background-color: white;
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.search-input {
+    height: 30px;
+    width: 90%;
+    padding-left: 5px;
+}
+
+#check_in {
+    font-weight: 600;
+    font-size: 14px;
+
+}
+
+#search_check_parent {
+    height: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#search_start_date {
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 150px;
     position:relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 15px;
+    background-color: white;
 }
 
- .search-start-date:hover {
-    background-color:#EBEBEB;
+#search_start_date:hover {
+    background-color:rgb(169, 165, 165);
  }
 
-#date-range-picker {
+ .search-label:hover {
+    background-color:rgb(169, 165, 165);
+ }
+
+ .search-guests-label:hover {
+    background-color:rgb(169, 165, 165);
+ }
+#date_range_pop_up {
     height: fit-content;
     width: fit-content;
     position: absolute;
-    top: 0;
+    /* top: 0; */
+    margin: auto;
     z-index: 5;
 }
