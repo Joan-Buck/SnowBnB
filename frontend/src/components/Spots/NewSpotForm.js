@@ -15,8 +15,10 @@ const NewSpotForm = ({ hideForm }) => {
     const [price, setPrice] = useState(1);
     const [bedrooms, setBedrooms] = useState(1);
     const [bathrooms, setBathrooms] = useState(1);
-    const [guests, setGuests] = useState(0);
-    const [imageURL, setImageURL] = useState('');
+    const [guests, setGuests] = useState(1);
+    const [latitude, setLatitude] = useState(39.6433);
+    const [longitude, setLongitude] = useState(-106.3781);
+    const [imageURL, setImageURL] = useState('https://www.skimag.com/wp-content/uploads/2009/08/a-unique-modesty.jpg?crop=535:301&width=1070&enable=upscale');
     const [validationErrors, setValidationErrors] = useState([]);
 
 
@@ -37,8 +39,13 @@ const NewSpotForm = ({ hideForm }) => {
             bedrooms,
             bathrooms,
             guests,
-            imageURL
+            imageURL,
+            latitude,
+            longitude
         };
+
+        console.log({latitude})
+        console.log({longitude})
 
         const result = await dispatch(createSpotThunk(newSpot))
             .catch(async (res) => {
@@ -323,12 +330,32 @@ const NewSpotForm = ({ hideForm }) => {
                     </input>
                 </label>
                 <label
-                    htmlFor="imageURL">Image URL
+                    htmlFor="imageURL">Image URL (sample input below)
                     <input
                         type="text"
                         name="imageURL"
                         value={imageURL}
                         onChange={(e) => setImageURL(e.target.value)}
+                    >
+                    </input>
+                </label>
+                <label
+                    htmlFor="latitude">Latitude (sample input below)
+                    <input
+                        type="decimal"
+                        name="latitude"
+                        value={latitude}
+                        onChange={(e) => setLatitude(e.target.value)}
+                    >
+                    </input>
+                </label>
+                <label
+                    htmlFor="longitude">Longitude (sample input below)
+                    <input
+                        type="decimal"
+                        name="longitude"
+                        value={longitude}
+                        onChange={(e) => setLongitude(e.target.value)}
                     >
                     </input>
                 </label>

@@ -9,11 +9,7 @@ const MyBookings = () => {
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const sessionUser = useSelector(state => state.session.user);
     const myBookings = Object.values(bookingsObj).filter(booking => +booking.userId === sessionUser.id)
-    // //  need to filter down to managed spots
-    // const spotsObj = useSelector(state => state.spots.spots);
-    // const mySpots = Object.values(spotsObj).filter(spot => spot.userId === userId)
-    //     // filter on booking.spotId
-    // // const guestBookings = mySpots.filter(booking )
+
 
 
     useEffect(() => {
@@ -29,7 +25,6 @@ const MyBookings = () => {
                 </div>
             </div>
             <div className={'bookings-list-container'}>
-                {/* TO DO: add in map of each booking this user owns, bookings/dates*/}
                 <div className={'my-bookings-container'}>
                     {myBookings.map((booking, i) => (
                         <div key={i}>
@@ -42,7 +37,7 @@ const MyBookings = () => {
 
                     ))}
                 </div>
-             
+
             </div>
         </div>
     )

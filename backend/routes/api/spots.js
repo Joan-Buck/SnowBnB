@@ -74,8 +74,8 @@ const validateCreateSpot = [
         .isNumeric()
         .withMessage("Please confirm the number of guests your listing can host"),
     check('imageURL')
-        .exists({ checkFalsy: true })
-        .withMessage("Please provide an image URL to display on your listing.")
+        // .exists({ checkFalsy: true })
+        // .withMessage("Please provide an image URL to display on your listing.")
         .isLength({max: 255})
         .withMessage("URLs must be no longer than 255 characters."),
     handleValidationErrors
@@ -84,7 +84,7 @@ const validateCreateSpot = [
 router.post('/',
     validateCreateSpot,
     asyncHandler(async (req, res) => {
-        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL } = req.body;
+        const { name, description, address, city, state, zipcode, country, price, bedrooms, bathrooms, guests, imageURL, latitude, longitude } = req.body;
         const userId = req.user.id;
         const newSpotData = {
             name,
@@ -98,9 +98,13 @@ router.post('/',
             bedrooms,
             bathrooms,
             guests,
-            userId
+            userId,
+            latitude,
+            longitude
         }
-
+        console.log({latitude})
+        console.log({longitude})
+        
         const newSpot = await Spot.create(newSpotData);
         await SpotImage.create({ spotId: newSpot.id, url: imageURL });
 

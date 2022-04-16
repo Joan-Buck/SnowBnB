@@ -28,6 +28,8 @@ const Maps = ({ apiKey, spots, hoveredSpot }) => {
     }
   }, [hoveredSpot]);
 
+  // console.log('spot lat', selectedSpot.latitude)
+
   return (
     <>
       {isLoaded && (
