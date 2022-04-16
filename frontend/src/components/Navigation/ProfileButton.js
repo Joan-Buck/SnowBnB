@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
+import './Navigation.css';
 
 const ProfileButton = ({ user }) => {
 
@@ -41,9 +42,11 @@ const ProfileButton = ({ user }) => {
             <div className='dropdown-container'>
                 {showMenu && (
                     <ul className='profile-dropdown'>
-                        <li>{user.username}</li>
-                        <li><NavLink to={'/my-bookings'}>My Bookings</NavLink></li>
-                        <li>
+                        <li className='dropdown-li-name'>Hi, {user.username}!</li>
+                        <li className='dropdown-li'><NavLink to={'/my-spots'}>My Listings</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/spots'}>All Listings</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/my-bookings'}>My Bookings</NavLink></li>
+                        <li className='dropdown-li'>
                             <button onClick={logout}> Log Out</button>
                         </li>
                     </ul>

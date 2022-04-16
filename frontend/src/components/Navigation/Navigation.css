@@ -60,3 +60,19 @@
     align-items: center;
     width: 10%;
 }
+
+.dropdown-li {
+    font-size: 12px;
+    padding-bottom: 7px;
+    padding-left: 2px;
+
+}
+
+.dropdown-li-name {
+    font-size: 12px;
+    padding-bottom: 7px;
+}
+
+.dropdown-li:hover {
+  font-weight: 600;
+}
