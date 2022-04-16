@@ -15,6 +15,10 @@ const MyListing = () => {
     const [renderForm, setRenderForm] = useState(false);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    })
+
+    useEffect(() => {
         dispatch(getSpotsThunk())
     }, [dispatch])
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getSpotsThunk } from '../../store/spots';
@@ -17,11 +17,15 @@ const SpotListing = () => {
     const spots = Object.values(spotsObj)
     const resorts = Object.values(resortsObj)
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
 
     useEffect(() => {
         dispatch(getSpotsThunk())
     }, [dispatch]);
+
+
 
     return (
         <div className={'all-listings-container'}>
@@ -32,13 +36,13 @@ const SpotListing = () => {
                 <div className={'listings-container'}>
                     {spots.map((spot) => (
                         <div key={spot.id} className={'spot-card-container'} onMouseEnter={(e) => setHoveredSpot(spot)}
-                        onMouseLeave={(e) => setHoveredSpot(null)}>
+                            onMouseLeave={(e) => setHoveredSpot(null)}>
                             <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
                         </div>
                     ))}
                 </div>
-                 <div className={'map-container'} >
-                    <MapContainer spots={spots} hoveredSpot={hoveredSpot}/>
+                <div className={'map-container'} >
+                    <MapContainer spots={spots} hoveredSpot={hoveredSpot} />
                 </div>
             </div>
         </div>

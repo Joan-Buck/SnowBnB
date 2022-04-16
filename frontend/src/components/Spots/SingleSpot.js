@@ -10,6 +10,11 @@ const SingleSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
+
     useEffect(() => {
         dispatch(getSpotThunk(spotId))
     }, [dispatch, spotId])
@@ -47,7 +52,7 @@ const SingleSpot = () => {
                         <p className='spot-price'>Price: ${spot.price}/night</p>
                     </div>
                     <div className={'booking-form-container'}>
-                        <BookingForm spot={spot} sessionUser={sessionUser}/>
+                        <BookingForm spot={spot} sessionUser={sessionUser} />
                     </div>
                 </div>
             </div>
