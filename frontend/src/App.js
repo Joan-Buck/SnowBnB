@@ -11,6 +11,7 @@ import SingleSpot from './components/Spots/SingleSpot';
 import MyBookings from './components/Bookings/MyBookings';
 import { getResortsThunk } from './store/spots';
 import SearchResult from './components/Search/SearchResults';
+import ErrorPage from './components/Error/ErrorPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route path={'/search/:location/:startDate/:endDate/:guests'}>
             <SearchResult />
+          </Route>
+          <Route path="*">
+            <ErrorPage />
           </Route>
         </Switch>
       )}
