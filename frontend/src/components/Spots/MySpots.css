@@ -1,0 +1,27 @@
+.my-listings-container {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.title-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.title-text {
+    margin:auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.my-listings-container {
+    margin: auto;
+    width: 90%;
+}

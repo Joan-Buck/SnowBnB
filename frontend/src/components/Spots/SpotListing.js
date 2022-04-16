@@ -27,9 +27,6 @@ const SpotListing = () => {
         <div className={'all-listings-container'}>
             <div className='title-container'>
                 <div className='title-text'>All Rentals</div>
-                {user && (
-                    <NavLink className={'my-listings-link'} to={'/my-listings'}>View My Listings</NavLink>
-                )}
             </div>
             <div className={'listings-map-container'}>
                 <div className={'listings-container'}>

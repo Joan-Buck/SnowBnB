@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SpotCard from './SpotCard';
 import NewSpotForm from './NewSpotForm';
 import { getSpotsThunk } from '../../store/spots';
+import './MySpots.css';
 
 const MyListing = () => {
     const dispatch = useDispatch();
@@ -31,16 +32,26 @@ const MyListing = () => {
     }
 
     return (
-        <div>
-            <button onClick={showForm} className='add-new-spot'>
-                Add a new listing...
-            </button>
-            {renderForm && (
-                <NewSpotForm hideForm={() => setRenderForm(false)} />
-            )}
-            {spots.map((spot) => (
-                <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
-            ))}
+        <div className='my-listings-container'>
+            <div className='title-container'>
+                <div className='title-text'>My Rentals</div>
+            </div>
+            <div className='new-spot-btn-container'>
+                <button onClick={showForm} className='add-new-spot'>
+                    Add a new listing...
+                </button>
+                {renderForm && (
+                    <NewSpotForm hideForm={() => setRenderForm(false)} />
+                )}
+            </div>
+            <div className='my-listings-container'>
+                {spots.map((spot) => (
+                    <div className='spot-card-container'>
+                        <SpotCard key={spot.id} spot={spot} resorts={resorts} editable />
+                    </div>
+                ))}
+
+            </div>
         </div>
     )
 }

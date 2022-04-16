@@ -21,10 +21,9 @@ function GuestBookingsModal({ bookings }) {
                                     <ol>
                                         {bookings.map((booking, i) => (
                                             <li key={i} className={'bookings-item'}>
-                                                {/* <div>{booking.Spot.name}</div> */}
                                                 <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
                                                 <div>Ending: {dayjs(booking.endDate).format("MMM DD, YYYY")}</div>
-                                                <div>Num Guests: {booking.numGuests}</div>
+                                                <div>Number of Guests: {booking.numGuests}</div>
                                             </li>
 
                                         ))}

@@ -43,7 +43,8 @@ const ProfileButton = ({ user }) => {
                 {showMenu && (
                     <ul className='profile-dropdown'>
                         <li className='dropdown-li-name'>Hi, {user.username}!</li>
-                        <li className='dropdown-li'><NavLink to={'/my-spots'}>My Listings</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/'}>Home</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/my-listings'}>My Listings</NavLink></li>
                         <li className='dropdown-li'><NavLink to={'/spots'}>All Listings</NavLink></li>
                         <li className='dropdown-li'><NavLink to={'/my-bookings'}>My Bookings</NavLink></li>
                         <li className='dropdown-li'>
