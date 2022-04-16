@@ -24,8 +24,6 @@ const BookingForm = ({ spot, sessionUser }) => {
         options.push({ value: `${i}`, label: `${i}` })
     }
 
-    console.log(options)
-
     useEffect(() => {
         dispatch(getBookingsThunk())
     }, [])
@@ -93,6 +91,7 @@ const BookingForm = ({ spot, sessionUser }) => {
                 endDate={endDate}
                 selectsRange
                 inline
+                minDate={new Date()}
             />
             </div>
             <Select options={options} className='booking-form-select'><label>Guests</label></Select>

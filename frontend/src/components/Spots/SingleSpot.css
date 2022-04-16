@@ -63,18 +63,18 @@
     height: 50%;
     align-self: center;
     margin-top: 40px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .spot-details-info-container {
     width: 50%;
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .booking-form-container {
     width: 50%;
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .resort-details {
