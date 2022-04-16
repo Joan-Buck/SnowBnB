@@ -1,13 +1,20 @@
 .search-bar-container {
     display: flex;
+    background-color: rgb(231, 228, 228);
 
 }
 .search-bar-form {
     display: flex;
+    margin: auto;
+    border: 1px solid black;
+    width: 60%;
+    justify-content: space-around;
+
 }
 
 .search-start-date {
-    background-color: gray;
+    /* background-color: gray; */
+    border: 1px solid black;
     height: 50px;
     width: 100px;
     position:relative;
@@ -16,13 +23,12 @@
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
-    /* border-radius: 25px; */
+    border-radius: 25px;
 }
 
-/* TO DO: add in hover effect */
-/* .search-start-date:hover {
-    /* background-color:#EBEBEB; */
-/* }  */
+ .search-start-date:hover {
+    background-color:#EBEBEB;
+ }
 
 #date-range-picker {
     height: fit-content;

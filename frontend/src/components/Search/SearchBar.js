@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addDays } from 'date-fns';
 import './SearchBar.css';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import dayjs from "dayjs";
 import { getSpotsThunk } from '../../store/spots';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingsThunk } from '../../store/bookings';
-import { getSearchResultsThunk } from '../../store/search';
+
 
 const SearchBar = () => {
     const history = useHistory();
@@ -43,32 +43,27 @@ const SearchBar = () => {
     }, [state]);
 
     const handleSearch = (e) => {
-        // e.preventDefault();
-        // let searchResults;
-
 
             history.push(`/search/${location}/${state[0].startDate.toISOString().slice(0, 10)}/${state[0].endDate.toISOString().slice(0, 10)}/${guests}`)
-
-
     }
 
     return (
         <div className={'search-bar-container'}>
             <div className={'search-bar-form'}>
-                {/* <label
-                    htmlFor="city">
-                    Location */}
-                <div className='search-guests-text'>
-
+                <label
+                    htmlFor="location">
+                    Location
+                <div className='search-location-text'>
                     <input
+                        className='search-input'
                         type="text"
-                        placeholder='Where do you want to go?'
+                        placeholder='Where are you going?'
                         onChange={(e) => setLocation(e.target.value.toLowerCase())}
                         value={location}
                     >
                     </input>
                 </div>
-                {/* </label> */}
+                </label>
                 <div id="search_check_parent">
                     <div id="search_start_date" onClick={() => setShowPicker(!showPicker)}>
                         <div id="check_in">Select Dates</div>
@@ -88,11 +83,10 @@ const SearchBar = () => {
                     }
                 </div>
 
-                {/* <label
+                <label
                     htmlFor="guests">
-                    Guest */}
+                    Guests
                 <div className='search-guests-text'>
-
                     <input
                         type="integer"
                         name="guests"
@@ -102,7 +96,7 @@ const SearchBar = () => {
                     >
                     </input>
                 </div>
-                {/* </label> */}
+                </label>
                 <button type='submit' onClick={handleSearch}>Search</button>
             </div>
 

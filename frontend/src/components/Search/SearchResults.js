@@ -21,7 +21,6 @@ const SearchResult = () => {
     const resorts = Object.values(resortsObj)
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const bookings = Object.values(bookingsObj)
-    console.log('bookings', bookings)
 
 
     useEffect(() => {
@@ -46,20 +45,6 @@ const SearchResult = () => {
                 }
             }
         })
-        console.log('listingsWBookings', listingsWithBookings)
-            // bookings.forEach(b => {
-            //     if (listingIds.includes(b.spotId)) {
-            //         console.log('startDate', startDate)
-            //         console.log('bookedStartDate', b.startDate.slice(0, 10))
-
-            //         if (!(startDate >= b.startDate.slice(0, 10) && startDate <= b.endDate.slice(0, 10)
-            //             || endDate) >= b.startDate.slice(0, 10) && endDate <= b.endDate.slice(0, 10))
-
-            //             {
-            //             searchSet.add(listingsWithBookings[b.spotId])
-            //         }
-            //     }
-            // });
 
             bookings.forEach(b => {
                 if (listingIds.includes(b.spotId)) {
@@ -70,12 +55,9 @@ const SearchResult = () => {
                     }
                 }
             });
-            console.log('bookings', bookings)
 
             searchResults = Array.from(searchSet)
 
-
-        console.log(searchResults)
 
     return (
         <div className={'all-listings-container'}>
