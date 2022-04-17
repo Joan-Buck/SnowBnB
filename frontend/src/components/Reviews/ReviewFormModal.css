@@ -1,0 +1,93 @@
+.review-form-container {
+    background-color: white;
+    border-radius: 10px;
+    width: 550px;
+    height: 500px;
+    align-content: center;
+}
+
+.review-form-title-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-form-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px;
+    width: 50%;
+    margin: auto;
+  }
+
+  .review-form-errors {
+    color: red;
+    font-size: 12px;
+  }
+
+  .review-form-label {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .review-form-textarea {
+    border-radius: 4px;
+    border: 1px solid rgb(147, 147, 147);
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
+    height: 100px;
+  }
+  .review-form-input {
+    border-radius: 4px;
+    border: 1px solid rgb(147, 147, 147);
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
+    height: 20px;
+  }
+
+  .review-form-select {
+    border-radius: 4px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
+    height: 20px;
+  }
+
+  /* .new-food-truck-form-component-form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+  } */
+
+  .form-button {
+    border-radius: 4px;
+    border: 0;
+    width: 40%;
+    margin-bottom: 10px;
+    color: black;
+    background-color: gray;
+    height: 20px;
+    width: 100%;
+  }
+
+  .form-button:hover {
+    background-color: black;
+    color: gray;
+    font-weight: bold;
+
+    /* border: 1px solid #ea3434; */
+  }

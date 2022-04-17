@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ReviewCard from "./ReviewCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsThunk } from '../../store/reviews';
-import NewReviewForm from './NewReviewForm';
+import NewReviewFormModal from './NewReviewFormModal';
+import './Reviews.css';
 
-
-const ReviewListing = ({spot}) => {
+const ReviewListing = ({ spot }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const reviewsObj = useSelector(state => state.reviews.reviews);
@@ -46,19 +46,19 @@ const ReviewListing = ({spot}) => {
             <div className='reviews-header'>
                 <h3>Reviews</h3>
                 {ratings.length > 0 &&
-                                    <div className='spot-detail-avg-rating'>Average Rating: {averageRating}</div>
-                                }
-                {spot.userId !== sessionUser.id && !userReviewed &&(
-                <button onClick={showForm} className='add-new-review'>Add your review</button>
+                    <div className='spot-detail-avg-rating'>Average Rating: {averageRating}</div>
+                }
+                {spot.userId !== sessionUser.id && !userReviewed && (
+                     <NewReviewFormModal />
                 )}
             </div>
-            {renderForm && (
-                <NewReviewForm hideForm={() => setRenderForm(false)} spotId={spot.id}/>
-            )}
+            {/* {renderForm && ( */}
+
+                {/* // <NewReviewForm hideForm={() => setRenderForm(false)} spotId={spot.id} /> */}
+            {/* )} */}
             {reviews.map((review, i) => (
                 <div key={`${i}`} className='single-review-container'>
-
-                <ReviewCard key={review.id} review={review} editable/>
+                    <ReviewCard key={review.id} review={review} editable />
                 </div>
             ))}
         </div>

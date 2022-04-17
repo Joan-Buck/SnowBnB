@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createReviewThunk } from "../../store/reviews";
 import './ReviewForm.css';
+import './ReviewFormModal.css';
 
 const NewReviewForm = ({hideForm, spotId}) => {
     const dispatch = useDispatch()
@@ -33,27 +34,32 @@ const NewReviewForm = ({hideForm, spotId}) => {
     }
 
     return (
-        <div className="review-form">
-            <form className="new-review-form" onSubmit={submitReviewForm}>
+        <div className="review-form-container">
+             <div className={'review-form-title-container'}>
+                <div className={'review-form-title'}>Review Your Stay!</div>
+            </div>
+            <form className="review-form" onSubmit={submitReviewForm}>
             <ul className="form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error, i) =>
                         <li key={i}>{error}</li>
                     )}
                 </ul>
             <label
-                    htmlFor="content">
+                    htmlFor="content"
+                    className="review-form-texarea">
                         Review Your Stay
-                    <input
-                        type="textarea"
+                    <textarea
                         name="content"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        className='review-form-input'
                     >
-                    </input>
+                    </textarea>
                 </label>
                 <label
-                    htmlFor="rating"> Rate Your Stay
-                     <select name='rating' onChange={(e) => setRating(e.target.value)} >
+                    htmlFor="rating"
+                    className="review-form-label"> Rate Your Stay
+                     <select name='rating' onChange={(e) => setRating(e.target.value)} className='review-form-select'>
                             <option value=''>
                             Please add a rating...
                             </option>
@@ -74,7 +80,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
                             </option>
                         </select>
                 </label>
-                <button type="submit" >
+                <button type="submit" className="form-button">
                     Submit Review
                 </button>
             </form>

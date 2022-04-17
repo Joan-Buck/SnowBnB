@@ -42,12 +42,6 @@ const MyListing = () => {
                 <div className='title-text'>My Rentals</div>
             </div>
             <div className='new-spot-btn-container'>
-                {/* <button onClick={showForm} className='add-new-spot'>
-                    Add a new listing...
-                </button>
-                {renderForm && (
-                    <NewSpotForm hideForm={() => setRenderForm(false)} />
-                )} */}
                 <NewSpotFormModal />
             </div>
             <div className='my-listings-container'>
