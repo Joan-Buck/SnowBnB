@@ -49,7 +49,7 @@ const ReviewListing = ({ spot }) => {
                     <div className='spot-detail-avg-rating'>Average Rating: {averageRating}</div>
                 }
                 {spot.userId !== sessionUser.id && !userReviewed && (
-                     <NewReviewFormModal />
+                     <NewReviewFormModal spotId={spot.id} />
                 )}
             </div>
             {/* {renderForm && ( */}

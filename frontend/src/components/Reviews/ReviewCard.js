@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteReviewThunk } from "../../store/reviews";
 import EditReviewForm from "./EditReviewForm";
+import EditReviewFormModal from "./EditReviewFormModal";
 import './ReviewCard.css';
 
 const ReviewCard = ({ review, editable }) => {
@@ -30,10 +31,7 @@ const ReviewCard = ({ review, editable }) => {
             <div className="review-content">{review.content}</div>
             {userOwns && (<div>
                 <div className="review-buttons">
-                    <button onClick={showForm}>Edit Review</button>
-                {userOwns && renderForm && (
-                    <EditReviewForm review={review} hideForm={() => setRenderForm(false)} />
-                    )}
+                    <EditReviewFormModal review={review}/>
                     <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
                 </div>
             </div>)}

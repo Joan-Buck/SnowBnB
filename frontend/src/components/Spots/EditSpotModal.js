@@ -4,7 +4,6 @@ import EditSpotForm from './EditSpotForm';
 
 function EditSpotFormModal({ spot }) {
     const [showModal, setShowModal] = useState(false);
-    // const [renderForm, setRenderForm] = useState(false);
 
     return (
         <>

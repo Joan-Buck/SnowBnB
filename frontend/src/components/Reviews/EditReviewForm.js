@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editReviewThunk } from '../../store/reviews';
 import './ReviewForm.css';
+import './ReviewFormModal.css';
 
-const EditReviewForm = ({ review, hideForm }) => {
+const EditReviewForm = ({ review, closeModal}) => {
     const dispatch = useDispatch()
 
     const { id } = review
@@ -30,33 +31,38 @@ const EditReviewForm = ({ review, hideForm }) => {
                 if (data && data.errors) setValidationErrors(data.errors)
             })
             if (result) {
-                hideForm()
+                closeModal()
             }
         }
 
 
 return (
-    <div className="review-form">
-        <form className="new-review-form" onSubmit={submitEditReviewForm}>
+    <div className="review-form-container">
+        <div className={'review-form-title-container'}>
+                <div className={'review-form-title'}>Update Your Review!</div>
+            </div>
+        <form className="review-form" onSubmit={submitEditReviewForm}>
         <ul className="form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error, i) =>
                         <li key={i}>{error}</li>
                     )}
                 </ul>
             <label
-                htmlFor="content">
+                htmlFor="content"
+                className="review-form-label">
                 Review Your Stay
-                <input
-                    type="textarea"
+                <textarea
                     name="content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                    className="review-form-texarea"
                 >
-                </input>
+                </textarea>
             </label>
             <label
-                htmlFor="rating"> Rate Your Stay
-                <select name='rating' onChange={(e) => setRating(e.target.value)}>
+                htmlFor="rating"
+                className="review-form-label"> Rate Your Stay
+                <select name='rating' onChange={(e) => setRating(e.target.value)} value={rating} className='review-form-select'>
                     <option value=''>
                         Please add a rating...
                     </option>
@@ -77,7 +83,7 @@ return (
                     </option>
                 </select>
             </label>
-            <button type="submit" >
+            <button type="submit" className="form-button">
                 Submit Review
             </button>
         </form>

@@ -17,7 +17,7 @@ const LoginRequired = () => {
             <div className={'login-required-button-group'}>
                 <LoginFormModal className={'login-required-button'} />
                 <p className={'login-required-text'}>OR</p>
-                <NavLink to='/sign-up' exact={true} className={'login-required-link'}>Sign Up</NavLink>
+                <NavLink to='/signup' exact={true} className={'login-required-link'}>Sign Up</NavLink>
             </div>
         </div>
     )

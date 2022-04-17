@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from '../../context/Modal';
 import NewReviewForm from './NewReviewForm';
 
-function NewReviewFormModal() {
+function NewReviewFormModal({spotId}) {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function NewReviewFormModal() {
             <button onClick={() => setShowModal(true)}>Add Your Review</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false) }>
-                    <NewReviewForm closeModal={() => setShowModal(false)}/>
+                    <NewReviewForm closeModal={() => setShowModal(false)} spotId={spotId}/>
                 </Modal>
             )}
         </>

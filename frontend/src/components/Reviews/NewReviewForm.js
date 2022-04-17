@@ -4,7 +4,7 @@ import { createReviewThunk } from "../../store/reviews";
 import './ReviewForm.css';
 import './ReviewFormModal.css';
 
-const NewReviewForm = ({hideForm, spotId}) => {
+const NewReviewForm = ({spotId, closeModal}) => {
     const dispatch = useDispatch()
 
     const [content, setContent] = useState('');
@@ -29,7 +29,7 @@ const NewReviewForm = ({hideForm, spotId}) => {
             })
 
         if (result) {
-            hideForm()
+            closeModal()
         }
     }
 
@@ -52,7 +52,6 @@ const NewReviewForm = ({hideForm, spotId}) => {
                         name="content"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
-                        className='review-form-input'
                     >
                     </textarea>
                 </label>
