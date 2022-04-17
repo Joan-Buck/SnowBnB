@@ -3,7 +3,7 @@ import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 import './NewSpotModal.css';
 
-const NewSpotForm = () => {
+const NewSpotForm = ({closeModal}) => {
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -45,8 +45,7 @@ const NewSpotForm = () => {
             longitude
         };
 
-        console.log({latitude})
-        console.log({longitude})
+
 
         const result = await dispatch(createSpotThunk(newSpot))
             .catch(async (res) => {
@@ -54,24 +53,24 @@ const NewSpotForm = () => {
                 if (data && data.errors) setValidationErrors(data.errors)
             });
 
-        // if (result) {
-        //     hideForm();
-        // }
+        if (result) {
+            closeModal();
+        }
     }
 
 
     return (
         <div className="spot-form-container">
             <div className={'spot-form-title-container'}>
-                <div className={'spot-form-title'}>Add your new listng!</div>
+                <div className={'spot-form-title'}>Add your new listing!</div>
             </div>
             <form className="spot-form"
                 onSubmit={submitCreateForm}>
-                    <ul className="spot-form-errors">
+                    {/* <ul className="spot-form-errors">
                         {validationErrors.length > 0 && validationErrors.map((error, i) =>
                             <li key={i}>{error}</li>
                         )}
-                    </ul>
+                    </ul> */}
                 <label
                     htmlFor="name" className="spot-form-label">Listing Name
                     <input
@@ -279,7 +278,8 @@ const NewSpotForm = () => {
                     </select>
                 </label>
                 <label
-                    htmlFor="zipcode">Zipcode
+                    htmlFor="zipcode"
+                    className="spot-form-label">Zipcode
                     <input
                         type="text"
                         name="zipcode"
@@ -388,6 +388,11 @@ const NewSpotForm = () => {
                 <button type="submit" className="form-button">
                     Add to My Listings!
                 </button>
+                <ul className="spot-form-errors">
+                        {validationErrors.length > 0 && validationErrors.map((error, i) =>
+                            <li key={i}>{error}</li>
+                        )}
+                    </ul>
             </form>
         </div>
     )

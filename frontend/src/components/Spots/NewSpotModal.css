@@ -31,7 +31,7 @@
     flex-direction: column;
     align-items: center;
     padding: 15px 15px;
-    max-width: 550px;
+    width: 80%;
     margin: auto;
   }
 
@@ -41,7 +41,7 @@
   }
 
   .spot-form-label {
-    width: 50%;
+    width: 80%;
     font-size: 14px;
   }
   .spot-form-input {
@@ -74,16 +74,18 @@
     border: 0;
     width: 40%;
     margin-bottom: 10px;
-    color: white;
-    background-color: #ea3434;
+    color: black;
+    background-color: gray;
     height: 20px;
+    width: 100%;
   }
 
   .form-button:hover {
-    background-color: white;
-    color: #ea3434;
+    background-color: black;
+    color: gray;
     font-weight: bold;
-    border: 1px solid #ea3434;
+
+    /* border: 1px solid #ea3434; */
   }
 
   /* Modal Button Styling */
