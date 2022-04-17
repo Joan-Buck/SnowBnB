@@ -6,11 +6,6 @@ const containerStyle = {
   height: '100vh',
 };
 
-// // TO DO: center where hoveredSpot is
-// const center = {
-//   ,
-
-// };
 
 const Maps = ({ apiKey, spots, hoveredSpot }) => {
   const [center, setCenter] = useState({lat: 44.0682, lng: -114.7420})
@@ -28,7 +23,6 @@ const Maps = ({ apiKey, spots, hoveredSpot }) => {
     }
   }, [hoveredSpot]);
 
-  // console.log('spot lat', selectedSpot.latitude)
 
   return (
     <>

@@ -40,14 +40,20 @@ const BookingForm = ({ spot, sessionUser }) => {
         if (startDate && endDate) {
             let getBookedDates = [];
 
+            if (!bookings.length) {
+                setAvailable(true)
+                setDisabled(false)
+            }
+
             bookings.forEach(booking => {
                 let dateSliceStart = booking.startDate.slice(0, 10)
                 let dateSliceEnd = booking.endDate.slice(0, 10)
 
                 setAvailable(!(startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
                     || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
-                setDisabled(startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
-                    || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd)
+
+                setDisabled((startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd)
+                    || (endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
 
                 if (startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
                     || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd) {
@@ -80,7 +86,6 @@ const BookingForm = ({ spot, sessionUser }) => {
                     {datesBooked && (datesBooked.map((ele) =>
                         <div className='booking-form-booked-date' key={ele.id}>{ele}</div>
                     ))}
-
                 </>
             }
             <div className='date-picker-container'>
