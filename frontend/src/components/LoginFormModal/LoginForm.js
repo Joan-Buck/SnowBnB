@@ -41,14 +41,14 @@ const LoginForm = () => {
     }
 
     return (
-        <div className='login-form-div'>
+        <div className='login-form-container'>
             <form className="login-form"
                 onSubmit={submit}>
                 <ul className='form-errors'>
                     {validationErrors.length > 0 && validationErrors.map((error) =>
                         <li key={error}>{error}</li>)}
                 </ul>
-                <label>
+                <label className='login-form-label'>
                     Username or Email
                 </label>
                 <input
@@ -56,9 +56,10 @@ const LoginForm = () => {
                     name="username"
                     value={credential}
                     onChange={(e) => setUsername(e.target.value)}
+                    className='login-form-input'
 
                 />
-                <label>
+                <label className='login-form-label'>
                     Password
                 </label>
                 <input
@@ -66,15 +67,16 @@ const LoginForm = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className='login-form-input'
                 />
                 <button
                     type="submit"
-                    className='login-button-modal'>
+                    className='form-button-'>
                     Log In
                 </button>
                 <button
                     type="submit"
-                    className='login-demo-user-button'
+                    className='form-button'
                     onClick={click}>
                     Demo Login
                 </button>
