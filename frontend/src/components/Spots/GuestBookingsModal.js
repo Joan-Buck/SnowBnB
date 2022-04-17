@@ -30,7 +30,9 @@ function GuestBookingsModal({ bookings }) {
                                     </ol>
                                 </>
                                 :
-                                <div className='guest-bookings-text'>There are currently no bookings on this listing.</div>
+                                <div className='guest-bookings-text-container'>
+                                    <div className='guest-bookings-text'>There are currently no bookings on this listing.</div>
+                                </div>
                             }
                         </div>
                     </div>
