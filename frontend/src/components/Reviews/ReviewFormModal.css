@@ -87,3 +87,17 @@
     color: gray;
     font-weight: bold;
   }
+
+  .modal-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.modal-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+}

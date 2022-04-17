@@ -21,3 +21,23 @@
     margin-bottom: 10px; */
     overflow-wrap: anywhere;
   }
+
+  .review-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 10%;
+  }
+
+  .delete-review-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .delete-review-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+  }

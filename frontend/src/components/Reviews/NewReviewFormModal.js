@@ -11,7 +11,7 @@ function NewReviewFormModal({spotId}) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Add Your Review</button>
+            <button onClick={() => setShowModal(true)} className='modal-button'>Add Your Review</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false) }>
                     <NewReviewForm closeModal={() => setShowModal(false)} spotId={spotId}/>
