@@ -16,6 +16,8 @@ const ReviewListing = ({spot}) => {
     });
     const [renderForm, setRenderForm] = useState(false);
 
+    const reviewerId = reviews.map(review => +review.userId)
+    const userReviewed = reviewerId.includes(+sessionUser.id)
 
     const ratings = reviews.map(review => review.rating)
     const sumRatings = function (array) {
@@ -46,7 +48,7 @@ const ReviewListing = ({spot}) => {
                 {ratings.length > 0 &&
                                     <div className='spot-detail-avg-rating'>Average Rating: {averageRating}</div>
                                 }
-                {spot.userId !== sessionUser.id && (
+                {spot.userId !== sessionUser.id && !userReviewed &&(
                 <button onClick={showForm} className='add-new-review'>Add your review</button>
                 )}
             </div>
