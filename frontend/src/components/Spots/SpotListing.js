@@ -17,9 +17,9 @@ const SpotListing = () => {
     const spots = Object.values(spotsObj)
     const resorts = Object.values(resortsObj)
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    })
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // })
 
     useEffect(() => {
         dispatch(getSpotsThunk())
