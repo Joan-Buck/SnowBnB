@@ -90,21 +90,16 @@
 
   /* Modal Button Styling */
 
-  /* .food-truck-modal-container {
-    width: 100%;
-    z-index: 100001 !important;
-  } */
-
-  /* .food-truck-modal-button {
-    background-color: transparent;
-    color: black;
+  .modal-button {
+    background-color: gray;
+    color: white;
     border: none;
-    cursor: pointer;
-    font-weight: bolder;
-    margin-left: 20%;
-    font-size: 15px;
-  }
+    border-radius: 10px;
+}
 
-  .food-truck-modal-button:hover {
-    color: #ea3434;
-  } */
+
+.modal-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+}

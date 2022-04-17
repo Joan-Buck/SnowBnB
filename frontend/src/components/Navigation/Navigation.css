@@ -50,6 +50,18 @@
     border-radius: 5px;
 }
 
+.profile-button {
+    color:white;
+    background-color: gray;
+    border: none;
+    margin-right: 5px;
+}
+
+.profile-button:hover {
+    background-color: white;
+    color: gray;
+}
+
 .dropdown-container {
     display: flex;
     justify-content: flex-end;
@@ -68,13 +80,20 @@
     padding-left: 2px;
 
 }
+.dropdown-link {
+    font-size: 12px;
+    padding-bottom: 7px;
+    padding-left: 2px;
+    text-decoration: none;
+    color: black;
+}
 
 .dropdown-li-name {
     font-size: 12px;
     padding-bottom: 7px;
 }
 
-.dropdown-li:hover {
+.dropdown-link:hover {
   font-weight: 600;
 }
 
@@ -85,4 +104,17 @@
 
 .signup-link:hover {
     font-weight: 600;
+}
+
+
+.logout-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.logout-button:hover {
+    background-color: white;
+    color: gray;
 }

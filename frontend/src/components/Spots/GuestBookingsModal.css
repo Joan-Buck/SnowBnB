@@ -38,3 +38,25 @@
 .bookings-item {
     margin-bottom: 20px;
 }
+
+.modal-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.modal-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+}
+
+.spot-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20%;
+    padding-right: 5px;
+}

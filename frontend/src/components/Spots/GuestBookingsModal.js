@@ -8,7 +8,7 @@ function GuestBookingsModal({ bookings }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>See Bookings</button>
+            <button onClick={() => setShowModal(true)} className='modal-button'>See Bookings</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className={'guest-bookings-container'}>

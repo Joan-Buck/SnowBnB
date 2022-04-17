@@ -38,7 +38,12 @@
 }
 
 .details-link {
-    text-decoration: underline;
+    text-decoration: none;
+    color: black;
+}
+
+.details-link:hover {
+    font-weight: 600;
 }
 
 .spot-name {
@@ -66,4 +71,17 @@
 
 .resort-snow {
     margin: 3px;
+}
+
+.delete-spot-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.delete-spot-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
 }

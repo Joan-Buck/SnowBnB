@@ -73,10 +73,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
                 <p className='spot-description'>{description}</p>
                 <p className='spot-location'>{city}, {state}, {country}</p>
             </div>
-            {/* <div className='resort-details'>
-                <h3 className='resort-header'>Nearby Resort(s)</h3>
-                <p className='resort-name'>{resName}</p>
-            </div> */}
             {userOwns && editable && (
                 <div className='spot-buttons'>
                     <EditSpotFormModal spot={spot} />
@@ -86,12 +82,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
                     <GuestBookingsModal bookings={bookedListings} />
                 </div>
             )}
-
-            {/* {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <GuestBookingsModal setShowModal={setShowModal} bookings={bookedListings} />
-                </Modal>
-            )} */}
         </div>
     )
 }
