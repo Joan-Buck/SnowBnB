@@ -4,6 +4,7 @@ import SpotCard from './SpotCard';
 import NewSpotForm from './NewSpotForm';
 import { getSpotsThunk } from '../../store/spots';
 import './MySpots.css';
+import NewSpotFormModal from './NewSpotModal';
 
 const MyListing = () => {
     const dispatch = useDispatch();
@@ -41,12 +42,13 @@ const MyListing = () => {
                 <div className='title-text'>My Rentals</div>
             </div>
             <div className='new-spot-btn-container'>
-                <button onClick={showForm} className='add-new-spot'>
+                {/* <button onClick={showForm} className='add-new-spot'>
                     Add a new listing...
                 </button>
                 {renderForm && (
                     <NewSpotForm hideForm={() => setRenderForm(false)} />
-                )}
+                )} */}
+                <NewSpotFormModal />
             </div>
             <div className='my-listings-container'>
                 {spots.map((spot) => (

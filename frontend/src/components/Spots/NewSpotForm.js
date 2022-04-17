@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
+import './NewSpotModal.css';
 
-const NewSpotForm = ({ hideForm }) => {
+const NewSpotForm = () => {
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -53,67 +54,75 @@ const NewSpotForm = ({ hideForm }) => {
                 if (data && data.errors) setValidationErrors(data.errors)
             });
 
-        if (result) {
-            hideForm();
-        }
+        // if (result) {
+        //     hideForm();
+        // }
     }
 
 
     return (
-        <div className="spot-form">
-            <form className="new-spot-form"
+        <div className="spot-form-container">
+            <div className={'spot-form-title-container'}>
+                <div className={'spot-form-title'}>Add your new listng!</div>
+            </div>
+            <form className="spot-form"
                 onSubmit={submitCreateForm}>
-                <div className="form-errors">
-                    <ul className="errors-list">
+                    <ul className="spot-form-errors">
                         {validationErrors.length > 0 && validationErrors.map((error, i) =>
                             <li key={i}>{error}</li>
                         )}
                     </ul>
-                </div>
                 <label
-                    htmlFor="name">Listing Name
+                    htmlFor="name" className="spot-form-label">Listing Name
                     <input
                         type="text"
                         name="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="description">Description
+                    htmlFor="description"
+                    className="spot-form-label">Description
                     <input
                         type="textarea"
                         name="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
-
                 <label
-                    htmlFor="address">Address
+                    htmlFor="address"
+                    className="spot-form-label">Address
                     <input
                         type="text"
                         name="address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="city">City
+                    htmlFor="city"
+                    className="spot-form-label">City
                     <input
                         type="text"
                         name="city"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="state">State
-                       <select name='state' onChange={(e) => setState(e.target.value)} className={'food-truck-form-select'}>
+                    htmlFor="state"
+                    className="spot-form-label">State
+                       <select name='state' onChange={(e) => setState(e.target.value)} className={'spot-form-select'}>
                         <option value=''>
                             Select your state...
                         </option>
@@ -276,90 +285,107 @@ const NewSpotForm = ({ hideForm }) => {
                         name="zipcode"
                         value={zipcode}
                         onChange={(e) => setZipcode(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="country">Country
+                    htmlFor="country"
+                    className="spot-form-label">Country
                     <input
                         type="text"
                         name="country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="price">Price Per Night
+                    htmlFor="price"
+                    className="spot-form-label">Price Per Night
                     <input
                         type="number"
                         name="price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="bedrooms">Number of Bedrooms
+                    htmlFor="bedrooms"
+                    className="spot-form-label">Number of Bedrooms
                     <input
                         type="number"
                         name="bedrooms"
                         value={bedrooms}
                         onChange={(e) => setBedrooms(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="number">Number of Bathrooms
+                    htmlFor="number"
+                    className="spot-form-label">Number of Bathrooms
                     <input
                         type="number"
                         name="bathrooms"
                         value={bathrooms}
                         onChange={(e) => setBathrooms(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="guests">Number of Guests
+                    htmlFor="guests"
+                    className="spot-form-label">Number of Guests
                     <input
                         type="number"
                         name="guests"
                         value={guests}
                         onChange={(e) => setGuests(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="imageURL">Image URL (sample input below)
+                    htmlFor="imageURL"
+                    className="spot-form-label">Image URL (sample input below)
                     <input
                         type="text"
                         name="imageURL"
                         value={imageURL}
                         onChange={(e) => setImageURL(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="latitude">Latitude (sample input below)
+                    htmlFor="latitude"
+                    className="spot-form-label">Latitude (sample input below)
                     <input
                         type="decimal"
                         name="latitude"
                         value={latitude}
                         onChange={(e) => setLatitude(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
                 <label
-                    htmlFor="longitude">Longitude (sample input below)
+                    htmlFor="longitude"
+                    className="spot-form-label">Longitude (sample input below)
                     <input
                         type="decimal"
                         name="longitude"
                         value={longitude}
                         onChange={(e) => setLongitude(e.target.value)}
+                        className='spot-form-input'
                     >
                     </input>
                 </label>
-                <button type="submit" >
+                <button type="submit" className="form-button">
                     Add to My Listings!
                 </button>
             </form>
