@@ -17,6 +17,18 @@ const ReviewListing = ({spot}) => {
     const [renderForm, setRenderForm] = useState(false);
 
 
+    const ratings = reviews.map(review => review.rating)
+    const sumRatings = function (array) {
+        let total = 0;
+        for (let i = 0; i < array.length; i++) {
+            total += array[i]
+        }
+        return total;
+    }
+    const rawAverageRating = sumRatings(ratings) / ratings.length
+    const averageRating = rawAverageRating.toFixed(1);
+
+
     useEffect(() => {
         dispatch(getReviewsThunk())
     }, [dispatch]);
@@ -31,6 +43,9 @@ const ReviewListing = ({spot}) => {
         <div>
             <div className='reviews-header'>
                 <h3>Reviews</h3>
+                {ratings.length > 0 &&
+                                    <div className='spot-detail-avg-rating'>Average Rating: {averageRating}</div>
+                                }
                 {spot.userId !== sessionUser.id && (
                 <button onClick={showForm} className='add-new-review'>Add your review</button>
                 )}
