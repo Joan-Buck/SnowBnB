@@ -3,7 +3,7 @@ import { createSpotThunk } from "../../store/spots";
 import { useDispatch } from "react-redux";
 import './NewSpotModal.css';
 
-const NewSpotForm = ({closeModal}) => {
+const NewSpotForm = ({ closeModal }) => {
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -66,7 +66,7 @@ const NewSpotForm = ({closeModal}) => {
             </div>
             <form className="spot-form"
                 onSubmit={submitCreateForm}>
-                    {/* <ul className="spot-form-errors">
+                {/* <ul className="spot-form-errors">
                         {validationErrors.length > 0 && validationErrors.map((error, i) =>
                             <li key={i}>{error}</li>
                         )}
@@ -121,7 +121,7 @@ const NewSpotForm = ({closeModal}) => {
                 <label
                     htmlFor="state"
                     className="spot-form-label">State
-                       <select name='state' onChange={(e) => setState(e.target.value)} className={'spot-form-select'}>
+                    <select name='state' onChange={(e) => setState(e.target.value)} className={'spot-form-select'}>
                         <option value=''>
                             Select your state...
                         </option>
@@ -389,10 +389,10 @@ const NewSpotForm = ({closeModal}) => {
                     Add to My Listings!
                 </button>
                 <ul className="spot-form-errors">
-                        {validationErrors.length > 0 && validationErrors.map((error, i) =>
-                            <li key={i}>{error}</li>
-                        )}
-                    </ul>
+                    {validationErrors.length > 0 && validationErrors.map((error, i) =>
+                        <li key={i}>{error}</li>
+                    )}
+                </ul>
             </form>
         </div>
     )
