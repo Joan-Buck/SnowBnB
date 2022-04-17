@@ -1,0 +1,38 @@
+.login-required-container {
+    /* margin-left: 200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+
+.login-required-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 900;
+}
+
+.login-required-link:hover {
+  color: #ea3434;
+}
+
+.login-required-button {
+  font-size: 18px;
+  background-color: transparent;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.login-required-button:hover{
+  color: #ea3434;
+}
+
+.login-required-button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

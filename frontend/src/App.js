@@ -12,6 +12,7 @@ import MyBookings from './components/Bookings/MyBookings';
 import { getResortsThunk } from './store/spots';
 import SearchResult from './components/Search/SearchResults';
 import ErrorPage from './components/Error/ErrorPage';
+import LoginRequired from './components/LoginRequired/LoginRequired';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           <Route path='/signup'>
             <SignUpFormPage />
           </Route>
+          <Route path='/login-required' exact={true}>
+          <LoginRequired />
+        </Route>
           <Route exact path={'/spots'}>
             <SpotListing />
           </Route>
