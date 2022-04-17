@@ -38,6 +38,7 @@
      color: black;
      margin-left: 5px;
      font-weight: 900;
+     text-decoration: none;
  }
 
  .profile-dropdown {
@@ -75,4 +76,13 @@
 
 .dropdown-li:hover {
   font-weight: 600;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.signup-link:hover {
+    font-weight: 600;
 }

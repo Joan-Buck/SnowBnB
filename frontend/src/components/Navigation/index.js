@@ -1,15 +1,29 @@
 import React from 'react'
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import * as sessionActions from '../../store/session';
+
 
 const Navigation = ({ isLoaded }) => {
-
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
-    let sessionLinks
+    const demoLogin = async (e) => {
+        e.preventDefault();
+        const demoUser = {
+            credential: 'Demo-User',
+            password: 'password'
+        }
+
+        return dispatch(sessionActions.loginUserThunk(demoUser))
+        return <Redirect to="/" />
+
+      }
+
+    let sessionLinks;
 
     if (sessionUser) {
         sessionLinks = (
@@ -18,10 +32,12 @@ const Navigation = ({ isLoaded }) => {
             </>
         )
     } else {
-
         sessionLinks = (
             <>
                 <div className='auth-buttons'>
+                    <button className='navbar-button' onClick={demoLogin}>
+                        Demo
+                    </button>
                     <LoginFormModal />
                     <NavLink className='signup-link' to={'/signup'}>Sign Up</NavLink>
                 </div>
@@ -34,8 +50,8 @@ const Navigation = ({ isLoaded }) => {
             <div className='navbar'>
                 <ul className='navbar-list'>
                     <li className='navbar-li'>
-                        <div className="home-link">
-                            <NavLink exact to={'/'}>SnowBnB</NavLink>
+                        <div className="navbar-link">
+                            <NavLink exact to={'/'} className='home-link'>SnowBnB</NavLink>
                         </div>
                     </li>
                     <li className='navbar-sessionlinks'>

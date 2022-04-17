@@ -1,4 +1,4 @@
-button {
+/* button {
     border-radius: 5px;
     margin: 5px;
     background-color: black;
@@ -17,15 +17,15 @@ a {
     display: flex;
     flex-direction: column;
     margin: 0;
-}
+} */
 
 * {
     font-family: 'Montserrat', sans-serif;
 }
 
-h3 {
+/* h3 {
     font-weight: bold;
-}
+} */
 
 body {
     margin: 0;
