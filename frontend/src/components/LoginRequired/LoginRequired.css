@@ -1,5 +1,4 @@
 .login-required-container {
-    /* margin-left: 200px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +14,8 @@
 }
 
 .login-required-link:hover {
-  color: #ea3434;
+  background-color: black;
+  color: white;
 }
 
 .login-required-button {
@@ -28,7 +28,8 @@
 }
 
 .login-required-button:hover{
-  color: #ea3434;
+  background-color: black;
+  color: white;
 }
 
 .login-required-button-group {
