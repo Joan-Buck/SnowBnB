@@ -44,7 +44,7 @@ const SingleSpot = () => {
                 </div>
                 <div className='spot-details-sub-container'>
                     <div className={'spot-details-info-container'}>
-                        <div className='spot-details-info-title'>Listing Details</div>
+                        <div className='spot-details-info-title'>More about this stay...</div>
                         <p className='spot-address'>{spot.address}, {spot.city}, {spot.state}, {spot.zipcode}, {spot.country}</p>
                         <p className='spot-numbers'>Number of Guests: {spot.guests}</p>
                         <p className='spot-numbers'>Number of Bedrooms: {spot.bedrooms}</p>

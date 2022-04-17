@@ -43,24 +43,25 @@ const BookingForm = ({ spot, sessionUser }) => {
             if (!bookings.length) {
                 setAvailable(true)
                 setDisabled(false)
+            } else {
+                bookings.forEach(booking => {
+                    let dateSliceStart = booking.startDate.slice(0, 10)
+                    let dateSliceEnd = booking.endDate.slice(0, 10)
+
+                    setAvailable(!(startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
+                        || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
+
+                    setDisabled((startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd)
+                        || (endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
+
+                    if (startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
+                        || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd) {
+                        getBookedDates.push(`${dayjs(dateSliceStart).format("MMM DD, YYYY")} - ${dayjs(dateSliceEnd).format("MMM DD, YYYY")}`)
+                    }
+                })
+                setDatesBooked(getBookedDates)
             }
 
-            bookings.forEach(booking => {
-                let dateSliceStart = booking.startDate.slice(0, 10)
-                let dateSliceEnd = booking.endDate.slice(0, 10)
-
-                setAvailable(!(startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
-                    || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
-
-                setDisabled((startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd)
-                    || (endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd))
-
-                if (startDate.toISOString().slice(0, 10) >= dateSliceStart && startDate.toISOString().slice(0, 10) <= dateSliceEnd
-                    || endDate.toISOString().slice(0, 10) >= dateSliceStart && endDate.toISOString().slice(0, 10) <= dateSliceEnd) {
-                    getBookedDates.push(`${dayjs(dateSliceStart).format("MMM DD, YYYY")} - ${dayjs(dateSliceEnd).format("MMM DD, YYYY")}`)
-                }
-            })
-            setDatesBooked(getBookedDates)
         }
     }, [startDate, endDate])
 
@@ -79,7 +80,7 @@ const BookingForm = ({ spot, sessionUser }) => {
     }
 
     return (
-        <div className={'booking-form-container'}>
+        <div className={'booking-form-container-div'}>
             {!available &&
                 <>
                     <div className='booking-form-booked-dates'>The following dates are already booked:</div>
@@ -99,15 +100,17 @@ const BookingForm = ({ spot, sessionUser }) => {
                     minDate={new Date()}
                 />
             </div>
-            <label htmlFor='guests'>Guests
-                <select name='numGuests' className='booking-form-select' onChange={(e) => setGuests(e.target.value)}>
-                    {options.map(option => {
-                        return <option value={`${option}`}>
-                            {option}
-                        </option>
-                    })}
-                </select>
-            </label>
+            <div className='booking-form-guests-container'>
+                <label htmlFor='guests' className='booking-form-label'>Guests
+                    <select name='numGuests' className='booking-form-select' onChange={(e) => setGuests(e.target.value)}>
+                        {options.map(option => {
+                            return <option value={`${option}`}>
+                                {option}
+                            </option>
+                        })}
+                    </select>
+                </label>
+            </div>
             <div className='reserve-stay-button-container'>
                 <button disabled={disable} onClick={handleBooking} className={disable ? 'inactiveBtn' : 'activeBtn'}>Reserve Stay</button>
             </div>

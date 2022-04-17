@@ -23,22 +23,47 @@
     margin: auto;
 }
 .reserve-stay-button-container{
-    width: 100%;
+    width: 80%;
     display: flex;
     padding-top: 10px;
+    margin: auto;
+}
+.booking-form-guests-container {
+    width: 80%;
+    display: flex;
+    padding-top: 10px;
+    margin: auto;
 }
 
+.booking-form-label {
+    width: 50%;
+    margin: auto;
+    padding-top: 10px;
+    padding-right: 10px;
+}
 .booking-form-select {
     width: 50%;
     margin: auto;
     padding-top: 10px;
+    margin-left: 10px;
+    padding-left: 5px;
 }
 
 .booking-form-booked-dates{
     display: flex;
     justify-content: center;
+    font-weight: 600;
+    width: 100%;
 }
 
 .booking-form-booked-date {
     margin: auto;
+    font-size: 16px;
+}
+
+
+.booking-form-container-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
