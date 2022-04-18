@@ -38,7 +38,7 @@ const Navigation = ({ isLoaded }) => {
                     <button className='navbar-button' onClick={demoLogin}>
                         Demo
                     </button>
-                    <LoginFormModal />
+                    <LoginFormModal className={'navbar-button'}/>
                     <NavLink className='signup-link' to={'/signup'}>Sign Up</NavLink>
                 </div>
             </>

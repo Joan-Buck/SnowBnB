@@ -15,7 +15,7 @@
 
 .login-required-link:hover {
   background-color: black;
-  color: gray;
+  color: white;
 }
 
 .login-required-button {
@@ -29,7 +29,7 @@
 
 .login-required-button:hover{
   background-color: black;
-  color: gray;
+  color: white;
 }
 
 .login-required-button-group {

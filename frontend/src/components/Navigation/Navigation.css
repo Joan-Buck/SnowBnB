@@ -107,6 +107,16 @@
 }
 
 
+.navbar-button {
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+.navbar-button:hover {
+    font-weight: 600;
+}
+
 .logout-button {
     background-color: gray;
     color: white;
