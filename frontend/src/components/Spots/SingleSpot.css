@@ -70,12 +70,13 @@
 }
 
 .spot-details-info-container {
-    width: 30%;
+    width: 37%;
     height: 30%;
     /* margin: auto; */
     padding: 10px;
     /* border: 1px solid black; */
     box-shadow: 0 2px 5px 0 lightgray;
+    overflow-wrap: anywhere;
 }
 .booking-form-container {
     width: 30%;

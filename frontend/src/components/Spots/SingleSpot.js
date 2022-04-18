@@ -44,7 +44,7 @@ const SingleSpot = () => {
                 <div className='spot-images-div'>
                     {images?.map((image, i) => (
                         <div key={`${i}-${image}`} className='spot-img-container'>
-                            <img className='spot-img-list' src={`${image.url}`} alt="Rental"></img>
+                            <img className='spot-img-list' src={`${image.url}`} alt="Rental" onError={(e) => (e.target.src='https://t3.ftcdn.net/jpg/03/34/83/22/240_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg')}></img>
                         </div>
                     ))}
                 </div>

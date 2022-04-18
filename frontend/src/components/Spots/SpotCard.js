@@ -64,7 +64,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
 
     return (
         <div className='spot-card'>
-            {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental'></img> : <div>No Images Found</div>}
+            {images[0] ? <img className='main-spot-img' src={`${images[0].url}`} alt='Rental' onError={(e) => (e.target.src='https://t3.ftcdn.net/jpg/03/34/83/22/240_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg')}></img> : <div>No Images Found</div>}
             <div className='spot-details'>
                 <h3 className='spot-name'>{name}</h3>
                 {sessionUser && (<NavLink className='details-link' to={`/spots/${id}`}
