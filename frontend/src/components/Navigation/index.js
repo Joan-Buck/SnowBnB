@@ -57,7 +57,6 @@ const Navigation = ({ isLoaded }) => {
                     <li className='navbar-sessionlinks'>
                         {isLoaded && sessionLinks}
                     </li>
-
                 </ul>
             </div>
         </>

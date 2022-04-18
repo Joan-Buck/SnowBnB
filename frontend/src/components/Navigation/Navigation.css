@@ -127,4 +127,5 @@
 .logout-button:hover {
     background-color: white;
     color: gray;
+    border: 1px solid gray;
 }

@@ -36,6 +36,8 @@
 .booked-spot-link {
     font-size: 16px;
     font-weight: 600;
+    color: black;
+    text-decoration: none;
 }
 
 .booked-spot-link:hover {
@@ -44,8 +46,23 @@
 
 .spots-link {
     font-weight: 600;
+    color: black;
 }
 
 .spots-link:hover {
     background-color: #f1ebeb;
+}
+
+
+.delete-booking-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.delete-booking-button:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
 }

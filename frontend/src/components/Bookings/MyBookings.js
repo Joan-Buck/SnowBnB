@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import './MyBookings.css';
 import { NavLink, useHistory } from 'react-router-dom';
-
+import SpotCard from '../Spots/SpotCard';
 
 const MyBookings = () => {
     const dispatch = useDispatch();
@@ -43,10 +43,11 @@ const MyBookings = () => {
                                 {myBookings.map((booking, i) => (
                                     <li key={i} className={'my-bookings-item'}>
                                         <NavLink to={`spots/${booking.Spot.id}`} className={'booked-spot-link'}>{booking.Spot.name}</NavLink>
+                                        {/* <SpotCard spot={booking.Spot.id} editable  /> */}
                                         <div>Starting: {dayjs(booking.startDate).format("MMM DD, YYYY")}</div>
                                         <div>Ending: {dayjs(booking.endDate).format("MMM DD, YYYY")}</div>
                                         <div>Number of Guests: {booking.numGuests}</div>
-                                        <button onClick={() => dispatch(deleteBookingThunk(booking.id))}>Delete</button>
+                                        <button onClick={() => dispatch(deleteBookingThunk(booking.id))} className='delete-booking-button'>Delete</button>
                                     </li>
 
                                 ))}
