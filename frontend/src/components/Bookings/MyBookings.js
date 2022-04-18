@@ -3,11 +3,12 @@ import { getBookingsThunk, deleteBookingThunk } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import './MyBookings.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 
 const MyBookings = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const sessionUser = useSelector(state => state.session.user);
     const myBookings = Object.values(bookingsObj).filter(booking => +booking.userId === sessionUser.id).sort((a, b) => {
@@ -15,6 +16,10 @@ const MyBookings = () => {
         const bDate = new Date(b.startDate)
         return (aDate - bDate)
     })
+
+    if (!sessionUser) {
+        history.push('/')
+    }
 
 
 

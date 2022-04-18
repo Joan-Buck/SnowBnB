@@ -66,11 +66,6 @@ const EditSpotForm = ({ spot, closeModal }) => {
             </div>
             <form className="spot-form"
                 onSubmit={submitEditForm}>
-                {/* <ul className="form-errors">
-                    {validationErrors.length > 0 && validationErrors.map((error, i) =>
-                        <li key={i}>{error}</li>
-                    )}
-                </ul> */}
 
                 <label
                     htmlFor="name"

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpotThunk } from '../../store/spots';
 import './SpotCard.css';
 import EditSpotFormModal from './EditSpotModal';
-import { Modal } from '../../context/Modal';
 import GuestBookingsModal from './GuestBookingsModal';
 import { getBookingsThunk } from '../../store/bookings';
 
@@ -14,6 +13,8 @@ const SpotCard = ({ spot, resorts, editable }) => {
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
     const [showModal, setShowModal] = useState(false);
+
+
 
     const { id, name, description, city, state, country, guests, bedrooms, bathrooms, price, userId } = spot;
     const bookedListings = Object.values(bookingsObj).filter(booking => booking.spotId === spot.id);

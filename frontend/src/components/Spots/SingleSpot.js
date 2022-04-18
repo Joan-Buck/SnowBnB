@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getSpotThunk } from '../../store/spots';
 import ReviewListing from '../Reviews/Reviews';
 import BookingForm from '../Bookings/BookingForm';
@@ -8,8 +8,13 @@ import './SingleSpot.css'
 
 const SingleSpot = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { spotId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+
+    if (!sessionUser) {
+        history.push('/')
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);

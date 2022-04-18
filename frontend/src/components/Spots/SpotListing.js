@@ -4,9 +4,11 @@ import { getSpotsThunk } from '../../store/spots';
 import SpotCard from './SpotCard';
 import MapContainer from '../Maps';
 import './SpotListing.css';
+import { useHistory } from 'react-router-dom';
 
 const SpotListing = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector(state => state.session.user);
     const [hoveredSpot, setHoveredSpot] = useState(null);
 
@@ -15,6 +17,10 @@ const SpotListing = () => {
 
     const spots = Object.values(spotsObj)
     const resorts = Object.values(resortsObj)
+
+    if (!user) {
+        history.push('/')
+    }
 
     // useEffect(() => {
     //     window.scrollTo(0, 0);
