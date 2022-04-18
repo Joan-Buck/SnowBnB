@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/',
     asyncHandler(async (req, res) => {
-        const spots = await Spot.findAll({ include: [SpotImage, Booking]  });
+        const spots = await Spot.findAll({ include: [SpotImage, Booking] });
         return res.json({ spots })
     })
 )
@@ -18,6 +18,12 @@ router.get('/:spotId',
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
         const spot = await Spot.findByPk(spotId, { include: SpotImage })
+
+        if (!spot) {
+            const err = new Error('Spot not found');
+            err.status = 404;
+            return err
+        }
         return res.json({ spot })
     })
 )
@@ -76,7 +82,7 @@ const validateCreateSpot = [
     check('imageURL')
         // .exists({ checkFalsy: true })
         // .withMessage("Please provide an image URL to display on your listing.")
-        .isLength({max: 255})
+        .isLength({ max: 255 })
         .withMessage("URLs must be no longer than 255 characters."),
     handleValidationErrors
 ]
@@ -114,7 +120,7 @@ router.post('/',
 
 // edit spot
 router.put('/:spotId',
-validateCreateSpot,
+    validateCreateSpot,
     asyncHandler(async (req, res) => {
         const { spotId } = req.params;
 
@@ -143,7 +149,7 @@ validateCreateSpot,
         await spot.update({ ...editedSpotData })
         const spotImage = spot.SpotImages[0]
         if (spotImage) {
-            spotImage.update({url: imageURL})
+            spotImage.update({ url: imageURL })
         }
 
 

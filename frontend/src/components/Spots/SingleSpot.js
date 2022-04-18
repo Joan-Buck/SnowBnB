@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getSpotThunk } from '../../store/spots';
 import ReviewListing from '../Reviews/Reviews';
 import BookingForm from '../Bookings/BookingForm';
+import ErrorPage from '../Error/ErrorPage';
 import './SingleSpot.css'
 
 const SingleSpot = () => {
@@ -28,7 +29,7 @@ const SingleSpot = () => {
     const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj);
 
-    if (!spot) return null;
+    if (!spot) return <ErrorPage />;
 
     const images = spot.SpotImages;
     const nearbyResorts = resorts.filter(resort => resort.state === spot.state)
