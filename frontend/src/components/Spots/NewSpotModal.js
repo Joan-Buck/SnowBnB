@@ -8,7 +8,7 @@ function NewSpotFormModal() {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Add New Listing</button>
+            <button onClick={() => setShowModal(true)} className='modal-button'>Add New Listing</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <NewSpotForm closeModal={() => setShowModal(false)}/>

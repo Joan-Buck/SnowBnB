@@ -69,7 +69,7 @@ const SpotCard = ({ spot, resorts, editable }) => {
                 <h3 className='spot-name'>{name}</h3>
                 {sessionUser && (<NavLink className='details-link' to={`/spots/${id}`}
                 >
-                    See more info...
+                    See more info here...
                 </NavLink>)}
                 <p className='spot-description'>{description}</p>
                 <p className='spot-location'>{city}, {state}, {country}</p>

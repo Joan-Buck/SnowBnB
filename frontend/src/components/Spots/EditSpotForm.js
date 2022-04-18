@@ -386,7 +386,7 @@ const EditSpotForm = ({ spot, closeModal }) => {
                     >
                     </input>
                 </label>
-                <button type="submit" className="form-button">
+                <button type="submit" className="spot-form-button">
                     Update My Listing!
                 </button>
                 <ul className="spot-form-errors">

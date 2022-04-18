@@ -28,7 +28,6 @@ export const getBookingsThunk = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('get data', data)
         dispatch(loadBookings(data.bookings))
     }
     return response;

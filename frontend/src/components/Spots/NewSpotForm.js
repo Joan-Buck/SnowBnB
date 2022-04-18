@@ -385,7 +385,7 @@ const NewSpotForm = ({ closeModal }) => {
                     >
                     </input>
                 </label>
-                <button type="submit" className="form-button">
+                <button type="submit" className="spot-form-button">
                     Add to My Listings!
                 </button>
                 <ul className="spot-form-errors">
