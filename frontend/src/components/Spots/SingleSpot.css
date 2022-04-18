@@ -49,6 +49,7 @@
 .spot-description {
     margin: 3px;
     font-size: 14px;
+    padding-bottom: 10px;
 }
 
 .spot-address {
@@ -59,23 +60,30 @@
 .spot-details-sub-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 80%;
     height: 50%;
     align-self: center;
+    align-items: center;
     margin: 40px auto;
     /* border: 1px solid black; */
 }
 
 .spot-details-info-container {
-    width: 50%;
-    margin: auto;
+    width: 30%;
+    height: 30%;
+    /* margin: auto; */
+    padding: 5px;
     /* border: 1px solid black; */
+    box-shadow: 0 2px 5px 0 lightgray;
 }
 .booking-form-container {
-    width: 50%;
-    margin: auto;
+    width: 30%;
+    /* margin: auto; */
     /* border: 1px solid black; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 5px 0 lightgray;
 }
 
 .resort-details {
