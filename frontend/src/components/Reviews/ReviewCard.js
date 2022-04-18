@@ -29,11 +29,11 @@ const ReviewCard = ({ review, editable }) => {
         <div className="review-card-div">
              <div className="review-details"> {review.User.username} <Rating rating={review.rating} /></div>
             <div className="review-content">{review.content}</div>
-            {userOwns && (<div>
+            {userOwns && (
                 <div className="review-buttons">
                     <EditReviewFormModal review={review}/>
                     <button className="delete-review-button" onClick={() => dispatch(deleteReviewThunk(review.id))}>Delete Review</button>
-                </div>
+
             </div>)}
         </div>
     )
