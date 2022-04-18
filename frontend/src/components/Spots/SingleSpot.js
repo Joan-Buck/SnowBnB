@@ -62,7 +62,9 @@ const SingleSpot = () => {
                     </div>
                 </div>
             </div>
-            <SpotResorts resorts={nearbyResorts} />
+            <div className='resort-container-div'>
+                <SpotResorts resorts={nearbyResorts} />
+            </div>
             <div className='reviews-div'>
                 <ReviewListing spot={spot} />
             </div>
@@ -98,15 +100,18 @@ const SpotResort = ({ resort }) => {
                 <a className='resort-url' href={resort.resortURL} target="_blank" rel="noopener noreferrer">(Resort Website)</a>
                 {/* <p className='resort-snow'>Snow Level: {resort.snowLevel}</p> */}
             </div>
-            <div className='resort-img-container'>
-                <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
-            </div>
-            <div className='resort-activities-container'>
-                <ul className='activities-list'>Activities:
-                    {activities?.map((activity) => (
-                        <li key={activity}>{activity}</li>
-                    ))}
-                </ul>
+            <div className='resort-info-container'>
+
+                <div className='resort-img-container'>
+                    <img className='resort-img' src={`${resort.ResortImages[0]?.url}`} alt="Resort"></img>
+                </div>
+                <div className='resort-activities-container'>
+                    <ul className='activities-list'>Activities:
+                        {activities?.map((activity) => (
+                            <li key={activity}>{activity}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </>
     )

@@ -73,7 +73,7 @@
     width: 30%;
     height: 30%;
     /* margin: auto; */
-    padding: 5px;
+    padding: 10px;
     /* border: 1px solid black; */
     box-shadow: 0 2px 5px 0 lightgray;
 }
@@ -86,6 +86,9 @@
     box-shadow: 0 2px 5px 0 lightgray;
 }
 
+.resort-container-div {
+    margin-bottom: 30px;
+}
 .resort-details {
     width: 100%;
     /* display: flex; */
@@ -100,9 +103,19 @@
     text-decoration: underline;
 }
 
-.resort-img {
+.resort-info-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+.resort-img-container {
     width: 50%;
-    height: 50%;
+}
+
+.resort-img {
+    width: 85%;
+    height: 100%;
+    object-fit: cover;
     margin: 5px auto;
     box-shadow: 0 2px 5px 0 lightgray;
     border-radius: 10px;
@@ -111,6 +124,15 @@
 
 .resort-activities-container {
     margin-top: 5px;
+    width: 50%;
+    justify-content: center;
+    display: flex;
+}
+
+.activities-list {
+    margin: auto;
+    box-shadow: 0 2px 5px 0 lightgray;
+    padding: 10px;
 }
 
 .spot-img-list {
