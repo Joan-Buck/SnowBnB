@@ -8,7 +8,7 @@ const NewReviewForm = ({spotId, closeModal}) => {
     const dispatch = useDispatch()
 
     const [content, setContent] = useState('');
-    const [rating, setRating] = useState(1);
+    const [rating, setRating] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
 
     const submitReviewForm = async(e) => {
