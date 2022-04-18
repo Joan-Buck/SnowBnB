@@ -75,7 +75,7 @@ const SignUpFormPage = () => {
                     className='signup-form-input'
                 />
                 <label
-                className='signup-form-label'>
+                    className='signup-form-label'>
                     Confirm Password
                 </label>
                 <input
@@ -87,7 +87,7 @@ const SignUpFormPage = () => {
                 />
                 <button
                     type="submit"
-                    className='form-button'>
+                    className='signup-form-button'>
                     Sign Up
                 </button>
             </form>

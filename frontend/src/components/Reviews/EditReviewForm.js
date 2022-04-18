@@ -83,7 +83,7 @@ return (
                     </option>
                 </select>
             </label>
-            <button type="submit" className="form-button">
+            <button type="submit" className="review-form-button">
                 Submit Review
             </button>
         </form>
