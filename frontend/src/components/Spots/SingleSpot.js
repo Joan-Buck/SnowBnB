@@ -106,10 +106,10 @@ const SpotResort = ({ resort }) => {
     if (resort.apresSki) activities.push('Apres Ski');
 
     return (
-        <>
+        <div className='outer-resort-container'>
             <div className='top-resort-details-container'>
                 <p className='resort-name'>{resort.name}</p>
-                <a className='resort-url' href={resort.resortURL} target="_blank" rel="noopener noreferrer">(Resort Website)</a>
+                <a className='resort-url' href={resort.resortURL} target="_blank" rel="noopener noreferrer">Resort Website</a>
                 {/* <p className='resort-snow'>Snow Level: {resort.snowLevel}</p> */}
             </div>
             <div className='resort-info-container'>
@@ -125,7 +125,7 @@ const SpotResort = ({ resort }) => {
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

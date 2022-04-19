@@ -78,6 +78,7 @@
     box-shadow: 0 2px 5px 0 lightgray;
     overflow-wrap: anywhere;
 }
+
 .booking-form-container {
     width: 30%;
     /* margin: auto; */
@@ -89,6 +90,15 @@
 
 .resort-container-div {
     margin-bottom: 30px;
+}
+
+.resort-name {
+    font-weight: 600;
+}
+
+.outer-resort-container {
+    margin-bottom: 50px;
+    margin-top: 20px;
 }
 .resort-details {
     width: 100%;
@@ -102,6 +112,7 @@
 
 .resort-url {
     text-decoration: underline;
+    color: black;
 }
 
 .resort-info-container {
