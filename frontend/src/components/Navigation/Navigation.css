@@ -100,6 +100,7 @@
 .signup-link {
     text-decoration: none;
     color: inherit;
+    cursor: default;
 }
 
 .signup-link:hover {
