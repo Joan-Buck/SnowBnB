@@ -12,7 +12,6 @@ const SpotCard = ({ spot, resorts, editable }) => {
     const bookingsObj = useSelector(state => state.bookings.bookings);
     const dispatch = useDispatch();
     const [userOwns, setUserOwns] = useState(false);
-    const [showModal, setShowModal] = useState(false);
 
 
 
