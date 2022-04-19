@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_BOOKINGS = 'bookings/loadBookings';
-const LOAD_BOOKING = 'booking/loadBooking';
+const LOAD_BOOKING = 'bookings/loadBooking';
 const DELETE_BOOKING = 'bookings/deleteBookings';
 
 export const loadBookings = (bookings) => {
@@ -45,10 +45,11 @@ export const createBookingThunk = (booking) => async dispatch => {
             numGuests: booking.numGuests
         })
     })
-
+    console.log('response=====', response)
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadBooking(data));
+        console.log('~data', data)
+        dispatch(loadBooking(data.booking));
         return data.booking
     }
 }
@@ -71,7 +72,7 @@ const initialState = { bookings: {} };
 const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_BOOKINGS: {
-            const bookings = {}
+            const bookings = {...state.bookings}
             action.bookings.forEach(booking => { bookings[booking.id] = booking })
             return { ...state, bookings }
         }

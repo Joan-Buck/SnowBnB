@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,10 @@ import SearchBar from '../Search/SearchBar';
 
 function HomePage() {
     const sessionUser = useSelector((state) => state.session.user)
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
 
     return (
         <div className={'home-component'}>

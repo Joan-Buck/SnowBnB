@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getSpotThunk } from '../../store/spots';
@@ -11,6 +11,7 @@ const SingleSpot = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { spotId } = useParams();
+    const [hasLoaded, setHasLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
 
     if (!sessionUser) {
@@ -22,14 +23,28 @@ const SingleSpot = () => {
     })
 
     useEffect(() => {
-        dispatch(getSpotThunk(spotId))
+        console.log("~here")
+        dispatch(dispatch => getSpotThunk(spotId)(dispatch).then(
+            () => {
+                console.log("~here2")
+                setHasLoaded(true)
+            }
+        ).catch(
+            () => {
+                console.log("~here3")
+                setHasLoaded(true)
+            }
+        ))
     }, [dispatch, spotId])
 
     const spot = useSelector(state => state.spots.spots[spotId])
     const resortsObj = useSelector(state => state.spots.resorts);
     const resorts = Object.values(resortsObj);
 
-    if (!spot) return <ErrorPage />;
+    if (!spot) {
+        if (!hasLoaded) return null;
+        return <ErrorPage />
+    }
 
     const images = spot.SpotImages;
     const nearbyResorts = resorts.filter(resort => resort.state === spot.state)
@@ -44,7 +59,7 @@ const SingleSpot = () => {
                 <div className='spot-images-div'>
                     {images?.map((image, i) => (
                         <div key={`${i}-${image}`} className='spot-img-container'>
-                            <img className='spot-img-list' src={`${image.url}`} alt="Rental" onError={(e) => (e.target.src='https://t3.ftcdn.net/jpg/03/34/83/22/240_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg')}></img>
+                            <img className='spot-img-list' src={`${image.url}`} alt="Rental" onError={(e) => (e.target.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/240_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg')}></img>
                         </div>
                     ))}
                 </div>

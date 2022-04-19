@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getBookingsThunk, deleteBookingThunk } from '../../store/bookings';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import './MyBookings.css';
 import { NavLink, useHistory } from 'react-router-dom';
-import SpotCard from '../Spots/SpotCard';
 
 const MyBookings = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const bookingsObj = useSelector(state => state.bookings.bookings);
+
     const sessionUser = useSelector(state => state.session.user);
     const myBookings = Object.values(bookingsObj).filter(booking => +booking.userId === sessionUser.id).sort((a, b) => {
         const aDate = new Date(a.startDate)
@@ -20,8 +20,6 @@ const MyBookings = () => {
     if (!sessionUser) {
         history.push('/')
     }
-
-
 
     useEffect(() => {
         dispatch(getBookingsThunk())

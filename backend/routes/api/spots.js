@@ -22,7 +22,7 @@ router.get('/:spotId',
         if (!spot) {
             const err = new Error('Spot not found');
             err.status = 404;
-            return err
+            throw err
         }
         return res.json({ spot })
     })

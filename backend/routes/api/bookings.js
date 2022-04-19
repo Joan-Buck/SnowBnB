@@ -1,7 +1,5 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler')
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
 const { Booking, User, Spot } = require('../../db/models');
 
 const router = express.Router()
@@ -29,10 +27,12 @@ router.post('/',
 
         const newBooking = await Booking.create(req.body);
         const booking = await Booking.findByPk(newBooking.id,
-            //     {
-            //     include: [User, Spot]
-            // }
+                {
+                include: [User, Spot]
+            }
         )
+
+        console.log('booking =====', booking)
         return res.json({ booking })
     })
 )
