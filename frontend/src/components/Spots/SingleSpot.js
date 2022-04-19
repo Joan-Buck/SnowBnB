@@ -23,15 +23,12 @@ const SingleSpot = () => {
     })
 
     useEffect(() => {
-        console.log("~here")
         dispatch(dispatch => getSpotThunk(spotId)(dispatch).then(
             () => {
-                console.log("~here2")
                 setHasLoaded(true)
             }
         ).catch(
             () => {
-                console.log("~here3")
                 setHasLoaded(true)
             }
         ))

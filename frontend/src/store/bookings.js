@@ -45,10 +45,8 @@ export const createBookingThunk = (booking) => async dispatch => {
             numGuests: booking.numGuests
         })
     })
-    console.log('response=====', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('~data', data)
         dispatch(loadBooking(data.booking));
         return data.booking
     }

@@ -74,7 +74,6 @@ const BookingForm = ({ spot, sessionUser }) => {
             endDate,
             numGuests: guests
         }
-        console.log('new booking', newBooking)
         dispatch(createBookingThunk(newBooking))
         history.push('/my-bookings');
     }

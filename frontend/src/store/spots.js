@@ -45,18 +45,14 @@ export const getSpotsThunk = () => async (dispatch) => {
 
 
 export const getSpotThunk = (spotId) => async dispatch => {
-    console.log("~FETCH")
     const response = await fetch(`/api/spots/${spotId}`)
-    console.log("~DONE FETCH")
 
     if (response.ok) {
         const data = await response.json();
         dispatch(loadSpot(data.spot))
-        console.log("~HERE2")
         return data;
     }
 
-    console.log("~HERE3")
 }
 
 

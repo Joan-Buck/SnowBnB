@@ -32,7 +32,6 @@ router.post('/',
             }
         )
 
-        console.log('booking =====', booking)
         return res.json({ booking })
     })
 )
