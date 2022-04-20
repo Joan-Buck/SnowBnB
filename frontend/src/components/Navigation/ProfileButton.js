@@ -44,8 +44,8 @@ const ProfileButton = ({ user }) => {
                     <ul className='profile-dropdown'>
                         <li className='dropdown-li-name'>Hi, {user.username}!</li>
                         <li className='dropdown-li'><NavLink to={'/'} className='dropdown-link'>Home</NavLink></li>
-                        <li className='dropdown-li'><NavLink to={'/my-listings'} className='dropdown-link'>My Listings</NavLink></li>
-                        <li className='dropdown-li'><NavLink to={'/spots'} className='dropdown-link'>All Listings</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/my-listings'} className='dropdown-link'>My Rentals</NavLink></li>
+                        <li className='dropdown-li'><NavLink to={'/spots'} className='dropdown-link'>All Rentals</NavLink></li>
                         <li className='dropdown-li'><NavLink to={'/my-bookings'} className='dropdown-link'>My Bookings</NavLink></li>
                         <li className='dropdown-li'>
                             <button onClick={logout} className='logout-button'> Log Out</button>
