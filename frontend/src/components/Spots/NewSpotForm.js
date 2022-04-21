@@ -386,7 +386,7 @@ const NewSpotForm = ({ closeModal }) => {
                     </input>
                 </label>
                 <button type="submit" className="spot-form-button">
-                    Add to My Listings!
+                    Add to My Rentals!
                 </button>
                 <ul className="spot-form-errors">
                     {validationErrors.length > 0 && validationErrors.map((error, i) =>
